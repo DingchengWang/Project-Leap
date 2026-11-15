@@ -177,7 +177,7 @@ def render_page(language: str, page: str) -> str:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
   <meta name="description" content="{copy['description']}">
-  <meta name="theme-color" content="#f7f8f4">
+  <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="{PUBLIC_BASE + current}">
   <link rel="alternate" hreflang="en" href="{PUBLIC_BASE + route('en', page)}">
   <link rel="alternate" hreflang="zh-CN" href="{PUBLIC_BASE + route('zh', page)}">
