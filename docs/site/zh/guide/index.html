@@ -53,18 +53,18 @@
 </nav></aside>
 <article class="prose document"><p><a href="../../en/guide/">English</a> · <a href="../">项目首页</a> · <a href="../about/">关于</a></p>
 <p>本指南说明主程序的安装、模块管理、历史分析和设置。图像准备、分析参数、人工审核和各模块输出格式，请参阅下文链接的模块指南。</p>
-<p><strong>发布状态：</strong>本次提供模块包、共享组件和组件目录。Project Leap 1.0.0 公开 DMG 仍在准备中。以下安装步骤适用于主程序开放下载后。</p>
+<p><strong>当前版本：</strong>Project Leap 1.0.0，构建号 1。可安装的分析模块为荧光强度分析 1.1.1 和细胞计数 1.0.0。</p>
 <h2 id="1-安装主程序">1. 安装主程序</h2>
 <p>需要运行 <strong>macOS 27 或更高版本的 Apple Silicon Mac</strong>。下载主程序、安装模块和获取更新时需要联网。</p>
 <ol>
 <li>打开<a href="https://dingchengwang.github.io/Project-Leap/zh/">项目官网</a>或 <a href="https://github.com/DingchengWang/Project-Leap/releases">GitHub Releases</a>。</li>
-<li>在安装包可用后，下载 <code>Project-Leap-1.0.0-macOS-arm64.dmg</code>。</li>
+<li>下载 <a href="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg"><code>Project-Leap-1.0.0-macOS-arm64.dmg</code></a>。</li>
 <li>打开 DMG，将 <strong>Project Leap.app</strong> 拖入<strong>应用程序（Applications）</strong>文件夹。</li>
 <li>从“应用程序”打开 Project Leap。复制完成后即可推出 DMG。</li>
 </ol>
 <p>公开 DMG 包含主程序本体。分析模块及其依赖通过 Project Leap 安装。</p>
 <h3 id="macos-阻止首次启动时">macOS 阻止首次启动时</h3>
-<p>计划中的首个公开版本没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。</p>
+<p>Project Leap 1.0.0 没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。</p>
 <p>如果你从项目发布页面下载了应用，并决定继续打开：</p>
 <ol>
 <li>先尝试打开一次 <strong>Project Leap.app</strong>，然后关闭提示。</li>
@@ -126,7 +126,7 @@
 <p>在<strong>存储与数据</strong>中点击<strong>清理缓存</strong>并确认，可删除能重新生成的界面缓存和已不再使用的临时文件。原始图像、分析结果和审核数据会保留。若要删除某次分析及其已保存数据，应使用任务删除功能。</p>
 <h3 id="更新软件">更新软件</h3>
 <p>进入<strong>设置 → 软件更新 → 检查更新</strong>，统一检查主程序和已安装模块。按更新提示操作；组件下载并校验后才会启用，主程序更新会重新启动软件。更新所需的组件仍在使用时，会等待相关工作结束。</p>
-<p>本次提供的组件目录和组件包用于模块安装与维护。主程序的公开下载和更新仍在准备中。</p>
+<p>主程序与模块分别使用各自的版本号。荧光模块 1.1.1 修复了与共享科学运行环境的兼容问题，科学规则仍为 1.0.1。</p>
 <h3 id="检查并修复模块">检查并修复模块</h3>
 <p>在<strong>功能与维护</strong>中，点击已安装模块的<strong>检查并修复</strong>。软件会检查组件内容，并以<strong>当前已安装的同一版本</strong>修复缺失或损坏的组件。完整校验通过时，会提示无需修复。需要升级到可用的新版本时，使用<strong>检查更新</strong>。</p>
 <h3 id="删除模块或卸载软件">删除模块或卸载软件</h3>

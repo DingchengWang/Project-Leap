@@ -1,6 +1,6 @@
 # Project Leap 发布指南
 
-本指南说明如何从已验证的主程序 DMG 和组件归档生成正式更新文件。正式地址和公钥已进入源码；线上更新服务尚未发布，公开下载尚未启用。当前还没有可用于生成生产更新文件的最终 DMG。下列命令在真实发行文件完成后执行，生成的本地候选文件仍需另行发布和核验。
+本指南说明如何从已验证的主程序 DMG 和组件归档生成、发布并核验正式更新文件。生成命令需要真实发行文件、对应构建报告和正式签名配置；本地候选文件完成后，仍须按本文顺序上传归档、核验正式地址并部署更新文件。
 
 主程序使用 Sparkle 更新；分析模块及其共享依赖使用签名组件目录。两者的发布文件位于同一网站的 `updates/` 目录，但使用不同密钥。
 
@@ -23,13 +23,13 @@
 
 | 组件 ID | 分发版本 | GitHub 仓库与 Release tag | 发行文件名 |
 |---|---|---|---|
-| `project-leap-2d` | `1.1.0` | `Project-Leap-2D-Integrated-IHC-fluorescence-analysis` / `v1.1.0` | `project-leap-2d-1.1.0-macos-arm64.tar.gz` |
+| `project-leap-2d` | `1.1.1` | `Project-Leap-2D-Integrated-IHC-fluorescence-analysis` / `v1.1.1` | `project-leap-2d-1.1.1-macos-arm64.tar.gz` |
 | `cell-counting` | `1.0.0` | `Project-Leap-Cell-Counting` / `v1.0.0` | `project-leap-cell-counting-1.0.0-macos-arm64.tar.gz` |
 | `science-runtime` | `1.0.0` | `Project-Leap` / `v1.0.0` | `project-leap-science-runtime-1.0.0-macos-arm64.tar.gz` |
 | `cellpose-model` | `4.2.1.1` | `Project-Leap` / `v1.0.0` | `project-leap-cellpose-model-4.2.1.1.tar.gz` |
 | `fiji` | `20260718.0417` | `Project-Leap` / `v1.0.0` | `project-leap-fiji-20260718.0417-macos-arm64.tar.gz` |
 
-荧光模块的分发版本 `1.1.0` 对应科学版本 `1.0.1`。原荧光仓库的脚本版 `v1.0.1` 继续保留在原仓库，不作为新组件目录中的模块版本。
+荧光模块的分发版本 `1.1.1` 修复共享科学运行环境兼容性，科学版本仍为 `1.0.1`。`1.1.0` 引入桌面模块化流程、自动拆分通道和最终 ROI 归档；该版本的组件记录与归档继续保留，以支持同版本修复。原荧光仓库的脚本版 `v1.0.1` 及其安装和修复文件也继续保留，不作为桌面组件目录中的模块版本。
 
 ## 2. 准备签名工具与最终归档
 
@@ -50,9 +50,11 @@
 
 只有这些输入完成后，才创建生产候选目录。测试 fixture 和旧的最低宿主构建号为 `17` 的组件包不属于本次正式输入。归档进入签名流程后保持字节不变；将包复制为上表中的发行文件名时也应保留原始归档内容。
 
-## 3. 生成首发更新文件
+## 3. 生成当前版本更新文件
 
 在下列命令中，将 `/absolute/path/to/Sparkle-2.10.0/bin` 替换为已准备好的官方工具目录。生成器只写入本地文件，不上传 GitHub Release 或部署网站。
+
+当前组件目录已有公开版本。先下载并保留已发布的 `components.json`，在组件生成命令中以 `--previous` 传入。主程序首次生成 `appcast.xml` 时尚无旧主程序更新列表，因此该命令不传 `--previous`。以下示例假定旧组件目录位于 `../published-previous/components.json`。
 
 ```sh
 mkdir ../release-1.0.0/publish-candidate-1
@@ -60,6 +62,7 @@ mkdir ../release-1.0.0/publish-candidate-1
 python3 tools/sign_component_catalog.py \
   ../release-1.0.0/packages/catalog.json \
   --packages ../release-1.0.0/packages \
+  --previous ../published-previous/components.json \
   --settings tools/build/release-settings.json \
   --sparkle-bin /absolute/path/to/Sparkle-2.10.0/bin \
   --output ../release-1.0.0/publish-candidate-1/components.json
@@ -89,9 +92,9 @@ publish-candidate-1/
 
 ## 4. 发布后续版本并保留历史
 
-下一次发行时，先取得上一版实际发布的 `components.json`、`appcast.xml` 和 `appcast.xml.sig`，保存为只读输入。XML 与同名 `.sig` 放在同一目录，例如 `../published-previous/`。首次发行省略 `--previous`；后续发行必须传入上一版文件。
+后续发行时，分别取得对应更新通道上一版实际发布的文件，并保存为只读输入：组件目录使用 `components.json`；主程序更新使用 `appcast.xml` 和 `appcast.xml.sig`。XML 与同名 `.sig` 放在同一目录，例如 `../published-previous/`。某一通道首次发行时省略其 `--previous`；该通道已有公开版本时必须传入上一版文件。
 
-更新发布设置，使当前版本、归档名称和下载 URL 与新文件一致，然后在新的候选目录生成结果。例如第二次发行使用 `publish-candidate-2`，两个命令分别增加：
+更新发布设置，使当前版本、归档名称和下载 URL 与新文件一致，然后在新的候选目录生成结果。例如第二次发行使用 `publish-candidate-2`，两个命令分别使用以下历史输入：
 
 ```text
 sign_component_catalog.py: --previous ../published-previous/components.json

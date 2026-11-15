@@ -7,10 +7,10 @@
 Project Leap 将星形胶质细胞荧光强度分析和细胞计数整合到一款面向 Apple Silicon Mac 的桌面软件中。导入 TIFF 图像，审核候选区域或细胞，并将结果与分析记录一同保存。
 
 <div class="actions" markdown="0">
-<a class="button primary" href="modules/">了解分析模块 <span aria-hidden="true">↗</span></a>
+<a class="button primary" href="downloads/">下载 Mac 版 <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="guide/">阅读使用指南 <span aria-hidden="true">→</span></a>
 </div>
-<p class="release-line">版本 1.0.0 · Apple Silicon · macOS 27 或更新版本<br><a href="downloads/">桌面版正在准备发布。</a></p>
+<p class="release-line">版本 1.0.0 · 构建号 1 · Apple Silicon · macOS 27 或更新版本<br><a href="downloads/">下载信息与版本说明</a></p>
 </div>
 
 <div class="hero-symbol" markdown="0">
@@ -31,7 +31,7 @@ Project Leap 将星形胶质细胞荧光强度分析和细胞计数整合到一�
 <section class="module-row" aria-labelledby="fluorescence-home" markdown="1">
 <div class="module-number" aria-hidden="true" markdown="0">01</div>
 <div markdown="1">
-<p class="module-version">模块版本 1.1.0</p>
+<p class="module-version">模块版本 1.1.1</p>
 <h3 id="fluorescence-home">星形胶质细胞荧光强度分析</h3>
 <p>测量完整细胞、胞体与突起区域的荧光强度。在软件中指定通道，在 Fiji 中审核候选区域，然后保存测量表、叠加图和最终区域归档。</p>
 <a class="text-link" href="modules/#fluorescence">了解荧光分析 <span aria-hidden="true">→</span></a>

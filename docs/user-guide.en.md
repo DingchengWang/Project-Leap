@@ -4,14 +4,14 @@
 
 This guide covers application installation, module management, saved analyses, and settings. For image preparation, analysis parameters, manual review, and module-specific outputs, use the module guides linked below.
 
-**Release status:** this release provides the module packages, shared components, and component catalog. The public Project Leap 1.0.0 DMG remains in preparation. The installation steps below apply once the application download is available.
+**Current release:** Project Leap 1.0.0, build 1. The available analysis modules are fluorescence measurement 1.1.1 and cell counting 1.0.0.
 
 ## 1. Install the application
 
 Use an **Apple Silicon Mac running macOS 27 or later**. Internet access is required to download the application, install modules, and obtain updates.
 
 1. Open the [project website](https://dingchengwang.github.io/Project-Leap/en/) or [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases).
-2. Download `Project-Leap-1.0.0-macOS-arm64.dmg` when it is listed as available.
+2. Download [`Project-Leap-1.0.0-macOS-arm64.dmg`](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg).
 3. Open the DMG and drag **Project Leap.app** into **Applications**.
 4. Open Project Leap from Applications. After copying the application, you can eject the DMG.
 
@@ -19,7 +19,7 @@ The public DMG contains the main application. Analysis modules and their depende
 
 ### If macOS blocks the first launch
 
-The planned initial release does not have an Apple Developer ID signature or Apple notarization. Gatekeeper may therefore report that the developer cannot be verified or that Apple cannot check the application for malicious software.
+Project Leap 1.0.0 does not have an Apple Developer ID signature or Apple notarization. Gatekeeper may therefore report that the developer cannot be verified or that Apple cannot check the application for malicious software.
 
 If you downloaded the application from the project release and choose to open it:
 
@@ -86,7 +86,7 @@ Click **Clear cache** under **Storage & data** and confirm. This removes rebuild
 
 Open **Settings → Software updates → Check for Updates**. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.
 
-The component catalog and packages in this release support module installation and maintenance. The public main-application download and application updates remain in preparation.
+Application updates and module updates have separate version numbers. Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime; its scientific rules remain at version 1.0.1.
 
 ### Check and repair a module
 

@@ -81,10 +81,10 @@ DMG 使用 `hdiutil verify`，随后只读挂载；对挂载应用再运行相�
 
 生产允许列表位于 `release_policy.py`。主应用源码逐文件允许；Qt QML 只收集 Basic 样式及 Dialogs、Layouts、Models 等 15 个实际依赖模块，不收集 QML 调试插件、WebEngine、Graphs、Quick3D、QtTest、PDF 和虚拟键盘。所有筛选均在 PyInstaller 收集与签名前完成。科学环境剔除独立 tests/test/fixture 目录及 Torch 内部测试框架，保留 NumPy/SciPy/Torch 正常导入依赖的 testing helpers；打包前在独立裁剪副本实测实际依赖导入、NumPy/SciPy 运算及两个固定模型加载。原始 seed 不修改。
 
-主应用允许列表保持 42 项。运行流水、分类摘要和资源读数使用现有 Python、Qt 及 macOS 系统接口，不新增生产文件或运行依赖；科学引擎源码保持不变。正式发行只因两个模块的宿主兼容元数据变化而重建模块清单和归档；三个共享组件是否复用由目标内容清单和归档字节核验决定。
+主应用允许列表保持 42 项。运行流水、分类摘要和资源读数使用现有 Python、Qt 及 macOS 系统接口，不新增生产文件或运行依赖。模块源码或宿主兼容信息变化时，重新生成对应模块清单和归档；三个共享组件是否复用由目标内容清单和归档字节核验决定。
 
-`tools/build/release-settings.json` 保存发布工具使用的正式地址、公钥、钥匙串账户名和发行文件映射；`app/leap_desktop/release-config.json` 保存客户端使用的组件目录地址与公钥。构建器核对这两份配置，并将主程序更新源和公钥写入应用。正式配置已进入源码，线上更新服务仍未发布，公开下载尚未启用。真实 DMG 和五份正式组件包完成验证后，按[发布指南](../../docs/releasing.md)生成 `components.json`、`appcast.xml` 和 `appcast.xml.sig`；测试归档不能用作生产发布输入。
+`tools/build/release-settings.json` 保存发布工具使用的正式地址、公钥、钥匙串账户名和发行文件映射；`app/leap_desktop/release-config.json` 保存客户端使用的组件目录地址与公钥。构建器核对这两份配置，并将主程序更新源和公钥写入应用。真实 DMG 和五份正式组件包完成验证后，按[发布指南](../../docs/releasing.md)生成 `components.json`、`appcast.xml` 和 `appcast.xml.sig`；测试归档不能用作生产发布输入。
 
 完整离线 DMG 包含上述五份真实组件归档；公开主程序发布使用 `--main-only-dmg` 单独生成 `Project-Leap-1.0.0-macOS-arm64.dmg`，其中只有主应用和 Applications 链接。只有显式指定 `--dmg` 时才生成含五份组件的完整离线 DMG。
 
-荧光模块 1.1.1 是共享科学运行环境的兼容性修复候选；1.1.0 的模块化流程和科学规则保持。主程序仍为首次公开发行 1.0.0 / 构建号 1。既有 1.1.0 发布包保留原内容，候选通过验收并获确认后再发布。
+荧光模块 1.1.1 修复共享科学运行环境兼容性，保留 1.1.0 引入的模块化流程，科学规则仍为 1.0.1。主程序首次公开发行版本为 1.0.0，构建号为 1。既有 1.1.0 发布包保留原内容和下载地址，供同版本修复使用。

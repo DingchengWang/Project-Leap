@@ -4,20 +4,22 @@
 
 Project Leap is a local research application for immunohistochemistry (IHC) image analysis on Apple Silicon Macs. It brings image import, analysis modules, manual review, and saved results into one desktop workspace. Original images remain separate from application-managed analysis data.
 
-**Version 1.0.0 · macOS 27 or later · Apple Silicon (arm64)**
+**Version 1.0.0 · Build 1 · macOS 27 or later · Apple Silicon (arm64)**
 
 ## Download and start
 
-This release provides shared component packages; the fluorescence and counting module packages are supplied by their respective repositories. The public macOS application remains **in preparation**, and its DMG download is not enabled yet. See the [project website](https://dingchengwang.github.io/Project-Leap/en/) and [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases) for application availability.
+[Download Project Leap 1.0.0 for Mac](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg). The DMG contains the main application. See the [download page](https://dingchengwang.github.io/Project-Leap/en/downloads/) for file details and the [release notes](https://github.com/DingchengWang/Project-Leap/releases/tag/v1.0.0) for this release.
 
-Once available, install **Project Leap.app** from the DMG, then use **Modules & Maintenance** to install the modules you need. The application downloads their dependencies. Follow the [platform user guide](docs/user-guide.en.md) for installation, first launch, result management, and settings.
+Install **Project Leap.app** from the DMG, then use **Modules & Maintenance** to install the modules you need. The application downloads their dependencies. Follow the [platform user guide](docs/user-guide.en.md) for installation, first launch, result management, and settings.
 
 ## Analysis modules
 
 | Module | Purpose | Documentation |
 |---|---|---|
-| Astrocyte Fluorescence Intensity Measurement · 1.1.0 | Measure fluorescence in reviewed astrocyte regions of interest, with Fiji review. | [Guide](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
+| Astrocyte Fluorescence Intensity Measurement · 1.1.1 | Measure fluorescence in reviewed astrocyte regions of interest, with Fiji review. | [Guide](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
 | Cell Counting · 1.0.0 | Review and edit cell identities from DAPI and auxiliary-channel evidence, then save counts and overlays. | [Guide](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-Cell-Counting) |
+
+Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime. The desktop workflow, automatic channel preparation, and final region archive were introduced in 1.1.0; the scientific rules remain at version 1.0.1. The [v1.0.1 script package](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/tag/v1.0.1) and its repair files remain available.
 
 ## Source and development
 

@@ -1,6 +1,6 @@
 # Project Leap 当前接口
 
-细胞来源协议见[计数模块 CELL_IDENTITY.md](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/prototype-d/CELL_IDENTITY.md)。正式应用版本为 1.0.0，首发构建号为 1；公开构建号使用从 1 开始的全局递增正整数，软件版本变化时继续递增。计数包 1.0.0，荧光包 1.1.0（科学规则版本分别为 1.0.0、1.0.1），最低 macOS 27。计数科学流程保留已接受的 IMG005-v4 自动判断。
+细胞来源协议见[计数模块 CELL_IDENTITY.md](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/prototype-d/CELL_IDENTITY.md)。正式应用版本为 1.0.0，首发构建号为 1；公开构建号使用从 1 开始的全局递增正整数，软件版本变化时继续递增。计数包 1.0.0，荧光包 1.1.1（科学规则版本分别为 1.0.0、1.0.1），最低 macOS 27。计数科学流程保留已接受的 IMG005-v4 自动判断。
 
 计数请求保留图像、图像组、时间点、DAPI 及通道映射字段，使用不同于 DAPI 的 `support_channel`、`support_marker` 和 `display_channels`。通道索引从 0 开始，至少选择一个显示通道，默认显示 DAPI 和辅助通道；不含核直径字段。主程序管理任务、显示与审核，不载入 torch。
 

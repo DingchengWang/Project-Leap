@@ -22,6 +22,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_BASE = "https://dingchengwang.github.io/Project-Leap/"
 PAGES = ("", "modules/", "guide/", "downloads/", "about/")
 LEGACY_ZIP = "https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/download/v1.0.1/Project-Leap-2D-V1.0.1.zip"
+DESKTOP_DMG = "https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg"
+DESKTOP_SHA256 = "25548345a50dc15b4ab1d1d53bcffbd78e27f89f830139bed825f1f27950e3e5"
 
 
 class Page(HTMLParser):
@@ -132,13 +134,22 @@ def check(site: Path, rebuild: bool) -> int:
                 if urlsplit(value).scheme or value.startswith("//"):
                     errors.append(f"{name}: external runtime asset {value}")
         if "downloads" in path.parts:
-            if not any("disabled" in attrs and attrs.get("aria-describedby") == "download-status" for attrs in parsed.buttons):
-                errors.append(f"{name}: prepared desktop download must remain disabled")
+            desktop_links = [attrs for tag, value, attrs in parsed.links if tag == "a" and value == DESKTOP_DMG]
+            if len(desktop_links) != 1 or any(
+                attrs.get("aria-disabled") == "true" or "disabled" in attrs
+                or "primary" not in attrs.get("class", "").split()
+                for attrs in desktop_links
+            ):
+                errors.append(f"{name}: requires one active primary link to the fixed desktop DMG")
+            if any("disabled" in attrs for attrs in parsed.buttons):
+                errors.append(f"{name}: obsolete disabled download button")
+            if DESKTOP_SHA256 not in text or "52,720,315" not in text:
+                errors.append(f"{name}: desktop archive size or SHA-256 is missing")
             hrefs = {value for _, value, _ in parsed.links}
             if LEGACY_ZIP not in hrefs:
                 errors.append(f"{name}: missing fixed historical v1.0.1 ZIP link")
-            if any("/releases/download/" in value and value != LEGACY_ZIP for value in hrefs):
-                errors.append(f"{name}: an unpublished release has an active download link")
+            if any("/releases/download/" in value and value not in {LEGACY_ZIP, DESKTOP_DMG} for value in hrefs):
+                errors.append(f"{name}: unexpected release download link")
     for path, parsed in documents.items():
         name = path.relative_to(site).as_posix()
         for _, value, _ in parsed.links:
@@ -169,7 +180,7 @@ def check(site: Path, rebuild: bool) -> int:
         print("\n".join(f"- {error}" for error in errors))
         return 1
     print(f"PASS: {len(documents)} HTML pages; {references} local references; 5 bilingual page pairs.")
-    print("PASS: headings, language switches, image alternatives, self-contained assets, release-preparation download state.")
+    print("PASS: headings, language switches, image alternatives, self-contained assets, fixed desktop and historical downloads.")
     if rebuild:
         print("PASS: generated files exactly reproduce the current site content.")
     print(f"External URLs ({len(external)} unique) were not fetched; browser layout and live publication are separate checks.")

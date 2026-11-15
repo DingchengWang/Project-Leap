@@ -7,10 +7,10 @@
 Project Leap brings astrocyte fluorescence measurement and cell counting into one desktop application for Apple Silicon Mac. Import your TIFF images, review the proposed regions or cells, and keep the results with their analysis records.
 
 <div class="actions" markdown="0">
-<a class="button primary" href="modules/">Explore the modules <span aria-hidden="true">↗</span></a>
+<a class="button primary" href="downloads/">Download for Mac <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="guide/">Read the user guide <span aria-hidden="true">→</span></a>
 </div>
-<p class="release-line">Version 1.0.0 · Apple Silicon · macOS 27 or later<br><a href="downloads/">The desktop release is in preparation.</a></p>
+<p class="release-line">Version 1.0.0 · Build 1 · Apple Silicon · macOS 27 or later<br><a href="downloads/">Download details and release notes</a></p>
 </div>
 
 <div class="hero-symbol" markdown="0">
@@ -31,7 +31,7 @@ Project Leap brings astrocyte fluorescence measurement and cell counting into on
 <section class="module-row" aria-labelledby="fluorescence-home" markdown="1">
 <div class="module-number" aria-hidden="true" markdown="0">01</div>
 <div markdown="1">
-<p class="module-version">Module 1.1.0</p>
+<p class="module-version">Module 1.1.1</p>
 <h3 id="fluorescence-home">Astrocyte fluorescence intensity measurement</h3>
 <p>Measure fluorescence in whole-cell, soma, and process regions. Assign channels in the app, review the proposed regions in Fiji, and save measurements, overlays, and the final region archive.</p>
 <a class="text-link" href="modules/#fluorescence">Explore fluorescence analysis <span aria-hidden="true">→</span></a>

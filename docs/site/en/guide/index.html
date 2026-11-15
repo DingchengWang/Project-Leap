@@ -53,18 +53,18 @@
 </nav></aside>
 <article class="prose document"><p><a href="../../zh/guide/">中文</a> · <a href="../">Project home</a> · <a href="../about/">About</a></p>
 <p>This guide covers application installation, module management, saved analyses, and settings. For image preparation, analysis parameters, manual review, and module-specific outputs, use the module guides linked below.</p>
-<p><strong>Release status:</strong> this release provides the module packages, shared components, and component catalog. The public Project Leap 1.0.0 DMG remains in preparation. The installation steps below apply once the application download is available.</p>
+<p><strong>Current release:</strong> Project Leap 1.0.0, build 1. The available analysis modules are fluorescence measurement 1.1.1 and cell counting 1.0.0.</p>
 <h2 id="1-install-the-application">1. Install the application</h2>
 <p>Use an <strong>Apple Silicon Mac running macOS 27 or later</strong>. Internet access is required to download the application, install modules, and obtain updates.</p>
 <ol>
 <li>Open the <a href="https://dingchengwang.github.io/Project-Leap/en/">project website</a> or <a href="https://github.com/DingchengWang/Project-Leap/releases">GitHub Releases</a>.</li>
-<li>Download <code>Project-Leap-1.0.0-macOS-arm64.dmg</code> when it is listed as available.</li>
+<li>Download <a href="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg"><code>Project-Leap-1.0.0-macOS-arm64.dmg</code></a>.</li>
 <li>Open the DMG and drag <strong>Project Leap.app</strong> into <strong>Applications</strong>.</li>
 <li>Open Project Leap from Applications. After copying the application, you can eject the DMG.</li>
 </ol>
 <p>The public DMG contains the main application. Analysis modules and their dependencies are installed through Project Leap.</p>
 <h3 id="if-macos-blocks-the-first-launch">If macOS blocks the first launch</h3>
-<p>The planned initial release does not have an Apple Developer ID signature or Apple notarization. Gatekeeper may therefore report that the developer cannot be verified or that Apple cannot check the application for malicious software.</p>
+<p>Project Leap 1.0.0 does not have an Apple Developer ID signature or Apple notarization. Gatekeeper may therefore report that the developer cannot be verified or that Apple cannot check the application for malicious software.</p>
 <p>If you downloaded the application from the project release and choose to open it:</p>
 <ol>
 <li>Attempt to open <strong>Project Leap.app</strong> once, then dismiss the alert.</li>
@@ -126,7 +126,7 @@
 <p>Click <strong>Clear cache</strong> under <strong>Storage &amp; data</strong> and confirm. This removes rebuildable interface caches and temporary files that are no longer in use. Original images, analysis results, and review data are retained. Use job deletion when you intend to remove an analysis and its saved data.</p>
 <h3 id="updates">Updates</h3>
 <p>Open <strong>Settings → Software updates → Check for Updates</strong>. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.</p>
-<p>The component catalog and packages in this release support module installation and maintenance. The public main-application download and application updates remain in preparation.</p>
+<p>Application updates and module updates have separate version numbers. Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime; its scientific rules remain at version 1.0.1.</p>
 <h3 id="check-and-repair-a-module">Check and repair a module</h3>
 <p>In <strong>Modules &amp; Maintenance</strong>, click <strong>Check and Repair</strong> for an installed module. The application checks its contents and repairs damaged or missing components using the <strong>same installed version</strong>. If verification passes, it reports that repair is unnecessary. Use <strong>Check for Updates</strong> when you want an available newer version.</p>
 <h3 id="remove-modules-or-uninstall">Remove modules or uninstall</h3>

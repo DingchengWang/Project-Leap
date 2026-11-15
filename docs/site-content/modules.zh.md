@@ -1,7 +1,7 @@
 Project Leap 当前包含两个模块。主程序负责安装和维护，各模块拥有各自的分析流程和详细指南。
 
 <section class="module-detail" aria-labelledby="fluorescence" markdown="1">
-<p class="eyebrow">模块版本 1.1.0</p>
+<p class="eyebrow">模块版本 1.1.1</p>
 
 ## 星形胶质细胞荧光强度分析 {#fluorescence}
 
@@ -15,7 +15,7 @@ Project Leap 当前包含两个模块。主程序负责安装和维护，各模�
 
 1.1.0 将分析接入桌面软件，增加多通道 TIFF 直接导入、界面通道指定、模块维护、任务记录、结果预览和最终区域归档。界面提供“自动”、Mature、Neonatal 图像年龄选项；仅使用 GFAP 的分支仍限于 Mature 样本。
 
-既有的 Z 区间选择、分割、阈值、Fiji 审核和荧光测量规则沿用科学版本 1.0.1。本次更新改进分析的准备、执行和保存方式。
+1.1.1 修复了荧光模块与桌面软件共享科学运行环境的兼容问题。Z 区间选择、分割、阈值、Fiji 审核和荧光测量规则继续沿用科学版本 1.0.1。
 
 <div class="actions" markdown="0">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.zh.md">阅读荧光分析指南 <span aria-hidden="true">↗</span></a>

@@ -29,14 +29,14 @@
 </header>
 <main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">ANALYSIS MODULES</p><h1>Modules</h1></header><article class="prose modules-content"><p>Project Leap currently includes two modules. The application manages their installation and maintenance; each module has its own analysis workflow and detailed guide.</p>
 <section aria-labelledby="fluorescence" class="module-detail">
-<p class="eyebrow">MODULE 1.1.0</p>
+<p class="eyebrow">MODULE 1.1.1</p>
 <h2 id="fluorescence">Astrocyte fluorescence intensity measurement</h2>
 <p>Measure target-channel fluorescence within <strong>Whole</strong>, <strong>Soma</strong>, and <strong>Processes</strong> regions after reviewing the proposed regions in Fiji. Whole covers the full cell region; Soma and Processes separate the cell body from its processes.</p>
 <p>Import a supported multi-channel TIFF and assign DAPI, eGFP/GFAP, and the target measurement channels in the application. Project Leap prepares the single-channel working images while retaining the source TIFF in its original location. Review the regions in Fiji, confirm your edits, and let the analysis continue to measurement and result saving.</p>
 <p>The output includes three overlay images, a text analysis report, a fluorescence workbook, and <code>IHC_2D_ROI_Archive.zip</code>. The archive preserves the final regions together with cell identities, calibration, selected Z range, and measurement correspondence.</p>
 <h3 id="what-changed-from-the-v101-script-package">What changed from the v1.0.1 script package</h3>
-<p>Version 1.1.0 adds the desktop workflow: direct multi-channel TIFF import, channel assignment, module maintenance, task records, result previews, and the final region archive. The application provides Automatic, Mature, and Neonatal sample-age controls; the GFAP-only path remains limited to Mature samples.</p>
-<p>The existing Z-selection, segmentation, threshold, Fiji review, and fluorescence-measurement rules remain at scientific version 1.0.1. This release changes how you prepare, run, and retain an analysis.</p>
+<p>Version 1.1.0 introduced the desktop workflow: direct multi-channel TIFF import, channel assignment, module maintenance, task records, result previews, and the final region archive. The application provides Automatic, Mature, and Neonatal sample-age controls; the GFAP-only path remains limited to Mature samples.</p>
+<p>Version 1.1.1 fixes compatibility with the shared scientific runtime used by the desktop application. The Z-selection, segmentation, threshold, Fiji review, and fluorescence-measurement rules remain at scientific version 1.0.1.</p>
 <div class="actions">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence guide <span aria-hidden="true">↗</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source <span aria-hidden="true">↗</span></a>

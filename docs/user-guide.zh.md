@@ -4,14 +4,14 @@
 
 本指南说明主程序的安装、模块管理、历史分析和设置。图像准备、分析参数、人工审核和各模块输出格式，请参阅下文链接的模块指南。
 
-**发布状态：**本次提供模块包、共享组件和组件目录。Project Leap 1.0.0 公开 DMG 仍在准备中。以下安装步骤适用于主程序开放下载后。
+**当前版本：**Project Leap 1.0.0，构建号 1。可安装的分析模块为荧光强度分析 1.1.1 和细胞计数 1.0.0。
 
 ## 1. 安装主程序
 
 需要运行 **macOS 27 或更高版本的 Apple Silicon Mac**。下载主程序、安装模块和获取更新时需要联网。
 
 1. 打开[项目官网](https://dingchengwang.github.io/Project-Leap/zh/)或 [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases)。
-2. 在安装包可用后，下载 `Project-Leap-1.0.0-macOS-arm64.dmg`。
+2. 下载 [`Project-Leap-1.0.0-macOS-arm64.dmg`](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg)。
 3. 打开 DMG，将 **Project Leap.app** 拖入**应用程序（Applications）**文件夹。
 4. 从“应用程序”打开 Project Leap。复制完成后即可推出 DMG。
 
@@ -19,7 +19,7 @@
 
 ### macOS 阻止首次启动时
 
-计划中的首个公开版本没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。
+Project Leap 1.0.0 没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。
 
 如果你从项目发布页面下载了应用，并决定继续打开：
 
@@ -86,7 +86,7 @@ macOS 会保存该应用的例外设置。上述步骤依据 [Apple 对未公证
 
 进入**设置 → 软件更新 → 检查更新**，统一检查主程序和已安装模块。按更新提示操作；组件下载并校验后才会启用，主程序更新会重新启动软件。更新所需的组件仍在使用时，会等待相关工作结束。
 
-本次提供的组件目录和组件包用于模块安装与维护。主程序的公开下载和更新仍在准备中。
+主程序与模块分别使用各自的版本号。荧光模块 1.1.1 修复了与共享科学运行环境的兼容问题，科学规则仍为 1.0.1。
 
 ### 检查并修复模块
 

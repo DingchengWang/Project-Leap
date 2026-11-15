@@ -28,9 +28,9 @@
   </div>
 </header>
 <main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">GET PROJECT LEAP</p><h1>Downloads</h1></header><article class="prose downloads-content"><div class="download-intro">
-<p class="status-label"><span aria-hidden="true"></span>Release in preparation</p>
+<p class="status-label"><span aria-hidden="true"></span>Desktop release</p>
 <h2 id="project-leap-100">Project Leap 1.0.0</h2>
-<p>The desktop application is being prepared for its first public release, and its DMG download is not enabled yet. This release provides the analysis modules and shared component packages.</p>
+<p>Download the desktop application, copy it to Applications, then install the analysis modules you need from within Project Leap.</p>
 <dl class="release-specs">
 <div>
 <dt>Platform</dt>
@@ -42,14 +42,16 @@
 </div>
 <div>
 <dt>Package</dt>
-<dd>Application DMG</dd>
+<dd>Application DMG · build 1</dd>
 </div>
 </dl>
-<p><button class="button primary" type="button" disabled aria-describedby="download-status">Download for Mac — coming soon</button></p>
-<p class="fine-print" id="download-status">The download will be enabled after the release package is published and verified.</p>
+<p><a class="button primary" href="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg" aria-describedby="download-details">Download for Mac <span aria-hidden="true">↓</span></a></p>
+<p class="fine-print" id="download-details">52.7 MB · 52,720,315 bytes · Main application only</p>
+<p class="fine-print">SHA-256: <code>25548345a50dc15b4ab1d1d53bcffbd78e27f89f830139bed825f1f27950e3e5</code></p>
+<p class="fine-print"><a href="https://github.com/DingchengWang/Project-Leap/releases/tag/v1.0.0">Release notes on GitHub ↗</a> · <a href="../guide/#if-macos-blocks-the-first-launch">First launch on macOS</a></p>
 </div>
 <h2 id="modules-for-the-desktop-application">Modules for the desktop application</h2>
-<p>Once the desktop application is available, install the modules you need from <strong>Modules &amp; Maintenance</strong> in Project Leap. The application will download each module and its required components. You will not need to unpack module archives manually.</p>
+<p>Install the modules you need from <strong>Modules &amp; Maintenance</strong> in Project Leap. The application will download each module and its required components. You do not need to unpack module archives manually.</p>
 <table>
 <thead>
 <tr>
@@ -61,19 +63,20 @@
 <tbody>
 <tr>
 <td>Astrocyte fluorescence intensity measurement</td>
-<td>1.1.0</td>
-<td>Module package included in this release</td>
+<td>1.1.1</td>
+<td>Install in Project Leap</td>
 </tr>
 <tr>
 <td>Cell counting</td>
 <td>1.0.0</td>
-<td>Module package included in this release</td>
+<td>Install in Project Leap</td>
 </tr>
 </tbody>
 </table>
-<p><a href="../guide/">Read the installation guide</a> for the application requirements and planned installation steps.</p>
+<p>Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime. Version 1.1.0 introduced the desktop workflow, automatic channel preparation, and final region archive; the scientific rules remain at version 1.0.1.</p>
+<p><a href="../guide/">Read the installation guide</a> for the application requirements and installation steps.</p>
 <h2 id="legacy">Historical script release</h2>
-<p><strong>Project Leap 2D v1.0.1</strong> remains available as the earlier standalone fluorescence-analysis script package. It uses its own installation, analysis, and repair scripts; it is separate from the Project Leap desktop application and its 1.1.0 fluorescence module.</p>
+<p><strong>Project Leap 2D v1.0.1</strong> remains available as the earlier standalone fluorescence-analysis script package. It uses its own installation, analysis, and repair scripts; it is separate from the Project Leap desktop application and its 1.1.1 fluorescence module.</p>
 <div class="actions">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/download/v1.0.1/Project-Leap-2D-V1.0.1.zip">Download the v1.0.1 script package <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/tag/v1.0.1">Historical release details <span aria-hidden="true">↗</span></a>
