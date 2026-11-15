@@ -13,6 +13,7 @@ import json
 import os
 from pathlib import Path
 import plistlib
+import shlex
 import shutil
 import subprocess
 import sys
@@ -36,7 +37,7 @@ class AppcastPublisherTests(unittest.TestCase):
         cls.official_signer = official_bin / "sign_update"
         if not cls.official_signer.is_file():
             raise unittest.SkipTest("Set SPARKLE_BIN to the official Sparkle 2.10.0 bin directory")
-        cls.temporary = tempfile.TemporaryDirectory(prefix="leap-appcast-fixtures-", dir="/private/tmp")
+        cls.temporary = tempfile.TemporaryDirectory(prefix="leap-appcast-fixtures with spaces-", dir="/private/tmp")
         cls.addClassCleanup(cls.temporary.cleanup)
         cls.fixture_root = Path(cls.temporary.name)
         key_generator = cls.fixture_root / "generate-key"
@@ -50,9 +51,9 @@ class AppcastPublisherTests(unittest.TestCase):
         encoded_key.chmod(0o600)
         cls.fixture_bin = cls.fixture_root / "bin"
         cls.fixture_bin.mkdir()
-        wrapper = cls.fixture_bin / "sign_update"
-        wrapper.write_text("#!" + sys.executable + "\n" +
-                           "import pathlib, subprocess, sys\n" +
+        adapter = cls.fixture_bin / "sign_adapter.py"
+        adapter.write_text("import pathlib, subprocess, sys\n" +
+                           "assert sys.executable == " + repr(sys.executable) + "\n" +
                            "args = sys.argv[1:]\n" +
                            "assert args[:2] == ['--account', 'temporary-appcast-test']\n" +
                            "args = ['--ed-key-file', '-'] + args[2:]\n" +
@@ -61,6 +62,9 @@ class AppcastPublisherTests(unittest.TestCase):
                            "sys.stdout.buffer.write(result.stdout)\n" +
                            "sys.stderr.buffer.write(result.stderr)\n" +
                            "sys.exit(result.returncode)\n", encoding="utf-8")
+        wrapper = cls.fixture_bin / "sign_update"
+        wrapper.write_text("#!/bin/sh\nexec " + shlex.quote(sys.executable) + " " +
+                           shlex.quote(str(adapter)) + ' "$@"\n', encoding="utf-8")
         wrapper.chmod(0o700)
         cls.settings = json.loads((ROOT / "tools/build/release-settings.json").read_text(encoding="utf-8"))
         cls.settings["application"].update({"name": "Leap Publisher Fixture", "public_key": cls.public_key,
