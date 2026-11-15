@@ -21,7 +21,7 @@ CATALOG_FIELDS = frozenset(("id", "name", "version", "entrypoint", "import_modul
 # Shared display order: fluorescence first, counting second, future modules
 # appended in catalog order. Entries require an existing package and UI entry.
 CATALOG = (
-    {"id": DEFAULT_MODULE_ID, "name": "星形胶质细胞荧光强度分析", "version": "1.1.0",
+    {"id": DEFAULT_MODULE_ID, "name": "星形胶质细胞荧光强度分析", "version": "1.1.1",
      "entrypoint": "project_leap_2d.desktop_adapter",
      "github_url": "https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis",
      "needs_fiji": True,

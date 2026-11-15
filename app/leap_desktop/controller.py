@@ -879,11 +879,14 @@ class Controller(QObject):
         env = QProcessEnvironment.systemEnvironment()
         for name in ("PYTHONHOME", "PYTHONPATH", "DYLD_LIBRARY_PATH", "DYLD_FRAMEWORK_PATH",
                      "QT_PLUGIN_PATH", "QT_QPA_PLATFORM_PLUGIN_PATH", "QML2_IMPORT_PATH", "QML_IMPORT_PATH",
-                     "PROJECT_LEAP_FIJI_ROOT", "PROJECT_LEAP_MODEL_ROOT", "CELLPOSE_LOCAL_MODELS_PATH"):
+                     "PROJECT_LEAP_FIJI_ROOT", "PROJECT_LEAP_MODEL_ROOT", "PROJECT_LEAP_SCIENCE_ROOT",
+                     "CELLPOSE_LOCAL_MODELS_PATH"):
             env.remove(name)
         env.insert("PYTHONDONTWRITEBYTECODE", "1")
         env.insert("PYTHONNOUSERSITE", "1")
         env.insert("PYTHONPATH", os.pathsep.join((str(descriptor["engine"]), str(self.paths.app), str(descriptor["site_packages"]))))
+        if descriptor.get("schema_version") == 4:
+            env.insert("PROJECT_LEAP_SCIENCE_ROOT", str(descriptor["science_root"]))
         if descriptor.get("models"):
             env.insert("CELLPOSE_LOCAL_MODELS_PATH", str(descriptor["models"]))
         if descriptor.get("model_root"):

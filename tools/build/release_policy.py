@@ -68,7 +68,7 @@ QML_MODULES = frozenset({
 MODULE_HOST_CONTRACT = {"host_api": 1, "minimum_host_build": 1, "platform": "macos-arm64"}
 
 SCIENCE_RUNTIME_VERSION = "1.0.0"
-MODULE_VERSIONS = {"project-leap-2d": "1.1.0", "cell-counting": "1.0.0"}
+MODULE_VERSIONS = {"project-leap-2d": "1.1.1", "cell-counting": "1.0.0"}
 SCIENTIFIC_VERSIONS = {"project-leap-2d": "1.0.1", "cell-counting": "1.0.0"}
 SCIENCE_RUNTIME_DEPENDENCY = {"id": "science-runtime", "version": SCIENCE_RUNTIME_VERSION}
 

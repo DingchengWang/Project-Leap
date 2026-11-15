@@ -120,6 +120,39 @@ class ControllerContractTests(unittest.TestCase):
         self.assertEqual(environment.value("PROJECT_LEAP_FIJI_ROOT"), descriptor["fiji_root"])
         self.assertEqual(environment.value("PYTHONPATH").split(os.pathsep)[0], descriptor["engine"])
 
+    def test_worker_environment_binds_selected_shared_science_generation(self):
+        science_root = self.root / "science-runtime/generations/1.0.0-selected"
+        descriptor = dict(self.controller._runtime(), schema_version=4,
+                          science_runtime={"id": "science-runtime", "version": "1.0.0"},
+                          science_root=str(science_root), python=str(science_root / "python/bin/python"),
+                          site_packages=str(science_root / "site-packages"))
+        with patch.dict(os.environ, {"PROJECT_LEAP_SCIENCE_ROOT": str(self.root / "wrong-runtime"),
+                                     "PYTHONPATH": "inherited-path", "PYTHONHOME": "inherited-home"}):
+            for module_id in (modules.DEFAULT_MODULE_ID, modules.COUNTING_MODULE_ID):
+                with self.subTest(module_id=module_id):
+                    environment = self.controller._environment(descriptor, module_id)
+                    self.assertEqual(environment.value("PROJECT_LEAP_SCIENCE_ROOT"), str(science_root))
+                    self.assertEqual(environment.value("PROJECT_LEAP_COMPONENT_ROOT"), descriptor["root"])
+                    self.assertEqual(environment.value("PROJECT_LEAP_MODULE_ID"), module_id)
+                    self.assertEqual(environment.value("PYTHONPATH").split(os.pathsep),
+                                     [descriptor["engine"], str(self.paths.app), descriptor["site_packages"]])
+                    self.assertFalse(environment.contains("PYTHONHOME"))
+
+    def test_worker_environment_requires_science_root_for_schema_four(self):
+        descriptor = dict(self.controller._runtime(), schema_version=4,
+                          science_runtime={"id": "science-runtime", "version": "1.0.0"})
+        with patch.dict(os.environ, {"PROJECT_LEAP_SCIENCE_ROOT": str(self.root / "wrong-runtime")}):
+            with self.assertRaisesRegex(KeyError, "science_root"):
+                self.controller._environment(descriptor)
+
+    def test_worker_environment_drops_inherited_science_root_for_legacy_schema(self):
+        for schema in (2, 3):
+            descriptor = dict(self.controller._runtime(), schema_version=schema)
+            with self.subTest(schema=schema), patch.dict(os.environ, {"PROJECT_LEAP_SCIENCE_ROOT": "inherited-root"}):
+                environment = self.controller._environment(descriptor)
+                self.assertFalse(environment.contains("PROJECT_LEAP_SCIENCE_ROOT"))
+                self.assertEqual(environment.value("PROJECT_LEAP_COMPONENT_ROOT"), descriptor["root"])
+
     def test_maintenance_never_starts_while_analysis_or_update_busy(self):
         with patch("leap_desktop.controller.MaintenanceTask") as task:
             self.controller._busy = True
@@ -569,14 +602,23 @@ os._exit(0)
         self.assertEqual(self.controller.availableModules[0]["version"], modules.get_module()["version"])
 
     def test_module_information_opens_the_selected_github_url(self):
-        with patch("leap_desktop.controller.QDesktopServices.openUrl") as open_url:
-            self.controller.openModuleGitHub(modules.DEFAULT_MODULE_ID)
-        open_url.assert_called_once()
-        self.assertEqual(open_url.call_args.args[0].toString(), modules.get_module()["github_url"])
+        for module_id in (modules.DEFAULT_MODULE_ID, modules.COUNTING_MODULE_ID):
+            with self.subTest(module_id=module_id), patch("leap_desktop.controller.QDesktopServices.openUrl") as open_url:
+                expected_url = modules.get_module(module_id)["github_url"]
+                self.assertTrue(expected_url)
+                self.controller.openModuleGitHub(module_id)
+                open_url.assert_called_once()
+                self.assertEqual(open_url.call_args.args[0].toString(), expected_url)
 
-    def test_module_information_without_url_or_known_module_does_nothing(self):
-        with patch("leap_desktop.controller.QDesktopServices.openUrl") as open_url:
+    def test_module_information_without_url_does_not_open_link(self):
+        definition = dict(modules.get_module(modules.COUNTING_MODULE_ID), github_url="")
+        with patch.object(self.controller, "_module_definition", return_value=definition), \
+                patch("leap_desktop.controller.QDesktopServices.openUrl") as open_url:
             self.controller.openModuleGitHub(modules.COUNTING_MODULE_ID)
+        open_url.assert_not_called()
+
+    def test_module_information_for_unknown_module_does_not_open_link(self):
+        with patch("leap_desktop.controller.QDesktopServices.openUrl") as open_url:
             self.controller.openModuleGitHub("unknown-module")
         open_url.assert_not_called()
 

@@ -3,7 +3,7 @@
   "modules": {
     "fluorescence": {
       "repository": "DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis",
-      "commit": "22b61b483294f717800efe82fba42d3b80667120",
+      "commit": "4c31ff04b0f58ea2adcd1b006452d30cc9865b59",
       "export_files": [
         "artifacts/prototype-c/baseline/completion-from-b.json",
         "artifacts/prototype-c/baseline/engineering-adapter-changes.json",

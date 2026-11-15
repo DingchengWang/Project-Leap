@@ -1,6 +1,6 @@
 # Project Leap 本机构建
 
-应用、交付文件夹和磁盘卷名使用 **Project Leap**；公开主程序 DMG 文件名为 **Project-Leap-1.0.0-macOS-arm64.dmg**，可选完整离线 DMG 为 **Project Leap V1.0.0.dmg**。正式版本为 `1.0.0`，首发构建号为 `1`；公开构建号按 `1 → 2 → 3 → …` 全局递增，软件版本变化时继续递增，产品名称不包含构建号。Apple Silicon / macOS `27.0` 起。两个科学模块分别为星形胶质细胞荧光强度分析分发版本 `1.1.0` 和细胞计数分发版本 `1.0.0`，科学版本分别为 `1.0.1` 和 `1.0.0`。保留 bundle ID `org.projectleap.prototype.d`、数据目录 `Project Leap Prototype D` 和设置目录 `Project Leap Prototype D Settings`，继续使用既有历史，不迁移或合并其他安装的数据。
+应用、交付文件夹和磁盘卷名使用 **Project Leap**；公开主程序 DMG 文件名为 **Project-Leap-1.0.0-macOS-arm64.dmg**，可选完整离线 DMG 为 **Project Leap V1.0.0.dmg**。正式版本为 `1.0.0`，首发构建号为 `1`；公开构建号按 `1 → 2 → 3 → …` 全局递增，软件版本变化时继续递增，产品名称不包含构建号。Apple Silicon / macOS `27.0` 起。两个科学模块分别为星形胶质细胞荧光强度分析分发版本 `1.1.1` 和细胞计数分发版本 `1.0.0`，科学版本分别为 `1.0.1` 和 `1.0.0`。保留 bundle ID `org.projectleap.prototype.d`、数据目录 `Project Leap Prototype D` 和设置目录 `Project Leap Prototype D Settings`，继续使用既有历史，不迁移或合并其他安装的数据。
 
 ## 离线交付
 
@@ -11,7 +11,7 @@ Project Leap/
   Project Leap Packages/
     catalog.json
     package-build.json
-    project-leap-2d/1.1.0/package.tar.gz
+    project-leap-2d/1.1.1/package.tar.gz
     cell-counting/1.0.0/package.tar.gz
     science-runtime/1.0.0/package.tar.gz
     cellpose-model/4.2.1.1/package.tar.gz
@@ -86,3 +86,5 @@ DMG 使用 `hdiutil verify`，随后只读挂载；对挂载应用再运行相�
 `tools/build/release-settings.json` 保存发布工具使用的正式地址、公钥、钥匙串账户名和发行文件映射；`app/leap_desktop/release-config.json` 保存客户端使用的组件目录地址与公钥。构建器核对这两份配置，并将主程序更新源和公钥写入应用。正式配置已进入源码，线上更新服务仍未发布，公开下载尚未启用。真实 DMG 和五份正式组件包完成验证后，按[发布指南](../../docs/releasing.md)生成 `components.json`、`appcast.xml` 和 `appcast.xml.sig`；测试归档不能用作生产发布输入。
 
 完整离线 DMG 包含上述五份真实组件归档；公开主程序发布使用 `--main-only-dmg` 单独生成 `Project-Leap-1.0.0-macOS-arm64.dmg`，其中只有主应用和 Applications 链接。只有显式指定 `--dmg` 时才生成含五份组件的完整离线 DMG。
+
+荧光模块 1.1.1 是共享科学运行环境的兼容性修复候选；1.1.0 的模块化流程和科学规则保持。主程序仍为首次公开发行 1.0.0 / 构建号 1。既有 1.1.0 发布包保留原内容，候选通过验收并获确认后再发布。
