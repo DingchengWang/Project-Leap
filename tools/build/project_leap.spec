@@ -1,6 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 import os
 import sys
+import json
 from pathlib import Path
 
 root = Path(os.environ["LEAP_BUILD_ROOT"])
@@ -8,6 +9,13 @@ name = os.environ["LEAP_BUILD_NAME"]
 identity = os.environ.get("LEAP_SIGN_IDENTITY", "-")
 sys.path.insert(0, str(root / "tools"))
 from build.release_policy import app_payload
+from release_support import load_settings, component_configuration, sparkle_configuration
+settings = load_settings(root / "tools/build/release-settings.json")
+application = settings["application"]
+configuration = json.loads((root / "app/leap_desktop/release-config.json").read_text(encoding="utf-8"))
+if (not isinstance(configuration, dict) or type(configuration.get("schema_version")) is not int
+        or configuration != component_configuration(settings)):
+    raise ValueError("The app component configuration differs from the public release settings")
 sources = [(str(path), str(Path("app/leap_desktop") / path.relative_to(root / "app/leap_desktop").parent))
            for path in app_payload(root)]
 notices = [(str(root / "LICENSE"), "ThirdPartyNotices/ProjectLeap"),
@@ -28,9 +36,9 @@ exe = EXE(pyz, analysis.scripts, [], exclude_binaries=True, name=name,
           console=False, argv_emulation=False, target_arch="arm64", codesign_identity=identity)
 collection = COLLECT(exe, analysis.binaries, analysis.datas, strip=False, upx=False, name=name)
 app = BUNDLE(collection, name=name + ".app", icon=str(root / "tools/build/ProjectLeap.icns"),
-             bundle_identifier="org.projectleap.prototype.d", version=os.environ["LEAP_BUILD_VERSION"],
+             bundle_identifier=application["bundle_identifier"], version=os.environ["LEAP_BUILD_VERSION"],
              info_plist={"CFBundleDisplayName":os.environ["LEAP_BUILD_DISPLAY_NAME"], "CFBundleShortVersionString":os.environ["LEAP_BUILD_VERSION"],
                          "CFBundleVersion":os.environ["LEAP_BUILD_NUMBER"],
-                         "NSHighResolutionCapable":True, "LSMinimumSystemVersion":"27.0",
-                         "SUEnableAutomaticChecks":False, "SUAutomaticallyUpdate":False, "SUVerifyUpdateBeforeExtraction":True,
+                         "NSHighResolutionCapable":True, "LSMinimumSystemVersion":application["minimum_macos"],
+                         **sparkle_configuration(settings),
                          "NSHumanReadableCopyright":"Copyright 2026 Dingcheng Wang. Apache License 2.0."})

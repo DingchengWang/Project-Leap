@@ -12,6 +12,7 @@ from unittest import mock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "app"))
 from leap_desktop import maintenance as m, modules
+from leap_desktop.release_catalog import ReleaseConfiguration
 
 
 class ModuleTests(unittest.TestCase):
@@ -147,7 +148,7 @@ class ModuleTests(unittest.TestCase):
         first = self.install()
         self.install("fixture-second")
         m.remove_component(self.home)
-        self.assertEqual(m.install_component(self.home)["status"], "unconfigured")
+        self.assertEqual(m.install_component(self.home, configuration=ReleaseConfiguration())["status"], "unconfigured")
         self.assertFalse(m.component_status(self.home)["installed"])
         again = self.install()
         self.assertGreater(again["install_seq"], first["install_seq"])

@@ -24,13 +24,13 @@ sys.path[:0] = [str(ROOT / "app"), str(ROOT / "tools")]
 from leap_desktop import maintenance as m
 from leap_desktop.release_catalog import ReleaseConfiguration, fetch_catalog, CatalogError, validate_url
 from leap_desktop.update_manager import check_component_updates, stage_component_updates, apply_staged_updates
-from sign_component_catalog import signed_envelope
+from testing_signatures import signed_envelope
 
 
 class SignedReleaseTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.native_temp = tempfile.TemporaryDirectory(prefix="leap-signature-tests-")
+        cls.native_temp = tempfile.TemporaryDirectory(prefix="leap-signature-tests-", dir="/tmp")
         cls.native = Path(cls.native_temp.name)
         cls.signer = cls.native / "signer"
         cls.library = cls.native / "verify.dylib"
@@ -302,6 +302,48 @@ class SignedReleaseTests(unittest.TestCase):
             self.assertTrue(Path(updated["runtime_descriptor"]["science_root"]).exists())
             self.assertEqual(m.remove_component(self.home, m.COUNTING_MODULE_ID)["status"], "removed")
             self.assertFalse((self.home / "components/science-runtime").exists())
+
+    def test_damaged_old_module_repairs_pinned_runtime_and_fiji_when_latest_has_changed(self):
+        with self.server() as (configuration, requests):
+            installed = self.install(configuration)
+            self.install(configuration, m.COUNTING_MODULE_ID)
+            old_descriptor = installed["runtime_descriptor"]
+            old_files = {
+                "engine": Path(old_descriptor["root"]) / "engine/worker.py",
+                "python": Path(old_descriptor["python"]),
+                "fiji_launcher": Path(old_descriptor["fiji_launcher"]),
+            }
+            expected = {name: path.read_bytes() for name, path in old_files.items()}
+            self.seed(m.SCIENCE_ID, "2.0.0", {"python": "python/bin/python", "site_packages": "site-packages"},
+                      {"python/bin/python": b"#!/bin/sh\nexit 0\n", "site-packages/fixture.py": b"version = 2\n"})
+            self.seed(m.FIJI_ID, "20260719.0417", {"fiji_launcher": "Fiji/launcher"},
+                      {"Fiji/launcher": b"#!/bin/sh\n# new Fiji\nexit 0\n"})
+            self.module_seed(m.COMPONENT_ID, "1.1.0", "2.0.0")
+            self.packages[-1]["dependencies"][m.FIJI_ID] = "20260719.0417"
+            self.module_seed(m.COUNTING_MODULE_ID, "1.1.0", "2.0.0")
+            self.publish()
+            updated_counting = m.update_component(self.home, module_id=m.COUNTING_MODULE_ID, configuration=configuration)
+            self.assertEqual(updated_counting["status"], "ready", updated_counting)
+            new_runtime = updated_counting["runtime_descriptor"]["science_root"]
+            for path in old_files.values():
+                path.write_bytes(b"damaged old installed bytes")
+            before = requests.copy()
+            repaired = m.repair_component(self.home, configuration=configuration)
+            self.assertEqual(repaired["status"], "ready", repaired)
+            self.assertEqual(repaired["component_version"], "1.0.0")
+            descriptor = repaired["runtime_descriptor"]
+            self.assertEqual((Path(descriptor["root"]) / "engine/worker.py").read_bytes(), expected["engine"])
+            self.assertEqual(Path(descriptor["python"]).read_bytes(), expected["python"])
+            self.assertEqual(Path(descriptor["fiji_launcher"]).read_bytes(), expected["fiji_launcher"])
+            self.assertEqual(m.science_status(self.home, version="1.0.0")["status"], "ready")
+            self.assertEqual(m.fiji_status(self.home)["component_version"], "20260718.0417")
+            self.assertEqual(m.component_status(self.home, module_id=m.COUNTING_MODULE_ID)["runtime_descriptor"]["science_root"], new_runtime)
+            self.assertEqual(dict(requests - before), {
+                "/signed.json": 1,
+                "/project-leap-2d-1.0.0.tar.gz": 1,
+                "/science-runtime-1.0.0.tar.gz": 1,
+                "/fiji-20260718.0417.tar.gz": 1,
+            })
 
     def test_one_staged_plan_can_keep_distinct_runtime_versions(self):
         with self.server() as (configuration, requests):

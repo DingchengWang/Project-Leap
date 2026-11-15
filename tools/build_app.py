@@ -15,11 +15,11 @@ from prepare_module_packages import DEFAULT_PACKAGE_ROOT, PACKAGE_DIRECTORY, ass
 from build_counting_stats import SOURCE_PATH as COUNTING_SOURCE_PATH
 from build.release_policy import app_payload, excluded_seed_entry
 from verify_app_bundle import BUNDLE_IDENTIFIER, EXPECTED_COMPONENTS, native_exports, scientific_source_contract, catalog_contract
+from release_support import load_settings, component_configuration, sparkle_configuration
 
 ROOT = Path(__file__).resolve().parents[1]
 DELIVERY_NAME = "Project Leap"
 DMG_FILENAME = "Project Leap V1.0.0.dmg"
-MAIN_ONLY_DMG_FILENAME = "Project-Leap-1.0.0-macOS-arm64.dmg"
 PROTOTYPE_ROOT = ROOT / "artifacts/prototype-d"
 REFINEMENT_BASELINE_ROOT = ROOT / "artifacts/project-leap-final-refinement/baseline"
 RELEASE_ROOT = ROOT / "artifacts/release-1.0.0"
@@ -54,7 +54,7 @@ def native_inventory():
 def build_inventory():
     """Track all build code and license input bytes alongside app sources."""
     files = [ROOT / "tools" / name for name in
-             ("build_app.py", "prepare_module_packages.py", "verify_app_bundle.py", "build_counting_stats.py")]
+             ("build_app.py", "prepare_module_packages.py", "verify_app_bundle.py", "build_counting_stats.py", "release_support.py")]
     files += [SCIENCE_BASELINE_ROOT / name for name in
               ("source-sha256.json", "engineering-adapter-changes.json", "completion-from-b.json")]
     files.append(PROTOTYPE_ROOT / "baseline/source-sha256.json")
@@ -68,6 +68,23 @@ def build_inventory():
               if path.is_file() and "__pycache__" not in path.parts
               and path.suffix not in {".pyc", ".icns"} and path.name != ".DS_Store"]
     return {path.relative_to(ROOT).as_posix(): digest(path) for path in sorted(files)}
+
+
+def validate_release_configuration(root=ROOT):
+    """Reject missing or stale public settings before any build side effect."""
+    path = Path(root) / "tools/build/release-settings.json"
+    settings = load_settings(path)
+    configuration = json.loads((Path(root) / "app/leap_desktop/release-config.json").read_text(encoding="utf-8"))
+    if (not isinstance(configuration, dict) or type(configuration.get("schema_version")) is not int
+            or configuration != component_configuration(settings)):
+        raise ValueError("The app component configuration differs from the public release settings")
+    return settings
+
+
+def release_configuration_record(root, settings):
+    return {"path": "tools/build/release-settings.json",
+            "sha256": digest(Path(root) / "tools/build/release-settings.json"),
+            "components": component_configuration(settings), "sparkle": sparkle_configuration(settings)}
 
 
 def scientific_source_evidence(snapshot=None):
@@ -188,10 +205,13 @@ This disk image includes the Project Leap app and all analysis components.
 
 
 def main():
+    settings = validate_release_configuration()
+    application = settings["application"]
+    main_only_dmg_filename = application["archive_filename"]
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--name", default=DELIVERY_NAME, choices=[DELIVERY_NAME])
-    parser.add_argument("--version", default="1.0.0", choices=["1.0.0"])
-    parser.add_argument("--build-number", default="1")
+    parser.add_argument("--version", default=application["version"], choices=[application["version"]])
+    parser.add_argument("--build-number", default=str(application["first_public_build"]))
     parser.add_argument("--identity", default="-", help="codesign identity; '-' means local ad hoc signing")
     parser.add_argument("--output", type=Path, default=RELEASE_OUTPUT_ROOT)
     parser.add_argument("--packages", type=Path, default=DEFAULT_PACKAGE_ROOT)
@@ -214,11 +234,13 @@ def main():
     ui_python = ROOT / "runtime/ui-env/bin/python"
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
-    for filename in ["build-report.json"] + ([DELIVERY_NAME + ".zip"] if args.zip else []) + ([DMG_FILENAME] if args.dmg else []) + ([MAIN_ONLY_DMG_FILENAME] if args.main_only_dmg else []):
+    for filename in ["build-report.json"] + ([DELIVERY_NAME + ".zip"] if args.zip else []) + ([DMG_FILENAME] if args.dmg else []) + ([main_only_dmg_filename] if args.main_only_dmg else []):
         if (output / filename).exists():
             raise FileExistsError("Choose a new output directory to preserve the prior build: " + filename)
     staging = Path(tempfile.mkdtemp(prefix="ProjectLeap-build-", dir="/private/tmp"))
     snapshot, complete_sources, native_manifest, build_manifest = source_snapshot(staging)
+    if validate_release_configuration(snapshot) != settings:
+        raise RuntimeError("Public release settings changed while preparing the build")
     packages = args.packages.resolve()
     package_info = package_record(packages, snapshot / "engine", args.identity)
     run([ui_python, snapshot / "tools/build/make_icon.py", "--svg", snapshot / "app/leap_desktop/assets/icon.svg",
@@ -265,6 +287,7 @@ def main():
               "source_changed_during_build": source_inventory() != complete_sources,
               "native_build_inputs": native_manifest, "native_inputs_changed_during_build": native_inventory() != native_manifest,
               "build_inputs": build_manifest, "build_inputs_changed_during_build": build_inventory() != build_manifest,
+              "release_configuration": release_configuration_record(snapshot, settings),
               "source_snapshot": str(snapshot), "scientific_baseline_manifest": scientific_baseline(complete_sources, snapshot),
               **scientific_source_evidence(snapshot),
               "native_exports": exports,
@@ -300,7 +323,7 @@ def main():
         app_stage.mkdir()
         run(["/bin/cp", "-cR", app, app_stage / app.name])
         (app_stage / "Applications").symlink_to("/Applications")
-        app_dmg = output / MAIN_ONLY_DMG_FILENAME
+        app_dmg = output / main_only_dmg_filename
         run(["/usr/bin/hdiutil", "create", "-volname", DELIVERY_NAME, "-srcfolder", app_stage,
              "-format", "UDZO", "-imagekey", "zlib-level=1", app_dmg])
         report["main_only_dmg"] = {"path": str(app_dmg), "sha256": digest(app_dmg), "bytes": app_dmg.stat().st_size}

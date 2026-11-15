@@ -29,7 +29,7 @@ CATALOG = (
      "import_module": "leap_desktop.import_worker"},
     {"id": COUNTING_MODULE_ID, "name": "细胞计数", "version": "1.0.0",
      "entrypoint": "leap_cell_counting", "import_module": "leap_cell_counting",
-     "github_url": "", "needs_fiji": False, "input_page": "counting"},
+     "github_url": "https://github.com/DingchengWang/Project-Leap-Cell-Counting", "needs_fiji": False, "input_page": "counting"},
 )
 
 

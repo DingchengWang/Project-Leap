@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Exercise real release packages over signed loopback HTTP in a disposable home.
 
-The publisher key and local HTTP allowance exist only in this external tool.
+The disposable test key and loopback transport exist only in this test tool.
 No installed application, default app data, or release archive is modified.
 """
 from __future__ import annotations
@@ -27,7 +27,7 @@ sys.path[:0] = [str(ROOT / "app"), str(ROOT / "tools")]
 from leap_desktop import maintenance as maintenance
 from leap_desktop.release_catalog import ReleaseConfiguration
 from leap_desktop.update_manager import check_component_updates, stage_component_updates, apply_staged_updates
-from sign_component_catalog import signed_envelope
+from testing_signatures import signed_envelope
 
 
 RUNTIME_PROBE = r'''

@@ -86,7 +86,7 @@ Click **Clear cache** under **Storage & data** and confirm. This removes rebuild
 
 Open **Settings → Software updates → Check for Updates**. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.
 
-If the application reports that a release update feed or signing public key is not configured, it has not checked your installation against a live release service.
+The online release service has not yet been published, so online downloads and updates are not available. An unsuccessful check at this stage does not establish that your installation is up to date.
 
 ### Check and repair a module
 

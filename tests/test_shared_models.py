@@ -19,7 +19,7 @@ from unittest import mock
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "app"))
 from leap_desktop import maintenance as m, modules
 from leap_desktop.release_catalog import ReleaseConfiguration
-from sign_component_catalog import signed_envelope
+from testing_signatures import signed_envelope
 
 
 class SharedModelTests(unittest.TestCase):

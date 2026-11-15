@@ -22,6 +22,7 @@ from build.release_policy import (APP_FILES, QML_MODULES, MODULE_HOST_CONTRACT, 
 from build_counting_stats import (PACKAGE_PATH as COUNTING_LIBRARY_PATH, SOURCE_PATH as COUNTING_SOURCE_PATH,
                                   LIBRARY_NAME as COUNTING_LIBRARY_NAME, ABI_VERSION as COUNTING_ABI_VERSION,
                                   library_contract as counting_library_contract)
+from release_support import load_settings, component_configuration, sparkle_configuration
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED_COMPONENTS = {"project-leap-2d", "cell-counting", "science-runtime", "cellpose-model", "fiji"}
@@ -53,6 +54,23 @@ EXPECTED_NATIVE_EXPORTS = {
     "leap_glass_age_create", "leap_glass_age_view", "leap_glass_age_update",
     "leap_glass_age_destroy", "leap_application_icon_update", "leap_verify_ed25519",
 }
+
+
+def release_configuration_contract(configuration, plist, settings=None):
+    """Compare embedded trust roots and explicit-update policy with release settings."""
+    settings = load_settings() if settings is None else settings
+    expected_components = component_configuration(settings)
+    expected_sparkle = sparkle_configuration(settings)
+    component_mismatches = sorted(key for key in set(configuration) | set(expected_components)
+                                  if key not in configuration or key not in expected_components
+                                  or type(configuration[key]) is not type(expected_components[key])
+                                  or configuration[key] != expected_components[key]) if isinstance(configuration, dict) else ["<object>"]
+    sparkle_mismatches = sorted(key for key, value in expected_sparkle.items()
+                                if type(plist.get(key)) is not type(value) or plist.get(key) != value)
+    return {"production_configuration_valid": not component_mismatches,
+            "sparkle_configuration_valid": not sparkle_mismatches,
+            "component_configuration_mismatches": component_mismatches,
+            "sparkle_configuration_mismatches": sparkle_mismatches}
 
 
 def module_sources_for(component_id, sources):
@@ -383,6 +401,10 @@ def glass_runtime_contract(library):
 
 
 def verify(app, build_report, output, packages=None, expected_build=None):
+    settings = load_settings()
+    application = settings["application"]
+    settings_path = ROOT / "tools/build/release-settings.json"
+    settings_sha256 = digest(settings_path)
     app = Path(app).resolve()
     report = json.loads(Path(build_report).read_text())
     resources = app / "Contents/Resources"
@@ -413,15 +435,16 @@ def verify(app, build_report, output, packages=None, expected_build=None):
     expected_app_sources = {"app/leap_desktop/" + name for name in APP_FILES}
     allowlist_match = set(report["source_manifest"]) == expected_app_sources
     release_configuration = json.loads((resources / "app/leap_desktop/release-config.json").read_text())
-    production_configuration_valid = release_configuration == {"schema_version": 1, "catalog_url": "", "public_key": ""}
     main_source = (resources / "app/leap_desktop/__main__.py").read_text()
     production_entry_point = not any(flag in main_source for flag in
                                      ("--smoke-test", "--test-request", "--test-auto-measure", "--quit-after-ms", "--screenshot", "--native-library"))
     plist = plistlib.loads((app / "Contents/Info.plist").read_bytes())
-    sparkle_configuration_valid = ("SUFeedURL" not in plist and "SUPublicEDKey" not in plist
-                                   and plist.get("SUEnableAutomaticChecks") is False
-                                   and plist.get("SUAutomaticallyUpdate") is False
-                                   and plist.get("SUVerifyUpdateBeforeExtraction") is True)
+    configuration_contract = release_configuration_contract(release_configuration, plist, settings)
+    release_settings_provenance_valid = (
+        report.get("release_configuration") == {
+            "path": "tools/build/release-settings.json", "sha256": settings_sha256,
+            "components": component_configuration(settings), "sparkle": sparkle_configuration(settings)}
+        and report.get("build_inputs", {}).get("tools/build/release-settings.json") == settings_sha256)
     executable = app / "Contents/MacOS" / plist["CFBundleExecutable"]
     signature = subprocess.run(["/usr/bin/codesign", "--verify", "--deep", "--strict", str(app)], text=True, capture_output=True)
     architectures = {"app": architecture(executable),
@@ -490,8 +513,8 @@ def verify(app, build_report, output, packages=None, expected_build=None):
               "import_worker_present": (resources / "app/leap_desktop/import_worker.py").is_file(),
               "app_allowlist_matches": allowlist_match, "qml_modules_match": qml_modules_match,
               "qml_modules": sorted(actual_qml_modules), "forbidden_ui_components": forbidden_ui_components,
-              "production_configuration_valid": production_configuration_valid, "production_entry_point": production_entry_point,
-              "sparkle_configuration_valid": sparkle_configuration_valid,
+              **configuration_contract, "production_entry_point": production_entry_point,
+              "release_settings_provenance_valid": release_settings_provenance_valid,
               "architectures": architectures, "glass_runtime": glass_runtime,
               "codesign_exit_code": signature.returncode,
               "codesign_stderr": signature.stderr, "notarized": report["notarized"],
@@ -501,17 +524,18 @@ def verify(app, build_report, output, packages=None, expected_build=None):
               "packages": package_results}
     result["passed"] = bool(not mismatches and not unexpected_sources and not notice_mismatches and not external_links and not forbidden
                             and allowlist_match and qml_modules_match and not forbidden_ui_components
-                            and production_configuration_valid and production_entry_point and sparkle_configuration_valid
-                            and result["app_version"] == report["version"] == "1.0.0"
-                            and result["app_build"] == report["build_number"] and result["minimum_macos"] == "27.0"
+                            and configuration_contract["production_configuration_valid"] and production_entry_point
+                            and configuration_contract["sparkle_configuration_valid"] and release_settings_provenance_valid
+                            and result["app_version"] == report["version"] == application["version"]
+                            and result["app_build"] == report["build_number"] and result["minimum_macos"] == application["minimum_macos"]
                             and isinstance(result["app_build"], str) and result["app_build"].isascii()
-                            and result["app_build"].isdecimal() and int(result["app_build"]) >= 1
+                            and result["app_build"].isdecimal() and int(result["app_build"]) >= application["first_public_build"]
                             and (expected_build is None or result["app_build"] == expected_build)
                             and app.name == DELIVERY_NAME + ".app"
                             and result["app_display_name"] == "Project Leap"
                             and report.get("delivery_name") == DELIVERY_NAME
                             and result["delivery_name"] == DELIVERY_NAME
-                            and result["bundle_identifier"] == BUNDLE_IDENTIFIER
+                            and result["bundle_identifier"] == application["bundle_identifier"] == BUNDLE_IDENTIFIER
                             and runtime_validation_passed and baseline_matches and not required_ui_missing and notice_sources_match and component_licenses_present
                             and result["import_worker_present"] and all(value == "arm64" for value in architectures.values())
                             and signature.returncode == 0 and glass_runtime["passed"]

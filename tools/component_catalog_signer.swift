@@ -1,4 +1,4 @@
-// Publisher/development utility only; never included in the application.
+// Test-only disposable-key signer for tests and release_probe; never a production publisher.
 import Foundation
 import CryptoKit
 

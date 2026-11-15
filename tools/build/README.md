@@ -73,7 +73,7 @@ runtime/ui-env/bin/python tools/verify_app_bundle.py --build-report ../release-1
 
 仅需预生成组件包时使用 `tools/build_app.py --packages-only --packages ../release-1.0.0/packages`。构建号必须是大于等于 1 的正整数。首发验证命令显式要求 `--expected-build 1`；后续构建按其实际编号验证。同一输出已有 build-report 或容器时拒绝覆盖，重建使用新的 `--output ../<新目录>`。模块源码变化时，仅重建带自身 `package-build.json` 的组件包目录。可加 `--zip` 生成 ZIP；本机空间有限时不同时保留不必要的重复容器。
 
-签名应用暂存在 `/private/tmp/ProjectLeap-build-*`，避免 FileProvider 为松散应用附加资源而破坏签名。上述命令的真实应用和交付文件夹路径记录于 `../release-1.0.0/build-report.json`；`Project-Leap-1.0.0-macOS-arm64.dmg` 及验证记录保存在同目录。原组件目录保持不变，签名应用暂存保留至安装验收后清理。构建默认 ad hoc 签名，未设置公证或公开更新源。
+签名应用暂存在 `/private/tmp/ProjectLeap-build-*`，避免 FileProvider 为松散应用附加资源而破坏签名。上述命令的真实应用和交付文件夹路径记录于 `../release-1.0.0/build-report.json`；`Project-Leap-1.0.0-macOS-arm64.dmg` 及验证记录保存在同目录。原组件目录保持不变，签名应用暂存保留至安装验收后清理。构建默认 ad hoc 签名，未设置 Apple 公证；正式更新源与公钥由源码中的发布配置写入应用。
 
 独立验证核对严格代码签名、arm64、macOS27、保留的 bundle ID、统一产品名称、源码/许可证字节、原生符号、系统 Swift 实际加载和五份归档。模型归属、流式归档内容、内部链接、模块源码与荧光原始基线均独立核验。源码或原生/构建输入在构建期间有变化时拒绝交付。
 
@@ -83,4 +83,6 @@ DMG 使用 `hdiutil verify`，随后只读挂载；对挂载应用再运行相�
 
 主应用允许列表保持 42 项。运行流水、分类摘要和资源读数使用现有 Python、Qt 及 macOS 系统接口，不新增生产文件或运行依赖；科学引擎源码保持不变。正式发行只因两个模块的宿主兼容元数据变化而重建模块清单和归档；三个共享组件是否复用由目标内容清单和归档字节核验决定。
 
-生产组件目录配置 `app/leap_desktop/release-config.json` 的地址与公钥保持空值；Sparkle 无生产 feed/key 时同样未配置。模拟下载目录、签名密钥和本机地址只用于开发侧验证，不进入交付源码或配置。完整离线 DMG 包含上述五份真实组件归档；公开主程序发布使用 `--main-only-dmg` 单独生成 `Project-Leap-1.0.0-macOS-arm64.dmg`，其中只有主应用和 Applications 链接。只有显式指定 `--dmg` 时才生成含五份组件的完整离线 DMG。
+`tools/build/release-settings.json` 保存发布工具使用的正式地址、公钥、钥匙串账户名和发行文件映射；`app/leap_desktop/release-config.json` 保存客户端使用的组件目录地址与公钥。构建器核对这两份配置，并将主程序更新源和公钥写入应用。正式配置已进入源码，线上更新服务仍未发布，公开下载尚未启用。真实 DMG 和五份正式组件包完成验证后，按[发布指南](../../docs/releasing.md)生成 `components.json`、`appcast.xml` 和 `appcast.xml.sig`；测试归档不能用作生产发布输入。
+
+完整离线 DMG 包含上述五份真实组件归档；公开主程序发布使用 `--main-only-dmg` 单独生成 `Project-Leap-1.0.0-macOS-arm64.dmg`，其中只有主应用和 Applications 链接。只有显式指定 `--dmg` 时才生成含五份组件的完整离线 DMG。
