@@ -3,7 +3,7 @@
 
 ## Project Leap 1.0.0
 
-The desktop application is being prepared for its first public release. The application download and online module installation are not enabled yet.
+The desktop application is being prepared for its first public release, and its DMG download is not enabled yet. This release provides the analysis modules and shared component packages.
 
 <dl class="release-specs">
 <div markdown="1"><dt>Platform</dt><dd>Apple Silicon Mac</dd></div>
@@ -16,12 +16,12 @@ The desktop application is being prepared for its first public release. The appl
 
 ## Modules for the desktop application
 
-After the public release, install the modules you need from **Modules &amp; Maintenance** in Project Leap. The application will download each module and its required components. You will not need to unpack module archives manually.
+Once the desktop application is available, install the modules you need from **Modules &amp; Maintenance** in Project Leap. The application will download each module and its required components. You will not need to unpack module archives manually.
 
 | Module | Version | Availability |
 | --- | --- | --- |
-| Astrocyte fluorescence intensity measurement | 1.1.0 | Release in preparation |
-| Cell counting | 1.0.0 | Release in preparation |
+| Astrocyte fluorescence intensity measurement | 1.1.0 | Module package included in this release |
+| Cell counting | 1.0.0 | Module package included in this release |
 
 [Read the installation guide](../guide/) for the application requirements and planned installation steps.
 

@@ -8,7 +8,7 @@ Project Leap is a local research application for immunohistochemistry (IHC) imag
 
 ## Download and start
 
-The public macOS release is **in preparation**. The application DMG and online module downloads have not yet been published. Availability will be announced on the [project website](https://dingchengwang.github.io/Project-Leap/en/) and [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases); the website is also being prepared.
+This release provides shared component packages; the fluorescence and counting module packages are supplied by their respective repositories. The public macOS application remains **in preparation**, and its DMG download is not enabled yet. See the [project website](https://dingchengwang.github.io/Project-Leap/en/) and [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases) for application availability.
 
 Once available, install **Project Leap.app** from the DMG, then use **Modules & Maintenance** to install the modules you need. The application downloads their dependencies. Follow the [platform user guide](docs/user-guide.en.md) for installation, first launch, result management, and settings.
 

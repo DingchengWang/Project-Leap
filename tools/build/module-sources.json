@@ -3,7 +3,7 @@
   "modules": {
     "fluorescence": {
       "repository": "DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis",
-      "commit": "d2b15207644aa5c78608e9fb0b188439aeb79c08",
+      "commit": "22b61b483294f717800efe82fba42d3b80667120",
       "export_files": [
         "artifacts/prototype-c/baseline/completion-from-b.json",
         "artifacts/prototype-c/baseline/engineering-adapter-changes.json",
@@ -98,7 +98,7 @@
     },
     "counting": {
       "repository": "DingchengWang/Project-Leap-Cell-Counting",
-      "commit": "1ebe19929e7f855cdce16be712fb26f043966f1f",
+      "commit": "57a898e5a3245289e62318e031a5362655a01891",
       "export_files": [
         "docs/prototype-d/CELL_IDENTITY.md",
         "engine/leap_cell_counting/__init__.py",

@@ -4,7 +4,7 @@
 
 This guide covers application installation, module management, saved analyses, and settings. For image preparation, analysis parameters, manual review, and module-specific outputs, use the module guides linked below.
 
-**Release status:** the public Project Leap 1.0.0 DMG and online component downloads are in preparation. The installation steps below apply when that release is available.
+**Release status:** this release provides the module packages, shared components, and component catalog. The public Project Leap 1.0.0 DMG remains in preparation. The installation steps below apply once the application download is available.
 
 ## 1. Install the application
 
@@ -86,7 +86,7 @@ Click **Clear cache** under **Storage & data** and confirm. This removes rebuild
 
 Open **Settings → Software updates → Check for Updates**. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.
 
-The online release service has not yet been published, so online downloads and updates are not available. An unsuccessful check at this stage does not establish that your installation is up to date.
+The component catalog and packages in this release support module installation and maintenance. The public main-application download and application updates remain in preparation.
 
 ### Check and repair a module
 

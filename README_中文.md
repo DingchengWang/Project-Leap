@@ -8,7 +8,7 @@ Project Leap 是面向 Apple Silicon Mac 的本地免疫组织化学（IHC）图
 
 ## 下载与开始使用
 
-公开 macOS 版本**正在准备中**，主程序 DMG 和在线模块下载尚未发布。发布后可通过[项目官网](https://dingchengwang.github.io/Project-Leap/zh/)和 [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases)获取；官网也在准备中。
+本次提供共享组件包；荧光分析和细胞计数模块包分别由对应仓库提供。公开 macOS 主程序仍**正在准备中**，DMG 下载尚未启用。主程序下载状态见[项目官网](https://dingchengwang.github.io/Project-Leap/zh/)和 [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases)。
 
 安装包发布后，从 DMG 安装 **Project Leap.app**，再到软件的**功能与维护**中安装所需模块。软件会下载模块依赖。[平台使用指南](docs/user-guide.zh.md)说明安装、首次启动、结果管理和设置操作。
 
