@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<rss xmlns:leap="urn:projectleap:release-metadata" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+  <channel>
+    <title>Project Leap updates</title>
+    <link>https://dingchengwang.github.io/Project-Leap/updates/appcast.xml</link>
+    <description>Updates for Project Leap on macOS</description>
+    <item>
+      <title>Project Leap 1.0.0</title>
+      <pubDate>Sun, 15 Nov 2026 19:44:39 +0000</pubDate>
+      <sparkle:version>1</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>27.0.0</sparkle:minimumSystemVersion>
+      <leap:bundleIdentifier>org.projectleap.prototype.d</leap:bundleIdentifier>
+      <leap:sha256>25548345a50dc15b4ab1d1d53bcffbd78e27f89f830139bed825f1f27950e3e5</leap:sha256>
+      <enclosure url="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg" length="52720315" type="application/octet-stream" sparkle:edSignature="RwiV3MAd5RupLdmgrEiUIp72D2TBoEBk0Eu0VDohAikiIawB4YeoSzhCwCQSBLSPTo/m+q83jGoeLhsnaGqRAA==" />
+    </item>
+  </channel>
+</rss>
