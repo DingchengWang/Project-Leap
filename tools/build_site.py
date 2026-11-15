@@ -8,6 +8,7 @@ and users of the committed static site do not require Python-Markdown.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 from html.parser import HTMLParser
 import posixpath
@@ -148,6 +149,7 @@ def render_page(language: str, page: str) -> str:
     copy = COPY[language]
     current = route(language, page)
     asset = relative_url(current, "assets/")
+    css_version = hashlib.sha256((CONTENT / "assets/site.css").read_bytes()).hexdigest()[:12]
     other = relative_url(current, route(copy["other"], page))
     heading = copy["titles"][page]
     title = "Project Leap" if page == "home" else f"{heading} · Project Leap"
@@ -182,7 +184,7 @@ def render_page(language: str, page: str) -> str:
   <link rel="alternate" hreflang="en" href="{PUBLIC_BASE + route('en', page)}">
   <link rel="alternate" hreflang="zh-CN" href="{PUBLIC_BASE + route('zh', page)}">
   <link rel="icon" href="{asset}icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="{asset}site.css">
+  <link rel="stylesheet" href="{asset}site.css?v={css_version}">
   <script src="{asset}site.js" defer></script>
 </head>
 <body id="top" class="page-{page}">
