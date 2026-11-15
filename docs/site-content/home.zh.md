@@ -1,29 +1,26 @@
 <section class="hero" markdown="1">
 <div class="hero-copy" markdown="1">
-<p class="eyebrow">在本机分析科研图像</p>
 
-# 本地荧光图像分析
+# 星形胶质细胞荧光分析与细胞计数
 
-Project Leap 将星形胶质细胞荧光强度分析和细胞计数整合到一款面向 Apple Silicon Mac 的桌面软件中。导入 TIFF 图像，审核候选区域或细胞，并将结果与分析记录一同保存。
+Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将自动分析与人工审核结合，研究者可以对照图像调整测量区域，并确认哪些细胞计入总数。
 
 <div class="actions" markdown="0">
 <a class="button primary" href="downloads/">下载 Mac 版 <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="guide/">阅读使用指南 <span aria-hidden="true">→</span></a>
 </div>
-<p class="release-line">版本 1.0.0 · 构建号 1 · Apple Silicon · macOS 27 或更新版本<br><a href="downloads/">下载信息与版本说明</a></p>
+<p class="release-line">Apple Silicon · macOS 27 或更新版本</p>
 </div>
 
 <div class="hero-symbol" markdown="0">
 <img src="../assets/icon.svg" alt="Project Leap 应用图标" width="240" height="240">
 <p>Project Leap</p>
-<span>在你的 Mac 上运行</span>
 </div>
 </section>
 
 <div class="section-heading" markdown="1">
-<p class="eyebrow">两个分析模块</p>
 
-## 按照测量任务选择模块。
+## 按研究任务选择模块
 
 </div>
 
@@ -31,43 +28,28 @@ Project Leap 将星形胶质细胞荧光强度分析和细胞计数整合到一�
 <section class="module-row" aria-labelledby="fluorescence-home" markdown="1">
 <div class="module-number" aria-hidden="true" markdown="0">01</div>
 <div markdown="1">
-<p class="module-version">模块版本 1.1.1</p>
 <h3 id="fluorescence-home">星形胶质细胞荧光强度分析</h3>
-<p>测量完整细胞、胞体与突起区域的荧光强度。在软件中指定通道，在 Fiji 中审核候选区域，然后保存测量表、叠加图和最终区域归档。</p>
+<p>荧光模块测量审核后的整细胞、胞体和突起区域内的目标荧光，并保留测量值与细胞及最终边界的对应关系。</p>
 <a class="text-link" href="modules/#fluorescence">了解荧光分析 <span aria-hidden="true">→</span></a>
 </div>
 </section>
 <section class="module-row" aria-labelledby="counting-home" markdown="1">
 <div class="module-number" aria-hidden="true" markdown="0">02</div>
 <div markdown="1">
-<p class="module-version">模块版本 1.0.0</p>
 <h3 id="counting-home">细胞计数</h3>
-<p>根据 DAPI 和另一辅助通道识别候选细胞。逐层核对 Z 切片、编辑计数，并保存叠加图、CSV 表格及可继续编辑的审核会话。</p>
+<p>计数模块结合 DAPI 与另一荧光通道识别候选细胞。研究者可沿 Z 轴逐层核对细胞，确认哪些细胞纳入星形胶质细胞总数。</p>
 <a class="text-link" href="modules/#counting">了解细胞计数 <span aria-hidden="true">→</span></a>
 </div>
 </section>
 </div>
 
-<section class="workflow-section" aria-labelledby="workflow-heading" markdown="1">
-<div markdown="1">
-<p class="eyebrow">使用 PROJECT LEAP</p>
-<h2 id="workflow-heading">将分析与人工审核连接起来。</h2>
-<p>主程序统一管理模块、分析任务和已保存的结果。图像在你的 Mac 上完成分析，原始 TIFF 保留在原位置。</p>
-</div>
-<ol class="workflow-steps">
-<li><strong>选择图像并指定通道。</strong><span>导入受支持的 TIFF；图像包含多个图像组或时间点时，选定本次分析对象，再设置通道角色。</span></li>
-<li><strong>审核候选结果。</strong><span>在 Fiji 中编辑荧光分析区域，或在内置计数工作台核对细胞及其 Z 位置。</span></li>
-<li><strong>保存并查看已有工作。</strong><span>在“任务与结果”中查看分析记录和输出文件。已保存的计数会话可以重新打开并继续编辑。</span></li>
-</ol>
-</section>
-
 <div class="closing-row" markdown="1">
 <div markdown="1">
 
-## 从使用指南开始。
+## 图像在本机分析，结果按任务保存
 
-了解安装条件、图像准备和首次分析的步骤。后续计划增加更多分析模块。
+每次保存的分析都可在“任务与结果”中查看，包括测量表、标注图及对应的区域或审核会话。计数会话还可重新打开，继续编辑。原始 TIFF 保留在原文件夹。
 
 </div>
-<a class="button secondary" href="guide/">打开使用指南 <span aria-hidden="true">→</span></a>
+<a class="button secondary" href="guide/">查看使用方法 <span aria-hidden="true">→</span></a>
 </div>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>使用指南 · Project Leap</title>
-  <meta name="description" content="面向 Apple Silicon Mac 的本地显微图像分析软件，包含星形胶质细胞荧光强度分析和细胞计数。">
+  <meta name="description" content="在 Apple Silicon Mac 上完成星形胶质细胞荧光定量与细胞计数，结合自动分析和图像审核。">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/zh/guide/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
@@ -27,7 +27,7 @@
     <a class="language-switch" href="../../en/guide/" lang="en" hreflang="en" aria-label="将当前页面切换为英文">English</a>
   </div>
 </header>
-<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">使用文档</p><h1>使用指南</h1></header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>使用指南</h1></header>
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="本页内容"><p class="toc-heading">本页内容</p><div class="toc">
 <ul>
@@ -52,8 +52,7 @@
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../en/guide/">English</a> · <a href="../">项目首页</a> · <a href="../about/">关于</a></p>
-<p>本指南说明主程序的安装、模块管理、历史分析和设置。图像准备、分析参数、人工审核和各模块输出格式，请参阅下文链接的模块指南。</p>
-<p><strong>当前版本：</strong>Project Leap 1.0.0，构建号 1。可安装的分析模块为荧光强度分析 1.1.1 和细胞计数 1.0.0。</p>
+<p><strong>当前版本：Project Leap v1.0.0。</strong> 安装主程序后，选择需要的分析模块，再按模块指南准备图像、运行分析并审核结果。本指南说明安装、历史分析管理和软件设置。</p>
 <h2 id="1-安装主程序">1. 安装主程序</h2>
 <p>需要运行 <strong>macOS 27 或更高版本的 Apple Silicon Mac</strong>。下载主程序、安装模块和获取更新时需要联网。</p>
 <ol>
@@ -79,7 +78,7 @@
 <li>保持软件打开，等待下载、校验和安装完成。</li>
 <li>模块状态显示<strong>已安装</strong>、安装按钮显示<strong>模块已就绪</strong>后，即可使用。</li>
 </ol>
-<p>可以安装一个模块，也可以同时安装两个。软件管理共享科学运行环境和 Cellpose 模型；荧光模块还会安装 Fiji。无需自行安装 Python、Cellpose 或 Fiji。另一个模块可以复用已经安装的共享依赖。</p>
+<p>可以安装一个模块，也可以同时安装两个。Project Leap 会一并安装所需依赖，其中荧光模块使用 Fiji 审核感兴趣区域。</p>
 <p>分析或审核进程正在使用组件时，软件暂停安装和修复。完成相关操作后再维护模块。</p>
 <h2 id="3-选择模块并开始分析">3. 选择模块并开始分析</h2>
 <p>在侧边栏选择已安装模块，进入其<strong>分析工作台</strong>。按对应指南完成图像选择、通道指定、分析、审核和保存：</p>
@@ -104,7 +103,8 @@
 </tr>
 </tbody>
 </table>
-<p>分析期间，<strong>运行细节</strong>显示进度和提示。分析运行时可以切换查看其他页面或模块；第二项分析仍需等待当前分析结束。流程要求人工审核时，完成审核并通过模块内的控件保存；计算结束本身不代表审核结果已经保存。</p>
+<p>分析期间，<strong>运行细节</strong>显示进度和提示。你可以切换查看其他页面或模块，待当前分析结束后再启动下一项分析。</p>
+<p>完成人工审核后，通过模块内的控件保存结果。细胞计数会把编辑内容保存为草稿，供之后继续审核；点击<strong>确认并保存 Astrocyte 计数</strong>后，软件才保存确认结果。确认后的新修改仍属于草稿，需要再次确认才能保存为新的结果版本。</p>
 <h2 id="4-查看和管理历史分析">4. 查看和管理历史分析</h2>
 <p>打开<strong>任务与结果</strong>。任务按模块分组，点击一条记录即可展开<strong>任务详情</strong>，查看状态、结果预览和输出文件。</p>
 <ul>
@@ -113,8 +113,8 @@
 <li>计数任务可通过<strong>重新打开计数</strong>编辑已保存的计数，或通过<strong>继续审核计数</strong>恢复已有审核会话。保存修改的方法见计数模块指南。</li>
 <li>点击<strong>刷新占用</strong>，更新各分析在软件内部占用磁盘空间的估计值。</li>
 </ul>
-<p>删除单项分析可点击该行的垃圾桶按钮；批量删除时，点击<strong>多选</strong>，勾选记录后点击<strong>删除所选</strong>。确认前请核对范围：这会永久删除所选分析在软件内部保存的数据，原始图像和已导出到软件数据目录之外的文件会保留。选择<strong>一个月内不再询问</strong>后，后续删除暂不再次确认，到下一个日历月对应时间后恢复询问。</p>
-<p>如果还需要重新分析或查看原始 Z 层，请保留原始图像。结果文件和保留的审核数据不能替代原图。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。</p>
+<p>删除单项分析可点击该行的垃圾桶按钮；批量删除时，点击<strong>多选</strong>，勾选记录后点击<strong>删除所选</strong>。确认前请核对范围：这会永久删除所选分析在软件内部保存的数据，原始图像和已导出到软件数据目录之外的文件会保留。选择<strong>一个月内不再询问</strong>后，软件会暂停显示删除确认，并在一个日历月后恢复询问。</p>
+<p>重新分析和查看原始 Z 层需要原始图像，请保留这些文件。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。</p>
 <h2 id="5-调整设置">5. 调整设置</h2>
 <h3 id="语言与外观">语言与外观</h3>
 <p>进入<strong>设置 → 语言与外观</strong>。<strong>界面语言</strong>可选 <strong>English</strong> 或<strong>中文</strong>；<strong>外观</strong>可选<strong>跟随系统</strong>、<strong>浅色</strong>或<strong>深色</strong>。外观切换不会改变科研图像的颜色，Fiji 和浏览器打开的页面使用各自的外观设置。</p>
@@ -126,7 +126,6 @@
 <p>在<strong>存储与数据</strong>中点击<strong>清理缓存</strong>并确认，可删除能重新生成的界面缓存和已不再使用的临时文件。原始图像、分析结果和审核数据会保留。若要删除某次分析及其已保存数据，应使用任务删除功能。</p>
 <h3 id="更新软件">更新软件</h3>
 <p>进入<strong>设置 → 软件更新 → 检查更新</strong>，统一检查主程序和已安装模块。按更新提示操作；组件下载并校验后才会启用，主程序更新会重新启动软件。更新所需的组件仍在使用时，会等待相关工作结束。</p>
-<p>主程序与模块分别使用各自的版本号。荧光模块 1.1.1 修复了与共享科学运行环境的兼容问题，科学规则仍为 1.0.1。</p>
 <h3 id="检查并修复模块">检查并修复模块</h3>
 <p>在<strong>功能与维护</strong>中，点击已安装模块的<strong>检查并修复</strong>。软件会检查组件内容，并以<strong>当前已安装的同一版本</strong>修复缺失或损坏的组件。完整校验通过时，会提示无需修复。需要升级到可用的新版本时，使用<strong>检查更新</strong>。</p>
 <h3 id="删除模块或卸载软件">删除模块或卸载软件</h3>
@@ -170,7 +169,7 @@
 <p>报告问题时，请提供 Project Leap 版本、模块版本、macOS 版本、失败操作和完整提示。只有在有权分享图像数据时才附上图像。</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/user-guide.zh.md">查看文档源文件 <span aria-hidden="true">↗</span></a></p></article>
 </div></main>
 <footer class="site-footer">
-  <div><a class="footer-brand" href="../">Project Leap</a><p>面向 Apple Silicon Mac 的科研图像分析软件。</p></div>
+  <div><a class="footer-brand" href="../">Project Leap</a></div>
   <nav aria-label="页脚导航"><a href="https://github.com/DingchengWang/Project-Leap">GitHub 源码 <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">许可协议</a><a href="#top">返回顶部 ↑</a></nav>
 </footer>
 </body>

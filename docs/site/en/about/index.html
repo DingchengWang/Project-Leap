@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About · Project Leap</title>
-  <meta name="description" content="Local microscopy image analysis for Apple Silicon Mac, with astrocyte fluorescence measurement and cell counting.">
+  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/about/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/about/">
@@ -27,43 +27,38 @@
     <a class="language-switch" href="../../zh/about/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch this page to Chinese">中文</a>
   </div>
 </header>
-<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">ABOUT THE PROJECT</p><h1>About</h1></header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>About</h1></header>
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="On this page"><p class="toc-heading">On this page</p><div class="toc">
 <ul>
-<li><a href="#author-and-affiliation">Author and affiliation</a></li>
-<li><a href="#development-and-scientific-responsibility">Development and scientific responsibility</a></li>
-<li><a href="#open-source-code-and-third-party-components">Open-source code and third-party components</a></li>
-<li><a href="#scientific-references">Scientific references</a></li>
+<li><a href="#author-and-research-affiliation">Author and research affiliation</a></li>
+<li><a href="#methods-and-tools">Methods and tools</a></li>
+<li><a href="#source-and-licenses">Source and licenses</a></li>
 </ul>
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../zh/about/">中文</a> · <a href="../">Project home</a> · <a href="../guide/">User guide</a></p>
-<p>Project Leap is a local research platform for immunohistochemistry image analysis. Its desktop application hosts two modules: <strong>Astrocyte Fluorescence Intensity Measurement</strong> and <strong>Cell Counting</strong>. The platform handles installation, image import, job records, results, and maintenance; each module supplies its analysis workflow and review tools.</p>
-<h2 id="author-and-affiliation">Author and affiliation</h2>
-<p><strong>Dingcheng Wang</strong> developed Project Leap as a neuroscience undergraduate at <strong>The Ohio State University</strong>, with research affiliation to the <strong>Min Zhou Laboratory, Department of Neuroscience, College of Medicine</strong>. The application’s About panel records this affiliation, and the project <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a> records the author attribution.</p>
-<h2 id="development-and-scientific-responsibility">Development and scientific responsibility</h2>
-<p>AI tools assisted with code implementation, debugging, packaging, and documentation. Dingcheng Wang directed the research requirements, biological interpretation, analysis rules, trade-offs, and acceptance review.</p>
-<p>Researchers using Project Leap remain responsible for deciding whether the analysis fits their experiment, reviewing the proposed regions or cell identities, and interpreting the saved measurements. Each module guide describes its inputs, review procedure, and scientific scope.</p>
-<h2 id="open-source-code-and-third-party-components">Open-source code and third-party components</h2>
-<p>Original Project Leap code is licensed under <a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">Apache License 2.0</a>, with attribution in <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a>. Third-party software and models retain their respective licenses and copyright notices. <a href="https://github.com/DingchengWang/Project-Leap/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a> links the retained license material and upstream sources.</p>
+<h2 id="author-and-research-affiliation">Author and research affiliation</h2>
+<p><strong>Dingcheng Wang</strong> developed Project Leap as a neuroscience undergraduate at <strong>The Ohio State University</strong>, with research affiliation to the <strong>Min Zhou Laboratory, Department of Neuroscience, College of Medicine</strong>.</p>
+<p>AI tools assisted with code implementation, debugging, packaging, and documentation. Dingcheng Wang directed the research requirements, analysis rules, biological interpretation, and development decisions, and was responsible for acceptance review.</p>
+<h2 id="methods-and-tools">Methods and tools</h2>
+<p>Project Leap uses the following upstream tools for distinct parts of the analysis:</p>
+<ul>
+<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a> provides segmentation for the eGFP fluorescence-analysis route and the counting module.</li>
+<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a> supplies DAPI nuclear candidates in the mature GFAP-only fluorescence-analysis route. Project Leap uses these candidates with GFAP structure to define the cell regions.</li>
+<li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a> supports interactive review of fluorescence regions and measures the raw target-channel projections within the final regions.</li>
+</ul>
+<h2 id="source-and-licenses">Source and licenses</h2>
 <p>The source is maintained in three repositories:</p>
 <ul>
 <li><a href="https://github.com/DingchengWang/Project-Leap">Project Leap</a>: desktop application and shared platform.</li>
 <li><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">Astrocyte fluorescence module</a>: fluorescence analysis engine and guide.</li>
 <li><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">Cell Counting module</a>: counting engine and guide.</li>
 </ul>
-<h2 id="scientific-references">Scientific references</h2>
-<p>The application’s <strong>Sources &amp; references</strong> page lists these upstream methods and tools:</p>
-<ul>
-<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a>.</li>
-<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a>.</li>
-<li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a>.</li>
-</ul>
-<p>The same reference links are retained in the application’s <a href="https://github.com/DingchengWang/Project-Leap/blob/main/app/leap_desktop/docs/references.html">reference resource</a>.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/about.en.md">View the source document <span aria-hidden="true">↗</span></a></p></article>
+<p>Original Project Leap code is licensed under <a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">Apache License 2.0</a>, with attribution in <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a>. Third-party software and models retain their respective licenses and copyright notices. <a href="https://github.com/DingchengWang/Project-Leap/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a> links the retained license material and upstream sources.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/about.en.md">View the source document <span aria-hidden="true">↗</span></a></p></article>
 </div></main>
 <footer class="site-footer">
-  <div><a class="footer-brand" href="../">Project Leap</a><p>Research image analysis for Apple Silicon Mac.</p></div>
+  <div><a class="footer-brand" href="../">Project Leap</a></div>
   <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>

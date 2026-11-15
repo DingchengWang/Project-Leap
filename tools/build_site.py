@@ -36,9 +36,7 @@ COPY = {
         "lang": "en", "other": "zh", "switch": "中文", "switch_label": "Switch this page to Chinese",
         "skip": "Skip to content", "menu": "Menu", "nav": "Main navigation", "toc": "On this page",
         "titles": dict(zip(PAGES, ("Home", "Modules", "User guide", "Downloads", "About"))),
-        "eyebrows": {"modules": "ANALYSIS MODULES", "guide": "DOCUMENTATION", "downloads": "GET PROJECT LEAP", "about": "ABOUT THE PROJECT"},
-        "description": "Local microscopy image analysis for Apple Silicon Mac, with astrocyte fluorescence measurement and cell counting.",
-        "footer": "Research image analysis for Apple Silicon Mac.",
+        "description": "Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.",
         "source": "Source on GitHub", "license": "License", "document": "View the source document",
         "top": "Back to top", "home": "Project Leap home", "icon": "Project Leap application icon",
     },
@@ -46,9 +44,7 @@ COPY = {
         "lang": "zh-CN", "other": "en", "switch": "English", "switch_label": "将当前页面切换为英文",
         "skip": "跳至正文", "menu": "菜单", "nav": "主导航", "toc": "本页内容",
         "titles": dict(zip(PAGES, ("首页", "分析模块", "使用指南", "下载", "关于"))),
-        "eyebrows": {"modules": "分析模块", "guide": "使用文档", "downloads": "获取 PROJECT LEAP", "about": "关于项目"},
-        "description": "面向 Apple Silicon Mac 的本地显微图像分析软件，包含星形胶质细胞荧光强度分析和细胞计数。",
-        "footer": "面向 Apple Silicon Mac 的科研图像分析软件。",
+        "description": "在 Apple Silicon Mac 上完成星形胶质细胞荧光定量与细胞计数，结合自动分析和图像审核。",
         "source": "GitHub 源码", "license": "许可协议", "document": "查看文档源文件",
         "top": "返回顶部", "home": "Project Leap 首页", "icon": "Project Leap 应用图标",
     },
@@ -162,7 +158,7 @@ def render_page(language: str, page: str) -> str:
     if page == "home":
         body = f'<div class="home-content">{body}</div>'
     else:
-        header = f'<header class="page-heading"><p class="eyebrow">{copy["eyebrows"][page]}</p><h1>{heading}</h1></header>'
+        header = f'<header class="page-heading"><h1>{heading}</h1></header>'
         if page in ("guide", "about"):
             source_url = REPOSITORY + "/blob/main/" + source_for(language, page).relative_to(ROOT).as_posix()
             body = f'''{header}
@@ -199,7 +195,7 @@ def render_page(language: str, page: str) -> str:
 </header>
 <main id="main" class="site-main" tabindex="-1">{body}</main>
 <footer class="site-footer">
-  <div><a class="footer-brand" href="{relative_url(current, route(language, 'home'))}">Project Leap</a><p>{copy['footer']}</p></div>
+  <div><a class="footer-brand" href="{relative_url(current, route(language, 'home'))}">Project Leap</a></div>
   <nav aria-label="{'Footer' if language == 'en' else '页脚导航'}"><a href="{REPOSITORY}">{copy['source']} <span aria-hidden="true">↗</span></a><a href="{REPOSITORY}/blob/main/LICENSE">{copy['license']}</a><a href="#top">{copy['top']} ↑</a></nav>
 </footer>
 </body>

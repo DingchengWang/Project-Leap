@@ -1,25 +1,23 @@
 # Project Leap
 
-[English](README.md)
+[English](README.md) · [项目网站](https://dingchengwang.github.io/Project-Leap/zh/)
 
-Project Leap 是面向 Apple Silicon Mac 的本地免疫组织化学（IHC）图像分析软件，将图像导入、分析模块、人工审核和结果管理集中在同一个桌面工作台。原始图像与软件管理的分析数据分开保存。
+Project Leap 是一款在 Mac 上分析多通道显微荧光图像的软件，用于星形胶质细胞荧光测量和细胞计数。程序自动生成候选细胞区域与计数对象，研究者可对照图像审核和调整，决定最终测量的区域及纳入计数的细胞。
 
-**版本 1.0.0 · 构建号 1 · macOS 27 或更高版本 · Apple Silicon（arm64）**
+## 安装与开始使用
 
-## 下载与开始使用
+[下载 Project Leap Mac 版](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg)。软件需要 **Apple Silicon Mac 和 macOS 27 或更新版本**。将 DMG 中的 **Project Leap.app** 复制到“应用程序”，再到软件的**功能与维护**中安装所需模块；程序会一并下载依赖组件。
 
-[下载 Project Leap 1.0.0 Mac 版](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg)。DMG 包含主程序本体；文件信息见[下载页面](https://dingchengwang.github.io/Project-Leap/zh/downloads/)，本次版本说明见 [GitHub Release](https://github.com/DingchengWang/Project-Leap/releases/tag/v1.0.0)。
+[使用指南](docs/user-guide.zh.md)说明首次启动、图像导入、任务记录、结果管理和设置。当前版本与[旧版独立脚本包](https://dingchengwang.github.io/Project-Leap/zh/downloads/#legacy)统一列在[下载页面](https://dingchengwang.github.io/Project-Leap/zh/downloads/)，主程序的版本变化见 [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases)。
 
-从 DMG 安装 **Project Leap.app**，再到软件的**功能与维护**中安装所需模块。软件会下载模块依赖。[平台使用指南](docs/user-guide.zh.md)说明安装、首次启动、结果管理和设置操作。
+## 选择分析模块
 
-## 分析模块
-
-| 模块 | 用途 | 文档 |
+| 模块 | 输入与结果 | 文档 |
 |---|---|---|
-| 星形胶质细胞荧光强度分析 · 1.1.1 | 在经过审核的星形胶质细胞感兴趣区域内测量荧光强度，支持 Fiji 人工审核。 | [使用指南](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.zh.md) · [源码](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
-| 细胞计数 · 1.0.0 | 根据 DAPI 和辅助通道证据审核、编辑细胞身份，保存计数及叠加图。 | [使用指南](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.zh.md) · [源码](https://github.com/DingchengWang/Project-Leap-Cell-Counting) |
+| 星形胶质细胞荧光强度分析 | 输入包含 DAPI、eGFP 和／或 GFAP，以及 KCNN1、KCNN2、KCNN3、KCNJ10 中的一个目标通道。分别测量完整细胞、胞体和突起区域，支持 Fiji 审核并保留最终区域归档。GFAP-only 分支仅适用于成熟样本。 | [使用指南](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.zh.md) · [源码](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
+| 细胞计数 | 输入包含 DAPI 和另一个辅助通道。同一细胞在不同 Z 层的观察关联到同一记录，供逐层审核；已接受的 Astrocyte 记录导出为计数表与编号叠加图，并保留可编辑会话。 | [使用指南](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.zh.md) · [源码](https://github.com/DingchengWang/Project-Leap-Cell-Counting) |
 
-荧光模块 1.1.1 修复了与共享科学运行环境的兼容问题。桌面分析流程、自动拆分通道和最终区域归档由 1.1.0 引入；科学规则仍为 1.0.1。[v1.0.1 脚本包](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/tag/v1.0.1)及其修复文件继续保留。
+图像在本机完成分析。软件另行保存任务记录和输出文件，原始 TIFF 保留在原位置。
 
 ## 源码与开发
 
@@ -33,6 +31,6 @@ python3 tools/assemble_sources.py --fluorescence ../Project-Leap-2D-Integrated-I
 
 ## 作者与许可
 
-开发者为 **Dingcheng Wang**，**俄亥俄州立大学**神经科学本科生。[关于 Project Leap](docs/about.zh.md)说明作者归属、AI 辅助开发和科学参考资料。
+开发者为 **Dingcheng Wang**，**俄亥俄州立大学**神经科学本科生。[关于 Project Leap](docs/about.zh.md)说明研究归属、AI 辅助开发，以及分析中使用的上游方法。
 
 Project Leap 原创代码采用 [Apache License 2.0](LICENSE)。第三方软件与模型保留各自的许可证和声明，见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

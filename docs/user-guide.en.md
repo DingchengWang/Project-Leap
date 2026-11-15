@@ -2,9 +2,7 @@
 
 [中文](user-guide.zh.md) · [Project home](../README.md) · [About](about.en.md)
 
-This guide covers application installation, module management, saved analyses, and settings. For image preparation, analysis parameters, manual review, and module-specific outputs, use the module guides linked below.
-
-**Current release:** Project Leap 1.0.0, build 1. The available analysis modules are fluorescence measurement 1.1.1 and cell counting 1.0.0.
+**Current release: Project Leap v1.0.0.** Install the application, add the modules you need, and follow the module guides for image preparation, analysis, and review. This guide covers installation, saved analyses, and application settings.
 
 ## 1. Install the application
 
@@ -36,7 +34,7 @@ macOS saves the exception for that application. These steps follow [Apple’s in
 3. Keep the application open while it downloads, verifies, and installs the required components.
 4. Wait until the module shows **Installed** and its installation button reads **Module ready**.
 
-Install either module or both. The application manages the shared scientific runtime and Cellpose model; the fluorescence module also uses Fiji. You do not need to install Python, Cellpose, or Fiji separately. Shared dependencies already available to the application can be reused by the other module.
+You can install either module or both. Project Leap installs the required dependencies, including Fiji for fluorescence review.
 
 Installation and repair pause while analysis or its review processes are using the components. Finish those operations before maintaining a module.
 
@@ -49,7 +47,9 @@ Select an installed module in the sidebar to open its **Analysis Workspace**. Fo
 | **Astrocyte Fluorescence Intensity Measurement** | Measure fluorescence within astrocyte regions of interest and review those regions in Fiji. | [Fluorescence guide](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md) |
 | **Cell Counting** | Review candidate cells from DAPI and auxiliary-channel evidence, edit the count, and save the confirmed results. | [Cell Counting guide](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md) |
 
-During an analysis, **Run details** shows progress and messages. You can switch to other pages or modules while an analysis runs; starting a second analysis must wait until the current one finishes. When the workflow requests manual review, complete it and save through the module’s controls. A completed calculation alone does not establish that a reviewed result has been saved.
+During an analysis, **Run details** shows progress and messages. You can visit other pages or modules while it runs; a second analysis can start after the current one finishes.
+
+Complete manual review and save through the module’s controls. In Cell Counting, edits are saved as a draft so you can resume review. Click **Confirm & save Astrocyte count** to save a confirmed result; later edits remain in the draft until you confirm again.
 
 ## 4. View and manage saved analyses
 
@@ -62,7 +62,7 @@ Open **Jobs & Results**. Analyses are grouped by module. Click a row to expand *
 
 To delete an analysis, use its trash button. To delete several, click **Select**, select the records, and click **Delete selected**. Read the confirmation before proceeding: deletion permanently removes those analyses’ application-managed data. Original images and files already exported outside application storage are retained. **Don’t ask again for one month** suppresses subsequent deletion confirmations until the calendar-month interval expires.
 
-Keep original images available if you want to rerun an analysis or inspect original Z planes. Saved results and retained review data do not replace the source images. If a counting session reports that its source image has moved, use the relocation control in that session; the application checks the replacement against the saved analysis.
+Keep original images available for rerunning an analysis or inspecting original Z planes. If a counting session reports that its source image has moved, use the relocation control in that session; the application checks the replacement against the saved analysis.
 
 ## 5. Adjust settings
 
@@ -85,8 +85,6 @@ Click **Clear cache** under **Storage & data** and confirm. This removes rebuild
 ### Updates
 
 Open **Settings → Software updates → Check for Updates**. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.
-
-Application updates and module updates have separate version numbers. Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime; its scientific rules remain at version 1.0.1.
 
 ### Check and repair a module
 

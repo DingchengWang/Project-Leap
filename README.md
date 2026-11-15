@@ -1,25 +1,23 @@
 # Project Leap
 
-[中文](README_中文.md)
+[中文](README_中文.md) · [Website](https://dingchengwang.github.io/Project-Leap/en/)
 
-Project Leap is a local research application for immunohistochemistry (IHC) image analysis on Apple Silicon Macs. It brings image import, analysis modules, manual review, and saved results into one desktop workspace. Original images remain separate from application-managed analysis data.
+Project Leap is a Mac application for astrocyte fluorescence analysis and cell counting in multichannel microscopy images. Automated analysis proposes cell regions and candidate cells; visual review lets researchers check the regions measured and decide which cells enter the final count.
 
-**Version 1.0.0 · Build 1 · macOS 27 or later · Apple Silicon (arm64)**
+## Install and start
 
-## Download and start
+[Download Project Leap for Mac](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg). The application requires **Apple Silicon and macOS 27 or later**. Copy **Project Leap.app** from the DMG to Applications, then install the modules you need under **Modules & Maintenance**. Project Leap downloads their required components.
 
-[Download Project Leap 1.0.0 for Mac](https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg). The DMG contains the main application. See the [download page](https://dingchengwang.github.io/Project-Leap/en/downloads/) for file details and the [release notes](https://github.com/DingchengWang/Project-Leap/releases/tag/v1.0.0) for this release.
+The [user guide](docs/user-guide.en.md) covers first launch, image import, task records, results, and settings. Current versions and the [earlier standalone script package](https://dingchengwang.github.io/Project-Leap/en/downloads/#legacy) are listed on the [download page](https://dingchengwang.github.io/Project-Leap/en/downloads/); application changes are recorded in [GitHub Releases](https://github.com/DingchengWang/Project-Leap/releases).
 
-Install **Project Leap.app** from the DMG, then use **Modules & Maintenance** to install the modules you need. The application downloads their dependencies. Follow the [platform user guide](docs/user-guide.en.md) for installation, first launch, result management, and settings.
+## Choose an analysis module
 
-## Analysis modules
-
-| Module | Purpose | Documentation |
+| Module | Input and result | Documentation |
 |---|---|---|
-| Astrocyte Fluorescence Intensity Measurement · 1.1.1 | Measure fluorescence in reviewed astrocyte regions of interest, with Fiji review. | [Guide](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
-| Cell Counting · 1.0.0 | Review and edit cell identities from DAPI and auxiliary-channel evidence, then save counts and overlays. | [Guide](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-Cell-Counting) |
+| Astrocyte Fluorescence Intensity Measurement | DAPI, eGFP and/or GFAP, and one target channel: KCNN1, KCNN2, KCNN3, or KCNJ10. Measures whole-cell, soma, and process regions, with Fiji review and a final region archive. GFAP-only analysis supports mature samples only. | [Guide](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis) |
+| Cell Counting | DAPI and a different support channel. Links cell observations across Z slices for review and exports accepted Astrocyte records as a count table and numbered overlay, with an editable session. | [Guide](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md) · [Source](https://github.com/DingchengWang/Project-Leap-Cell-Counting) |
 
-Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime. The desktop workflow, automatic channel preparation, and final region archive were introduced in 1.1.0; the scientific rules remain at version 1.0.1. The [v1.0.1 script package](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/tag/v1.0.1) and its repair files remain available.
+Analysis runs locally. The application keeps task records and output files separately from the original TIFF images, which remain in their original location.
 
 ## Source and development
 
@@ -33,6 +31,6 @@ The assembly tool checks the module commits recorded in `tools/build/module-sour
 
 ## Author and licenses
 
-Developed by **Dingcheng Wang**, a neuroscience undergraduate at **The Ohio State University**. See [About Project Leap](docs/about.en.md) for attribution, AI-assisted development, and scientific references.
+Developed by **Dingcheng Wang**, a neuroscience undergraduate at **The Ohio State University**. [About Project Leap](docs/about.en.md) describes the research affiliation, AI-assisted development, and upstream methods.
 
 Original Project Leap code is licensed under [Apache License 2.0](LICENSE). Third-party software and models retain their own licenses and notices; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

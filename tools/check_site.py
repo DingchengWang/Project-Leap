@@ -12,6 +12,7 @@ import argparse
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 import subprocess
 import sys
 import tempfile
@@ -23,7 +24,7 @@ PUBLIC_BASE = "https://dingchengwang.github.io/Project-Leap/"
 PAGES = ("", "modules/", "guide/", "downloads/", "about/")
 LEGACY_ZIP = "https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/download/v1.0.1/Project-Leap-2D-V1.0.1.zip"
 DESKTOP_DMG = "https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg"
-DESKTOP_SHA256 = "25548345a50dc15b4ab1d1d53bcffbd78e27f89f830139bed825f1f27950e3e5"
+DESKTOP_RELEASE = "https://github.com/DingchengWang/Project-Leap/releases/tag/v1.0.0"
 
 
 class Page(HTMLParser):
@@ -38,6 +39,7 @@ class Page(HTMLParser):
         self.images: list[dict] = []
         self.current: list[str] = []
         self.document_links: list[str] = []
+        self.text_parts: list[str] = []
         self._in_document = False
         self.feed(text)
 
@@ -67,6 +69,9 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "article":
             self._in_document = False
+
+    def handle_data(self, data):
+        self.text_parts.append(data)
 
 
 def resolve(site: Path, current: Path, value: str) -> tuple[Path | None, str]:
@@ -108,6 +113,9 @@ def check(site: Path, rebuild: bool) -> int:
             errors.append(f"{name}: duplicate IDs {duplicates}")
         if "/Users/" in text or "/private/tmp/" in text or 'markdown="' in text:
             errors.append(f"{name}: local path or unrendered Markdown attribute")
+        visible_text = " ".join(parsed.text_parts)
+        if re.search(r"\bbuild(?:\s+number)?\s*[:=]?\s*\d+|构建(?:号|编号)\s*(?:为|[：:])?\s*\d+", visible_text, re.IGNORECASE):
+            errors.append(f"{name}: internal build number appears in page text")
         if path == site / "index.html":
             if 'content="0; url=en/"' not in text:
                 errors.append("Root page must direct to en/ without JavaScript")
@@ -143,9 +151,9 @@ def check(site: Path, rebuild: bool) -> int:
                 errors.append(f"{name}: requires one active primary link to the fixed desktop DMG")
             if any("disabled" in attrs for attrs in parsed.buttons):
                 errors.append(f"{name}: obsolete disabled download button")
-            if DESKTOP_SHA256 not in text or "52,720,315" not in text:
-                errors.append(f"{name}: desktop archive size or SHA-256 is missing")
             hrefs = {value for _, value, _ in parsed.links}
+            if DESKTOP_RELEASE not in hrefs:
+                errors.append(f"{name}: missing release details link")
             if LEGACY_ZIP not in hrefs:
                 errors.append(f"{name}: missing fixed historical v1.0.1 ZIP link")
             if any("/releases/download/" in value and value not in {LEGACY_ZIP, DESKTOP_DMG} for value in hrefs):

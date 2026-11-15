@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User guide · Project Leap</title>
-  <meta name="description" content="Local microscopy image analysis for Apple Silicon Mac, with astrocyte fluorescence measurement and cell counting.">
+  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
@@ -27,7 +27,7 @@
     <a class="language-switch" href="../../zh/guide/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch this page to Chinese">中文</a>
   </div>
 </header>
-<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">DOCUMENTATION</p><h1>User guide</h1></header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>User guide</h1></header>
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="On this page"><p class="toc-heading">On this page</p><div class="toc">
 <ul>
@@ -52,8 +52,7 @@
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../zh/guide/">中文</a> · <a href="../">Project home</a> · <a href="../about/">About</a></p>
-<p>This guide covers application installation, module management, saved analyses, and settings. For image preparation, analysis parameters, manual review, and module-specific outputs, use the module guides linked below.</p>
-<p><strong>Current release:</strong> Project Leap 1.0.0, build 1. The available analysis modules are fluorescence measurement 1.1.1 and cell counting 1.0.0.</p>
+<p><strong>Current release: Project Leap v1.0.0.</strong> Install the application, add the modules you need, and follow the module guides for image preparation, analysis, and review. This guide covers installation, saved analyses, and application settings.</p>
 <h2 id="1-install-the-application">1. Install the application</h2>
 <p>Use an <strong>Apple Silicon Mac running macOS 27 or later</strong>. Internet access is required to download the application, install modules, and obtain updates.</p>
 <ol>
@@ -79,7 +78,7 @@
 <li>Keep the application open while it downloads, verifies, and installs the required components.</li>
 <li>Wait until the module shows <strong>Installed</strong> and its installation button reads <strong>Module ready</strong>.</li>
 </ol>
-<p>Install either module or both. The application manages the shared scientific runtime and Cellpose model; the fluorescence module also uses Fiji. You do not need to install Python, Cellpose, or Fiji separately. Shared dependencies already available to the application can be reused by the other module.</p>
+<p>You can install either module or both. Project Leap installs the required dependencies, including Fiji for fluorescence review.</p>
 <p>Installation and repair pause while analysis or its review processes are using the components. Finish those operations before maintaining a module.</p>
 <h2 id="3-choose-a-module-and-run-an-analysis">3. Choose a module and run an analysis</h2>
 <p>Select an installed module in the sidebar to open its <strong>Analysis Workspace</strong>. Follow its guide through image selection, channel assignment, analysis, review, and saving:</p>
@@ -104,7 +103,8 @@
 </tr>
 </tbody>
 </table>
-<p>During an analysis, <strong>Run details</strong> shows progress and messages. You can switch to other pages or modules while an analysis runs; starting a second analysis must wait until the current one finishes. When the workflow requests manual review, complete it and save through the module’s controls. A completed calculation alone does not establish that a reviewed result has been saved.</p>
+<p>During an analysis, <strong>Run details</strong> shows progress and messages. You can visit other pages or modules while it runs; a second analysis can start after the current one finishes.</p>
+<p>Complete manual review and save through the module’s controls. In Cell Counting, edits are saved as a draft so you can resume review. Click <strong>Confirm &amp; save Astrocyte count</strong> to save a confirmed result; later edits remain in the draft until you confirm again.</p>
 <h2 id="4-view-and-manage-saved-analyses">4. View and manage saved analyses</h2>
 <p>Open <strong>Jobs &amp; Results</strong>. Analyses are grouped by module. Click a row to expand <strong>Job details</strong>, where you can inspect the recorded status, result previews, and available output files.</p>
 <ul>
@@ -114,7 +114,7 @@
 <li>Click <strong>Refresh storage</strong> to update the estimated disk space used by each analysis inside application storage.</li>
 </ul>
 <p>To delete an analysis, use its trash button. To delete several, click <strong>Select</strong>, select the records, and click <strong>Delete selected</strong>. Read the confirmation before proceeding: deletion permanently removes those analyses’ application-managed data. Original images and files already exported outside application storage are retained. <strong>Don’t ask again for one month</strong> suppresses subsequent deletion confirmations until the calendar-month interval expires.</p>
-<p>Keep original images available if you want to rerun an analysis or inspect original Z planes. Saved results and retained review data do not replace the source images. If a counting session reports that its source image has moved, use the relocation control in that session; the application checks the replacement against the saved analysis.</p>
+<p>Keep original images available for rerunning an analysis or inspecting original Z planes. If a counting session reports that its source image has moved, use the relocation control in that session; the application checks the replacement against the saved analysis.</p>
 <h2 id="5-adjust-settings">5. Adjust settings</h2>
 <h3 id="language-and-appearance">Language and appearance</h3>
 <p>Open <strong>Settings → Language &amp; appearance</strong>. <strong>Interface language</strong> offers <strong>English</strong> and <strong>中文</strong>. <strong>Appearance</strong> offers <strong>System</strong>, <strong>Light</strong>, and <strong>Dark</strong>. The application’s appearance setting does not change scientific image colors; Fiji and pages opened in a browser use their own appearance settings.</p>
@@ -126,7 +126,6 @@
 <p>Click <strong>Clear cache</strong> under <strong>Storage &amp; data</strong> and confirm. This removes rebuildable interface caches and temporary files that are no longer in use. Original images, analysis results, and review data are retained. Use job deletion when you intend to remove an analysis and its saved data.</p>
 <h3 id="updates">Updates</h3>
 <p>Open <strong>Settings → Software updates → Check for Updates</strong>. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.</p>
-<p>Application updates and module updates have separate version numbers. Fluorescence module 1.1.1 fixes compatibility with the shared scientific runtime; its scientific rules remain at version 1.0.1.</p>
 <h3 id="check-and-repair-a-module">Check and repair a module</h3>
 <p>In <strong>Modules &amp; Maintenance</strong>, click <strong>Check and Repair</strong> for an installed module. The application checks its contents and repairs damaged or missing components using the <strong>same installed version</strong>. If verification passes, it reports that repair is unnecessary. Use <strong>Check for Updates</strong> when you want an available newer version.</p>
 <h3 id="remove-modules-or-uninstall">Remove modules or uninstall</h3>
@@ -170,7 +169,7 @@
 <p>When reporting a problem, include the Project Leap version, module version, macOS version, the action that failed, and the exact message. Include image data only when you are authorized to share it.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/user-guide.en.md">View the source document <span aria-hidden="true">↗</span></a></p></article>
 </div></main>
 <footer class="site-footer">
-  <div><a class="footer-brand" href="../">Project Leap</a><p>Research image analysis for Apple Silicon Mac.</p></div>
+  <div><a class="footer-brand" href="../">Project Leap</a></div>
   <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>
