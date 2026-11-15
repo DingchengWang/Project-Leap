@@ -1,0 +1,12 @@
+runtime/
+native/vendor/
+__pycache__/
+*.pyc
+.DS_Store
+artifacts/*/final/
+artifacts/prototype-d/native-counting/
+artifacts/prototype-f/release/
+artifacts/release-1.0.0/packages/
+artifacts/release-1.0.0/package-verification.json
+/build/
+.venv/

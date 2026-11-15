@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>使用指南 · Project Leap</title>
+  <meta name="description" content="面向 Apple Silicon Mac 的本地显微图像分析软件，包含星形胶质细胞荧光强度分析和细胞计数。">
+  <meta name="theme-color" content="#f7f8f4">
+  <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/zh/guide/">
+  <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
+  <link rel="alternate" hreflang="zh-CN" href="https://dingchengwang.github.io/Project-Leap/zh/guide/">
+  <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script src="../../assets/site.js" defer></script>
+</head>
+<body id="top" class="page-guide">
+<a class="skip-link" href="#main">跳至正文</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Project Leap 首页"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>菜单 <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" class="main-nav" aria-label="主导航"><a href="../">首页</a>
+<a href="../modules/">分析模块</a>
+<a href="./" aria-current="page">使用指南</a>
+<a href="../downloads/">下载</a>
+<a href="../about/">关于</a></nav>
+    <a class="language-switch" href="../../en/guide/" lang="en" hreflang="en" aria-label="将当前页面切换为英文">English</a>
+  </div>
+</header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">使用文档</p><h1>使用指南</h1></header>
+<div class="document-layout">
+<aside class="document-sidebar"><nav aria-label="本页内容"><p class="toc-heading">本页内容</p><div class="toc">
+<ul>
+<li><a href="#1-安装主程序">1. 安装主程序</a><ul>
+<li><a href="#macos-阻止首次启动时">macOS 阻止首次启动时</a></li>
+</ul>
+</li>
+<li><a href="#2-安装分析模块">2. 安装分析模块</a></li>
+<li><a href="#3-选择模块并开始分析">3. 选择模块并开始分析</a></li>
+<li><a href="#4-查看和管理历史分析">4. 查看和管理历史分析</a></li>
+<li><a href="#5-调整设置">5. 调整设置</a><ul>
+<li><a href="#语言与外观">语言与外观</a></li>
+<li><a href="#存储与迁移">存储与迁移</a></li>
+<li><a href="#清理缓存">清理缓存</a></li>
+<li><a href="#更新软件">更新软件</a></li>
+<li><a href="#检查并修复模块">检查并修复模块</a></li>
+<li><a href="#删除模块或卸载软件">删除模块或卸载软件</a></li>
+</ul>
+</li>
+<li><a href="#6-操作中断时如何处理">6. 操作中断时如何处理</a></li>
+</ul>
+</div>
+</nav></aside>
+<article class="prose document"><p><a href="../../en/guide/">English</a> · <a href="../">项目首页</a> · <a href="../about/">关于</a></p>
+<p>本指南说明主程序的安装、模块管理、历史分析和设置。图像准备、分析参数、人工审核和各模块输出格式，请参阅下文链接的模块指南。</p>
+<p><strong>发布状态：</strong>Project Leap 1.0.0 公开 DMG 和在线组件下载正在准备中。以下安装步骤适用于该版本正式提供下载后。</p>
+<h2 id="1-安装主程序">1. 安装主程序</h2>
+<p>需要运行 <strong>macOS 27 或更高版本的 Apple Silicon Mac</strong>。下载主程序、安装模块和获取更新时需要联网。</p>
+<ol>
+<li>打开<a href="https://dingchengwang.github.io/Project-Leap/zh/">项目官网</a>或 <a href="https://github.com/DingchengWang/Project-Leap/releases">GitHub Releases</a>。</li>
+<li>在安装包可用后，下载 <code>Project-Leap-1.0.0-macOS-arm64.dmg</code>。</li>
+<li>打开 DMG，将 <strong>Project Leap.app</strong> 拖入<strong>应用程序（Applications）</strong>文件夹。</li>
+<li>从“应用程序”打开 Project Leap。复制完成后即可推出 DMG。</li>
+</ol>
+<p>公开 DMG 包含主程序本体。分析模块及其依赖通过 Project Leap 安装。</p>
+<h3 id="macos-阻止首次启动时">macOS 阻止首次启动时</h3>
+<p>计划中的首个公开版本没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。</p>
+<p>如果你从项目发布页面下载了应用，并决定继续打开：</p>
+<ol>
+<li>先尝试打开一次 <strong>Project Leap.app</strong>，然后关闭提示。</li>
+<li>进入<strong>系统设置 → 隐私与安全性</strong>，向下找到阻止此应用的提示。</li>
+<li>点击<strong>仍要打开</strong>，在下一条提示中确认<strong>打开</strong>；如果系统要求身份验证，按提示完成。</li>
+</ol>
+<p>macOS 会保存该应用的例外设置。上述步骤依据 <a href="https://support.apple.com/zh-cn/102445">Apple 对未公证应用的官方说明</a>。如果提示应用<strong>将损坏你的计算机</strong>或<strong>已损坏</strong>，应另行排查，不能按“无法验证开发者”处理。受组织管理的 Mac 若不允许设置例外，需要联系管理员。</p>
+<h2 id="2-安装分析模块">2. 安装分析模块</h2>
+<ol>
+<li>在侧边栏选择<strong>功能与维护</strong>。</li>
+<li>找到需要的模块，点击<strong>安装分析模块</strong>。</li>
+<li>保持软件打开，等待下载、校验和安装完成。</li>
+<li>模块状态显示<strong>已安装</strong>、安装按钮显示<strong>模块已就绪</strong>后，即可使用。</li>
+</ol>
+<p>可以安装一个模块，也可以同时安装两个。软件管理共享科学运行环境和 Cellpose 模型；荧光模块还会安装 Fiji。无需自行安装 Python、Cellpose 或 Fiji。另一个模块可以复用已经安装的共享依赖。</p>
+<p>分析或审核进程正在使用组件时，软件暂停安装和修复。完成相关操作后再维护模块。</p>
+<h2 id="3-选择模块并开始分析">3. 选择模块并开始分析</h2>
+<p>在侧边栏选择已安装模块，进入其<strong>分析工作台</strong>。按对应指南完成图像选择、通道指定、分析、审核和保存：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>用途</th>
+<th>指南</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>星形胶质细胞荧光强度分析</strong></td>
+<td>在星形胶质细胞感兴趣区域内测量荧光强度，并在 Fiji 中审核区域。</td>
+<td><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.zh.md">荧光模块使用指南</a></td>
+</tr>
+<tr>
+<td><strong>细胞计数</strong></td>
+<td>审核 DAPI 和辅助通道提供的候选细胞，编辑计数并保存确认结果。</td>
+<td><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.zh.md">细胞计数使用指南</a></td>
+</tr>
+</tbody>
+</table>
+<p>分析期间，<strong>运行细节</strong>显示进度和提示。分析运行时可以切换查看其他页面或模块；第二项分析仍需等待当前分析结束。流程要求人工审核时，完成审核并通过模块内的控件保存；计算结束本身不代表审核结果已经保存。</p>
+<h2 id="4-查看和管理历史分析">4. 查看和管理历史分析</h2>
+<p>打开<strong>任务与结果</strong>。任务按模块分组，点击一条记录即可展开<strong>任务详情</strong>，查看状态、结果预览和输出文件。</p>
+<ul>
+<li>点击预览或文件名可打开相应文件。已完成任务的<strong>打开结果文件夹</strong>可定位其输出目录。</li>
+<li>展开<strong>运行细节</strong>可查看已保存的软件、输入、参数、审核和耗时记录，具体内容取决于该任务保存了哪些信息。</li>
+<li>计数任务可通过<strong>重新打开计数</strong>编辑已保存的计数，或通过<strong>继续审核计数</strong>恢复已有审核会话。保存修改的方法见计数模块指南。</li>
+<li>点击<strong>刷新占用</strong>，更新各分析在软件内部占用磁盘空间的估计值。</li>
+</ul>
+<p>删除单项分析可点击该行的垃圾桶按钮；批量删除时，点击<strong>多选</strong>，勾选记录后点击<strong>删除所选</strong>。确认前请核对范围：这会永久删除所选分析在软件内部保存的数据，原始图像和已导出到软件数据目录之外的文件会保留。选择<strong>一个月内不再询问</strong>后，后续删除暂不再次确认，到下一个日历月对应时间后恢复询问。</p>
+<p>如果还需要重新分析或查看原始 Z 层，请保留原始图像。结果文件和保留的审核数据不能替代原图。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。</p>
+<h2 id="5-调整设置">5. 调整设置</h2>
+<h3 id="语言与外观">语言与外观</h3>
+<p>进入<strong>设置 → 语言与外观</strong>。<strong>界面语言</strong>可选 <strong>English</strong> 或<strong>中文</strong>；<strong>外观</strong>可选<strong>跟随系统</strong>、<strong>浅色</strong>或<strong>深色</strong>。外观切换不会改变科研图像的颜色，Fiji 和浏览器打开的页面使用各自的外观设置。</p>
+<h3 id="存储与迁移">存储与迁移</h3>
+<p><strong>设置 → 存储与数据</strong>显示当前软件数据目录。点击<strong>打开软件数据</strong>可在 Finder 中打开它。该目录包含已安装组件、任务记录、审核数据和保存的结果。</p>
+<p>需要迁移时，先完成正在进行的工作，点击<strong>更改存储目录</strong>，选择一个<strong>新的空文件夹</strong>。等待软件迁移、校验数据并完成重启。请通过此入口更改受管理数据的位置；在 Finder 中直接移动文件夹会使软件仍指向原来的路径。</p>
+<p>原始输入图像仍保存在原位置。迁移软件数据不会移动这些图像或外部导出文件。如果软件提示已配置的数据目录不存在，请先重新连接对应磁盘或恢复该目录，再打开软件。</p>
+<h3 id="清理缓存">清理缓存</h3>
+<p>在<strong>存储与数据</strong>中点击<strong>清理缓存</strong>并确认，可删除能重新生成的界面缓存和已不再使用的临时文件。原始图像、分析结果和审核数据会保留。若要删除某次分析及其已保存数据，应使用任务删除功能。</p>
+<h3 id="更新软件">更新软件</h3>
+<p>进入<strong>设置 → 软件更新 → 检查更新</strong>，统一检查主程序和已安装模块。按更新提示操作；组件下载并校验后才会启用，主程序更新会重新启动软件。更新所需的组件仍在使用时，会等待相关工作结束。</p>
+<p>如果软件提示“此版本尚未配置正式更新源与签名公钥”，表示本次没有连接可用的正式发布服务，不能据此判断软件已是最新版本。</p>
+<h3 id="检查并修复模块">检查并修复模块</h3>
+<p>在<strong>功能与维护</strong>中，点击已安装模块的<strong>检查并修复</strong>。软件会检查组件内容，并以<strong>当前已安装的同一版本</strong>修复缺失或损坏的组件。完整校验通过时，会提示无需修复。需要升级到可用的新版本时，使用<strong>检查更新</strong>。</p>
+<h3 id="删除模块或卸载软件">删除模块或卸载软件</h3>
+<p><strong>功能与维护</strong>中的<strong>删除模块</strong>会移除该模块的运行组件，保留历史任务和结果。其他已安装模块仍在使用的共享组件会保留；没有模块再需要共享模型或 Fiji 时，软件可能询问是否同时移除它们。</p>
+<p><strong>设置 → 卸载软件</strong>提供两种方式：一种保留任务、最终感兴趣区域、正式结果和必要恢复数据；另一种同时永久删除软件数据目录。两种方式均不影响该目录之外的原始输入。按需要保留的数据选择卸载方式。</p>
+<h2 id="6-操作中断时如何处理">6. 操作中断时如何处理</h2>
+<table>
+<thead>
+<tr>
+<th>遇到的情况</th>
+<th>下一步</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模块下载或安装失败</td>
+<td>查看<strong>功能与维护</strong>中的提示；需要时恢复网络后重试。已安装模块显示<strong>需要修复</strong>时，点击<strong>检查并修复</strong>。</td>
+</tr>
+<tr>
+<td>组件校验失败</td>
+<td>通过软件重试；再次失败时，将完整提示和模块版本报告到 <a href="https://github.com/DingchengWang/Project-Leap/issues">GitHub Issues</a>。</td>
+</tr>
+<tr>
+<td>维护按钮不可用</td>
+<td>完成当前占用组件的分析、审核或更新，再重试。</td>
+</tr>
+<tr>
+<td>分析失败或中断</td>
+<td>在<strong>任务与结果</strong>中查看该任务的提示和<strong>运行细节</strong>，按模块指南处理对应步骤；提示明确指向组件问题时再修复模块。</td>
+</tr>
+<tr>
+<td>结果预览无法载入</td>
+<td>点击预览打开原输出文件，或使用<strong>打开结果文件夹</strong>。</td>
+</tr>
+<tr>
+<td>找不到原图或软件数据目录</td>
+<td>恢复原位置或重新连接磁盘；移动后的计数原图可通过会话内入口重新定位。</td>
+</tr>
+</tbody>
+</table>
+<p>报告问题时，请提供 Project Leap 版本、模块版本、macOS 版本、失败操作和完整提示。只有在有权分享图像数据时才附上图像。</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/user-guide.zh.md">查看文档源文件 <span aria-hidden="true">↗</span></a></p></article>
+</div></main>
+<footer class="site-footer">
+  <div><a class="footer-brand" href="../">Project Leap</a><p>面向 Apple Silicon Mac 的科研图像分析软件。</p></div>
+  <nav aria-label="页脚导航"><a href="https://github.com/DingchengWang/Project-Leap">GitHub 源码 <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">许可协议</a><a href="#top">返回顶部 ↑</a></nav>
+</footer>
+</body>
+</html>

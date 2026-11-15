@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modules · Project Leap</title>
+  <meta name="description" content="Local microscopy image analysis for Apple Silicon Mac, with astrocyte fluorescence measurement and cell counting.">
+  <meta name="theme-color" content="#f7f8f4">
+  <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/modules/">
+  <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/modules/">
+  <link rel="alternate" hreflang="zh-CN" href="https://dingchengwang.github.io/Project-Leap/zh/modules/">
+  <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script src="../../assets/site.js" defer></script>
+</head>
+<body id="top" class="page-modules">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Project Leap home"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="../">Home</a>
+<a href="./" aria-current="page">Modules</a>
+<a href="../guide/">User guide</a>
+<a href="../downloads/">Downloads</a>
+<a href="../about/">About</a></nav>
+    <a class="language-switch" href="../../zh/modules/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch this page to Chinese">中文</a>
+  </div>
+</header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">ANALYSIS MODULES</p><h1>Modules</h1></header><article class="prose modules-content"><p>Project Leap currently includes two modules. The application manages their installation and maintenance; each module has its own analysis workflow and detailed guide.</p>
+<section aria-labelledby="fluorescence" class="module-detail">
+<p class="eyebrow">MODULE 1.1.0</p>
+<h2 id="fluorescence">Astrocyte fluorescence intensity measurement</h2>
+<p>Measure target-channel fluorescence within <strong>Whole</strong>, <strong>Soma</strong>, and <strong>Processes</strong> regions after reviewing the proposed regions in Fiji. Whole covers the full cell region; Soma and Processes separate the cell body from its processes.</p>
+<p>Import a supported multi-channel TIFF and assign DAPI, eGFP/GFAP, and the target measurement channels in the application. Project Leap prepares the single-channel working images while retaining the source TIFF in its original location. Review the regions in Fiji, confirm your edits, and let the analysis continue to measurement and result saving.</p>
+<p>The output includes three overlay images, a text analysis report, a fluorescence workbook, and <code>IHC_2D_ROI_Archive.zip</code>. The archive preserves the final regions together with cell identities, calibration, selected Z range, and measurement correspondence.</p>
+<h3 id="what-changed-from-the-v101-script-package">What changed from the v1.0.1 script package</h3>
+<p>Version 1.1.0 adds the desktop workflow: direct multi-channel TIFF import, channel assignment, module maintenance, task records, result previews, and the final region archive. The application provides Automatic, Mature, and Neonatal sample-age controls; the GFAP-only path remains limited to Mature samples.</p>
+<p>The existing Z-selection, segmentation, threshold, Fiji review, and fluorescence-measurement rules remain at scientific version 1.0.1. This release changes how you prepare, run, and retain an analysis.</p>
+<div class="actions">
+<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence guide <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source <span aria-hidden="true">↗</span></a>
+</div>
+</section>
+<section aria-labelledby="counting" class="module-detail">
+<p class="eyebrow">MODULE 1.0.0</p>
+<h2 id="counting">Cell counting</h2>
+<p>Review candidate cells using DAPI and a separate support channel for cell-body and perinuclear evidence. Select the support channel and its marker before starting; both are required. The module retains each cell's identity across its Z observations so that one cell can be reviewed in multiple slices without becoming multiple counts.</p>
+<p>Choose the source channels and display colors, then inspect the proposed cells in the counting workbench. Use the maximum-intensity projection for an overview and individual Z slices to check location. You can add, merge, delete, or reclassify objects and undo or redo your edits.</p>
+<p>Only objects assigned to <strong>Astrocyte</strong> contribute to the total. <strong>High Likelihood</strong> and <strong>Unrecognized</strong> objects remain available for review and can be added to the count; <strong>Neurons</strong> are shown separately and are excluded. The detailed guide explains these labels and the evidence used to propose them.</p>
+<p>Save the numbered overlay, the CSV count table, and the review session. You can reopen a saved session from Jobs &amp; Results. Keep the source image available to return to the original Z slices.</p>
+<div class="actions">
+<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Read the counting guide <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">View module source <span aria-hidden="true">↗</span></a>
+</div>
+</section>
+<h2 id="planned-modules">Planned modules</h2>
+<p>More analysis modules are planned.</p>
+<p><a href="../downloads/">Check release availability</a> or <a href="../guide/">read the application guide</a>.</p></article></main>
+<footer class="site-footer">
+  <div><a class="footer-brand" href="../">Project Leap</a><p>Research image analysis for Apple Silicon Mac.</p></div>
+  <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
+</footer>
+</body>
+</html>

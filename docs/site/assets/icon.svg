@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" fill="none">
+  <title>Project Leap — Astrocyte</title>
+  <desc>A single astrocyte drawn with seven gently branching processes, an irregular cell body, and a small nucleus.</desc>
+  <defs>
+    <linearGradient id="surface" x1="152" y1="88" x2="864" y2="936" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EAF0FD"/>
+    </linearGradient>
+  </defs>
+  <rect x="64" y="64" width="896" height="896" rx="204" fill="url(#surface)"/>
+  <rect x="66" y="66" width="892" height="892" rx="202" stroke="#D7E2F5" stroke-width="4"/>
+  <g transform="translate(-61.44 -61.44) scale(1.12)">
+  <g stroke="#3C6EDD" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke-width="32">
+      <path d="M494 450 C480 409 486 380 500 343 C515 304 500 266 483 234"/>
+      <path d="M561 472 C602 452 617 423 646 395 C675 365 704 337 745 329"/>
+      <path d="M584 524 C625 510 656 516 687 536 C725 560 758 564 797 550"/>
+      <path d="M558 575 C588 601 602 624 615 654 C635 703 651 727 689 752"/>
+      <path d="M505 590 C506 626 498 652 487 680 C472 721 475 757 489 796"/>
+      <path d="M445 561 C414 584 398 603 373 627 C342 658 315 675 271 677"/>
+      <path d="M441 493 C404 481 381 460 363 431 C338 391 308 370 268 364"/>
+    </g>
+    <g stroke-width="26">
+      <path d="M499 343 C529 326 547 295 562 268"/>
+      <path d="M666 376 C656 347 660 318 676 292"/>
+      <path d="M682 533 C701 503 727 486 754 483"/>
+      <path d="M738 560 C751 592 774 613 796 623"/>
+      <path d="M639 705 C669 700 700 712 722 729"/>
+      <path d="M481 703 C452 717 432 743 416 770"/>
+      <path d="M341 656 C334 695 316 724 290 745"/>
+      <path d="M363 431 C328 445 287 438 253 424"/>
+      <path d="M334 394 C342 363 334 333 317 306"/>
+    </g>
+    <path d="M494 443 C519 438 529 458 549 467 C570 477 571 497 580 515 C589 533 574 548 566 565 C557 583 537 584 518 589 C500 596 483 583 465 577 C445 570 442 553 435 537 C428 520 435 501 448 486 C464 471 471 447 494 443Z" fill="#DFE9FD" stroke-width="30"/>
+  </g>
+  <path d="M498 493 C515 486 532 497 534 514 C537 530 521 541 505 538 C488 536 482 518 490 504 C492 499 494 496 498 493Z" fill="#6A8FE0"/>
+  </g>
+</svg>

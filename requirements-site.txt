@@ -1,0 +1,2 @@
+# Development dependency for the static documentation site only.
+Markdown==3.9

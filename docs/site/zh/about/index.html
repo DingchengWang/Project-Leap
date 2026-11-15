@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>关于 · Project Leap</title>
+  <meta name="description" content="面向 Apple Silicon Mac 的本地显微图像分析软件，包含星形胶质细胞荧光强度分析和细胞计数。">
+  <meta name="theme-color" content="#f7f8f4">
+  <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/zh/about/">
+  <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/about/">
+  <link rel="alternate" hreflang="zh-CN" href="https://dingchengwang.github.io/Project-Leap/zh/about/">
+  <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../../assets/site.css">
+  <script src="../../assets/site.js" defer></script>
+</head>
+<body id="top" class="page-about">
+<a class="skip-link" href="#main">跳至正文</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../" aria-label="Project Leap 首页"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>菜单 <span aria-hidden="true">☰</span></button>
+    <nav id="main-nav" class="main-nav" aria-label="主导航"><a href="../">首页</a>
+<a href="../modules/">分析模块</a>
+<a href="../guide/">使用指南</a>
+<a href="../downloads/">下载</a>
+<a href="./" aria-current="page">关于</a></nav>
+    <a class="language-switch" href="../../en/about/" lang="en" hreflang="en" aria-label="将当前页面切换为英文">English</a>
+  </div>
+</header>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><p class="eyebrow">关于项目</p><h1>关于</h1></header>
+<div class="document-layout">
+<aside class="document-sidebar"><nav aria-label="本页内容"><p class="toc-heading">本页内容</p><div class="toc">
+<ul>
+<li><a href="#作者与研究归属">作者与研究归属</a></li>
+<li><a href="#开发方式与科学责任">开发方式与科学责任</a></li>
+<li><a href="#开源代码与第三方组件">开源代码与第三方组件</a></li>
+<li><a href="#科学参考资料">科学参考资料</a></li>
+</ul>
+</div>
+</nav></aside>
+<article class="prose document"><p><a href="../../en/about/">English</a> · <a href="../">项目首页</a> · <a href="../guide/">使用指南</a></p>
+<p>Project Leap 是用于免疫组织化学图像分析的本地科研平台。桌面主程序提供<strong>星形胶质细胞荧光强度分析</strong>和<strong>细胞计数</strong>两个模块。平台管理安装、图像导入、任务记录、结果和维护，各模块提供自己的分析流程和审核工具。</p>
+<h2 id="作者与研究归属">作者与研究归属</h2>
+<p>Project Leap 由 <strong>Dingcheng Wang</strong> 开发，作者为<strong>俄亥俄州立大学</strong>神经科学本科生，研究隶属于<strong>医学院神经科学系 Min Zhou 实验室</strong>。软件“关于”页面记录了上述归属，项目 <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a> 保留作者署名。</p>
+<h2 id="开发方式与科学责任">开发方式与科学责任</h2>
+<p>AI 工具辅助完成代码实现、调试、打包和文档编写。Dingcheng Wang 主导研究需求、生物学解释、分析规则、取舍及验收审核。</p>
+<p>使用 Project Leap 的研究者需要判断分析是否适合自己的实验，审核软件提出的感兴趣区域或细胞身份，并解释保存的测量结果。各模块指南分别说明输入要求、审核步骤和科学适用范围。</p>
+<h2 id="开源代码与第三方组件">开源代码与第三方组件</h2>
+<p>Project Leap 原创代码采用 <a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">Apache License 2.0</a>，署名见 <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a>。第三方软件和模型保留各自的许可证与版权声明。<a href="https://github.com/DingchengWang/Project-Leap/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a> 提供保留的许可材料和上游来源链接。</p>
+<p>源码分为三个仓库：</p>
+<ul>
+<li><a href="https://github.com/DingchengWang/Project-Leap">Project Leap</a>：桌面主程序及共享平台。</li>
+<li><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">星形胶质细胞荧光模块</a>：荧光分析引擎与指南。</li>
+<li><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">细胞计数模块</a>：计数引擎与指南。</li>
+</ul>
+<h2 id="科学参考资料">科学参考资料</h2>
+<p>软件的<strong>来源与参考资料</strong>页面列出以下上游方法和工具：</p>
+<ul>
+<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a>。</li>
+<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a>。</li>
+<li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a>。</li>
+</ul>
+<p>同一组链接也保留在软件的<a href="https://github.com/DingchengWang/Project-Leap/blob/main/app/leap_desktop/docs/references.html">参考资料资源文件</a>中。</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/about.zh.md">查看文档源文件 <span aria-hidden="true">↗</span></a></p></article>
+</div></main>
+<footer class="site-footer">
+  <div><a class="footer-brand" href="../">Project Leap</a><p>面向 Apple Silicon Mac 的科研图像分析软件。</p></div>
+  <nav aria-label="页脚导航"><a href="https://github.com/DingchengWang/Project-Leap">GitHub 源码 <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">许可协议</a><a href="#top">返回顶部 ↑</a></nav>
+</footer>
+</body>
+</html>
