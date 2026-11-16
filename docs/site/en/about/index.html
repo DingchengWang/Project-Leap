@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About · Project Leap</title>
-  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
+  <meta name="description" content="Analyze astrocyte fluorescence images on an Apple Silicon Mac.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/about/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/about/">
@@ -20,7 +20,7 @@
     <a class="brand" href="../" aria-label="Project Leap home"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="../">Home</a>
-<a href="../modules/">Modules</a>
+<a href="../modules/">Analysis modules</a>
 <a href="../guide/">User guide</a>
 <a href="../downloads/">Downloads</a>
 <a href="./" aria-current="page">About</a></nav>
@@ -31,35 +31,35 @@
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="On this page"><p class="toc-heading">On this page</p><div class="toc">
 <ul>
-<li><a href="#author-and-research-affiliation">Author and research affiliation</a></li>
-<li><a href="#methods-and-tools">Methods and tools</a></li>
-<li><a href="#source-and-licenses">Source and licenses</a></li>
+<li><a href="#author-and-research">Author and research</a></li>
+<li><a href="#open-source-tools-used-in-the-software">Open-source tools used in the software</a></li>
+<li><a href="#source-code-and-licensing">Source code and licensing</a></li>
 </ul>
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../zh/about/">中文</a> · <a href="../">Project home</a> · <a href="../guide/">User guide</a></p>
-<h2 id="author-and-research-affiliation">Author and research affiliation</h2>
-<p><strong>Dingcheng Wang</strong> developed Project Leap as a neuroscience undergraduate at <strong>The Ohio State University</strong>, with research affiliation to the <strong>Min Zhou Laboratory, Department of Neuroscience, College of Medicine</strong>.</p>
-<p>AI tools assisted with code implementation, debugging, packaging, and documentation. Dingcheng Wang directed the research requirements, analysis rules, biological interpretation, and development decisions, and was responsible for acceptance review.</p>
-<h2 id="methods-and-tools">Methods and tools</h2>
-<p>Project Leap uses the following upstream tools for distinct parts of the analysis:</p>
+<h2 id="author-and-research">Author and research</h2>
+<p>Project Leap was developed by Dingcheng Wang, an undergraduate neuroscience student at The Ohio State University. The research projects it primarily supports are based in the Min Zhou Laboratory, Department of Neuroscience, College of Medicine, at The Ohio State University.</p>
+<p>The software’s research requirements, biological interpretations, internal analysis methods, and cell parameters are all original. GPT-5.6 Sol / GPT-6 Astra assisted with code implementation, debugging, packaging, and documentation during development.</p>
+<h2 id="open-source-tools-used-in-the-software">Open-source tools used in the software</h2>
+<p>The following are upstream analysis tools that perform different tasks:</p>
 <ul>
-<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a> provides segmentation for the eGFP fluorescence-analysis route and the counting module.</li>
-<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a> supplies DAPI nuclear candidates in the mature GFAP-only fluorescence-analysis route. Project Leap uses these candidates with GFAP structure to define the cell regions.</li>
-<li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a> supports interactive review of fluorescence regions and measures the raw target-channel projections within the final regions.</li>
+<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a>: provides the base segmentation for fluorescence analysis with eGFP and for the cell counting module.</li>
+<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a>: generates candidate DAPI nuclear regions for GFAP-only fluorescence analysis of mature samples. Project Leap then combines these candidates with GFAP structural patterns to define cell regions.</li>
+<li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a>: used to interactively review fluorescence analysis regions and measure the intensity of the raw target-channel projection within the final regions.</li>
 </ul>
-<h2 id="source-and-licenses">Source and licenses</h2>
-<p>The source is maintained in three repositories:</p>
+<h2 id="source-code-and-licensing">Source code and licensing</h2>
+<p>The source code is maintained in three repositories:</p>
 <ul>
-<li><a href="https://github.com/DingchengWang/Project-Leap">Project Leap</a>: desktop application and shared platform.</li>
-<li><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">Astrocyte fluorescence module</a>: fluorescence analysis engine and guide.</li>
-<li><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">Cell Counting module</a>: counting engine and guide.</li>
+<li><a href="https://github.com/DingchengWang/Project-Leap">Project Leap</a>: the desktop application and shared platform.</li>
+<li><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">Astrocyte fluorescence module</a>: the fluorescence analysis engine and guide.</li>
+<li><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">Cell counting module</a>: the counting engine and guide.</li>
 </ul>
-<p>Original Project Leap code is licensed under <a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">Apache License 2.0</a>, with attribution in <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a>. Third-party software and models retain their respective licenses and copyright notices. <a href="https://github.com/DingchengWang/Project-Leap/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a> links the retained license material and upstream sources.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/about.en.md">View the source document <span aria-hidden="true">↗</span></a></p></article>
+<p>Original Project Leap code is licensed under the <a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">Apache License 2.0</a>, with attribution in <a href="https://github.com/DingchengWang/Project-Leap/blob/main/NOTICE">NOTICE</a>. Third-party software and models retain their respective licenses and copyright notices. <a href="https://github.com/DingchengWang/Project-Leap/blob/main/THIRD_PARTY_NOTICES.md">THIRD_PARTY_NOTICES.md</a> contains the retained licensing materials and links to upstream sources.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/about.en.md">View document source <span aria-hidden="true">↗</span></a></p></article>
 </div></main>
 <footer class="site-footer">
   <div><a class="footer-brand" href="../">Project Leap</a></div>
-  <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
+  <nav aria-label="Footer navigation"><a href="https://github.com/DingchengWang/Project-Leap">Source code on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>
 </html>

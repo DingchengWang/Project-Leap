@@ -34,5 +34,3 @@
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/download/v1.0.1/Project-Leap-2D-V1.0.1.zip">下载 v1.0.1 脚本包 <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/releases/tag/v1.0.1">查看脚本版本详情 <span aria-hidden="true">↗</span></a>
 </div>
-
-原发布记录和修复文件继续保留，供已有脚本安装获取与其对应的安装包。

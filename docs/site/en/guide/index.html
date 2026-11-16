@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>User guide · Project Leap</title>
-  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
+  <meta name="description" content="Analyze astrocyte fluorescence images on an Apple Silicon Mac.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
@@ -20,7 +20,7 @@
     <a class="brand" href="../" aria-label="Project Leap home"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="../">Home</a>
-<a href="../modules/">Modules</a>
+<a href="../modules/">Analysis modules</a>
 <a href="./" aria-current="page">User guide</a>
 <a href="../downloads/">Downloads</a>
 <a href="../about/">About</a></nav>
@@ -31,146 +31,146 @@
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="On this page"><p class="toc-heading">On this page</p><div class="toc">
 <ul>
-<li><a href="#1-install-the-application">1. Install the application</a><ul>
+<li><a href="#1-install-the-main-application">1. Install the main application</a><ul>
 <li><a href="#if-macos-blocks-the-first-launch">If macOS blocks the first launch</a></li>
 </ul>
 </li>
-<li><a href="#2-install-an-analysis-module">2. Install an analysis module</a></li>
-<li><a href="#3-choose-a-module-and-run-an-analysis">3. Choose a module and run an analysis</a></li>
+<li><a href="#2-install-analysis-modules">2. Install analysis modules</a></li>
+<li><a href="#3-choose-a-module-and-start-an-analysis">3. Choose a module and start an analysis</a></li>
 <li><a href="#4-view-and-manage-saved-analyses">4. View and manage saved analyses</a></li>
 <li><a href="#5-adjust-settings">5. Adjust settings</a><ul>
 <li><a href="#language-and-appearance">Language and appearance</a></li>
 <li><a href="#storage-and-migration">Storage and migration</a></li>
 <li><a href="#clear-caches">Clear caches</a></li>
-<li><a href="#updates">Updates</a></li>
+<li><a href="#update-the-application">Update the application</a></li>
 <li><a href="#check-and-repair-a-module">Check and repair a module</a></li>
-<li><a href="#remove-modules-or-uninstall">Remove modules or uninstall</a></li>
+<li><a href="#remove-modules-or-uninstall-the-application">Remove modules or uninstall the application</a></li>
 </ul>
 </li>
-<li><a href="#6-resolve-an-interrupted-operation">6. Resolve an interrupted operation</a></li>
+<li><a href="#6-handle-interrupted-operations">6. Handle interrupted operations</a></li>
 </ul>
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../zh/guide/">中文</a> · <a href="../">Project home</a> · <a href="../about/">About</a></p>
-<p><strong>Current release: Project Leap v1.0.0.</strong> Install the application, add the modules you need, and follow the module guides for image preparation, analysis, and review. This guide covers installation, saved analyses, and application settings.</p>
-<h2 id="1-install-the-application">1. Install the application</h2>
-<p>Use an <strong>Apple Silicon Mac running macOS 27 or later</strong>. Internet access is required to download the application, install modules, and obtain updates.</p>
+<p><strong>Current release: Project Leap v1.0.0.</strong> After installing the main application, choose the analysis modules you need, then follow their guides to prepare images, run analyses, and review results. This guide covers installation, management of saved analyses, and application settings.</p>
+<h2 id="1-install-the-main-application">1. Install the main application</h2>
+<p>An <strong>Apple Silicon Mac running macOS 27 or later</strong> is required. You need an internet connection to download the main application, install modules, and obtain updates.</p>
 <ol>
 <li>Open the <a href="https://dingchengwang.github.io/Project-Leap/en/">project website</a> or <a href="https://github.com/DingchengWang/Project-Leap/releases">GitHub Releases</a>.</li>
-<li>Download <a href="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg"><code>Project-Leap-1.0.0-macOS-arm64.dmg</code></a>.</li>
-<li>Open the DMG and drag <strong>Project Leap.app</strong> into <strong>Applications</strong>.</li>
-<li>Open Project Leap from Applications. After copying the application, you can eject the DMG.</li>
+<li>Download <a href="https://github.com/DingchengWang/Project-Leap/releases/download/v1.0.0/Project-Leap-1.0.0-macOS-arm64.dmg">Project-Leap-1.0.0-macOS-arm64.dmg</a>.</li>
+<li>Open the DMG and drag <strong>Project Leap.app</strong> into the <strong>Applications</strong> folder.</li>
+<li>Open Project Leap from Applications. You can eject the DMG once copying is complete.</li>
 </ol>
 <p>The public DMG contains the main application. Analysis modules and their dependencies are installed through Project Leap.</p>
 <h3 id="if-macos-blocks-the-first-launch">If macOS blocks the first launch</h3>
-<p>Project Leap 1.0.0 does not have an Apple Developer ID signature or Apple notarization. Gatekeeper may therefore report that the developer cannot be verified or that Apple cannot check the application for malicious software.</p>
-<p>If you downloaded the application from the project release and choose to open it:</p>
+<p>macOS may report that the developer cannot be verified or that Apple cannot check the application for malicious software.</p>
+<p>If you downloaded the application from the project release page and choose to open it:</p>
 <ol>
-<li>Attempt to open <strong>Project Leap.app</strong> once, then dismiss the alert.</li>
-<li>Open <strong>System Settings → Privacy &amp; Security</strong> and scroll to the blocked-application message.</li>
-<li>Click <strong>Open Anyway</strong>, then confirm <strong>Open</strong> in the next alert. Complete macOS authentication if requested.</li>
+<li>Try opening <strong>Project Leap.app</strong> once, then dismiss the alert.</li>
+<li>Go to <strong>System Settings → Privacy &amp; Security</strong> and scroll down to the message about the blocked application.</li>
+<li>Click <strong>Open Anyway</strong>, then confirm <strong>Open</strong> in the next alert. Complete authentication if macOS requests it.</li>
 </ol>
-<p>macOS saves the exception for that application. These steps follow <a href="https://support.apple.com/en-us/102445">Apple’s instructions for opening an unnotarized application</a>. An alert saying the application <strong>will damage your computer</strong> or <strong>is damaged</strong> needs separate investigation; do not treat it as the unidentified-developer prompt. If a managed Mac does not allow the exception, contact its administrator.</p>
-<h2 id="2-install-an-analysis-module">2. Install an analysis module</h2>
+<p>macOS saves the exception for that application. These steps follow <a href="https://support.apple.com/en-us/102445">Apple’s official instructions for unnotarized applications</a>. If an alert says the application will damage your computer or is damaged, investigate that issue separately. If an organization-managed Mac does not allow exceptions, contact its administrator.</p>
+<h2 id="2-install-analysis-modules">2. Install analysis modules</h2>
 <ol>
 <li>Select <strong>Modules &amp; Maintenance</strong> in the sidebar.</li>
-<li>Find the module you want to use and click <strong>Install analysis module</strong>.</li>
-<li>Keep the application open while it downloads, verifies, and installs the required components.</li>
-<li>Wait until the module shows <strong>Installed</strong> and its installation button reads <strong>Module ready</strong>.</li>
+<li>Find the module you need and click <strong>Install analysis module</strong>.</li>
+<li>Keep the application open and wait for downloading, verification, and installation to finish.</li>
+<li>The module is ready to use when its status shows <strong>Installed</strong> and its installation button reads <strong>Module ready</strong>.</li>
 </ol>
-<p>You can install either module or both. Project Leap installs the required dependencies, including Fiji for fluorescence review.</p>
-<p>Installation and repair pause while analysis or its review processes are using the components. Finish those operations before maintaining a module.</p>
-<h2 id="3-choose-a-module-and-run-an-analysis">3. Choose a module and run an analysis</h2>
-<p>Select an installed module in the sidebar to open its <strong>Analysis Workspace</strong>. Follow its guide through image selection, channel assignment, analysis, review, and saving:</p>
+<p>You can install either module or both. Project Leap also installs the required dependencies. The fluorescence module uses Fiji to review regions of interest.</p>
+<p>The application pauses installation and repair while an analysis or review process is using the components. Finish those operations before performing module maintenance.</p>
+<h2 id="3-choose-a-module-and-start-an-analysis">3. Choose a module and start an analysis</h2>
+<p>Select an installed module in the sidebar to open its <strong>Analysis Workspace</strong>. Follow the corresponding guide to select images, assign channels, run the analysis, review the results, and save:</p>
 <table>
 <thead>
 <tr>
 <th>Module</th>
-<th>Use it for</th>
+<th>Purpose</th>
 <th>Guide</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>Astrocyte Fluorescence Intensity Measurement</strong></td>
-<td>Measure fluorescence within astrocyte regions of interest and review those regions in Fiji.</td>
-<td><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Fluorescence guide</a></td>
+<td>Measure fluorescence intensity within astrocyte regions of interest and review those regions in Fiji.</td>
+<td><a href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Fluorescence module user guide</a></td>
 </tr>
 <tr>
 <td><strong>Cell Counting</strong></td>
-<td>Review candidate cells from DAPI and auxiliary-channel evidence, edit the count, and save the confirmed results.</td>
-<td><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Cell Counting guide</a></td>
+<td>Review candidate cells identified from DAPI and the support channel, edit the count, and save the confirmed results.</td>
+<td><a href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Cell Counting user guide</a></td>
 </tr>
 </tbody>
 </table>
-<p>During an analysis, <strong>Run details</strong> shows progress and messages. You can visit other pages or modules while it runs; a second analysis can start after the current one finishes.</p>
-<p>Complete manual review and save through the module’s controls. In Cell Counting, edits are saved as a draft so you can resume review. Click <strong>Confirm &amp; save Astrocyte count</strong> to save a confirmed result; later edits remain in the draft until you confirm again.</p>
+<p>During analysis, <strong>Run details</strong> shows progress and messages. You can switch to other pages or modules while it runs, then start another analysis once the current one finishes.</p>
+<p>After completing manual review, save the results using the module’s controls. Cell Counting saves edits as a draft so you can continue reviewing later. The application saves confirmed results only after you click <strong>Confirm &amp; save Astrocyte count</strong>. Any edits made after confirmation remain in the draft; confirm again to save them as a new result version.</p>
 <h2 id="4-view-and-manage-saved-analyses">4. View and manage saved analyses</h2>
-<p>Open <strong>Jobs &amp; Results</strong>. Analyses are grouped by module. Click a row to expand <strong>Job details</strong>, where you can inspect the recorded status, result previews, and available output files.</p>
+<p>Open <strong>Jobs &amp; Results</strong>. Jobs are grouped by module. Click a record to expand <strong>Job details</strong> and view its status, result previews, and output files.</p>
 <ul>
-<li>Click a preview or output filename to open the file. For a completed analysis, <strong>Open results folder</strong> opens its output directory.</li>
-<li>Expand <strong>Run details</strong> to inspect the saved software, inputs, parameters, review, and timing where recorded.</li>
-<li>For counting analyses, use <strong>Reopen count</strong> to edit a saved count or <strong>Continue count review</strong> to resume an available review session. The counting guide explains how edits are saved.</li>
-<li>Click <strong>Refresh storage</strong> to update the estimated disk space used by each analysis inside application storage.</li>
+<li>Click a preview or filename to open the corresponding file. For a completed job, <strong>Open results folder</strong> opens its output directory.</li>
+<li>Expand <strong>Run details</strong> to view saved records of the software, inputs, parameters, review, and time taken. The available details depend on what was recorded for that job.</li>
+<li>For counting jobs, use <strong>Reopen count</strong> to edit a saved count, or <strong>Continue count review</strong> to resume an existing review session. See the counting module guide for how to save changes.</li>
+<li>Click <strong>Refresh storage</strong> to update the estimated disk space each analysis uses within application storage.</li>
 </ul>
-<p>To delete an analysis, use its trash button. To delete several, click <strong>Select</strong>, select the records, and click <strong>Delete selected</strong>. Read the confirmation before proceeding: deletion permanently removes those analyses’ application-managed data. Original images and files already exported outside application storage are retained. <strong>Don’t ask again for one month</strong> suppresses subsequent deletion confirmations until the calendar-month interval expires.</p>
-<p>Keep original images available for rerunning an analysis or inspecting original Z planes. If a counting session reports that its source image has moved, use the relocation control in that session; the application checks the replacement against the saved analysis.</p>
+<p>To delete a single analysis, click the trash button on its row. To delete several analyses, click <strong>Select</strong>, select the records, and click <strong>Delete selected</strong>. Check the scope before confirming: this permanently deletes the selected analyses’ data saved within the application. Original images and files exported outside the application data folder are retained. Selecting <strong>Don’t ask again for one month</strong> suppresses deletion confirmations; the application resumes asking after one calendar month.</p>
+<p>Original images are required to rerun an analysis or view the original Z planes, so keep these files. If a counting session reports that its source image has moved, use the relocation control within that session. The application checks whether the image at the new path matches the job.</p>
 <h2 id="5-adjust-settings">5. Adjust settings</h2>
 <h3 id="language-and-appearance">Language and appearance</h3>
-<p>Open <strong>Settings → Language &amp; appearance</strong>. <strong>Interface language</strong> offers <strong>English</strong> and <strong>中文</strong>. <strong>Appearance</strong> offers <strong>System</strong>, <strong>Light</strong>, and <strong>Dark</strong>. The application’s appearance setting does not change scientific image colors; Fiji and pages opened in a browser use their own appearance settings.</p>
+<p>Go to <strong>Settings → Language &amp; appearance</strong>. You can choose <strong>English</strong> or <strong>中文</strong> for the interface language, and <strong>System</strong>, <strong>Light</strong>, or <strong>Dark</strong> for the appearance. Fiji and pages opened in a browser use their own appearance settings.</p>
 <h3 id="storage-and-migration">Storage and migration</h3>
-<p><strong>Settings → Storage &amp; data</strong> displays the active application data folder. <strong>Open application data</strong> opens it in Finder. This folder contains installed components, job records, review data, and saved results.</p>
-<p>To move that data, finish active work, click <strong>Change storage folder</strong>, and select a <strong>new, empty folder</strong>. Let Project Leap migrate and verify the data, then complete the application restart. Use this control to change the managed location; moving the folder manually leaves the saved location pointing to the old path.</p>
-<p>Original input images remain at their source locations. Moving application data does not move those images or external exports. If the application reports that its configured data folder is missing, reconnect the drive or restore that folder before reopening it.</p>
+<p><strong>Settings → Storage &amp; data</strong> shows the current application data folder. Click <strong>Open application data</strong> to open it in Finder. This folder contains installed components, job records, review data, and saved results.</p>
+<p>To move the data, finish any active work, click <strong>Change storage folder</strong>, and select a <strong>new, empty folder</strong>. Wait for the application to migrate and verify the data and finish restarting. Use this control to change where managed data is stored; moving the folder directly in Finder leaves the application pointing to the old path.</p>
+<p>Original input images remain in their original locations. Migrating application data does not move those images or externally exported files. If the application reports that its configured data folder is missing, reconnect the corresponding drive or restore the folder before reopening the application.</p>
 <h3 id="clear-caches">Clear caches</h3>
-<p>Click <strong>Clear cache</strong> under <strong>Storage &amp; data</strong> and confirm. This removes rebuildable interface caches and temporary files that are no longer in use. Original images, analysis results, and review data are retained. Use job deletion when you intend to remove an analysis and its saved data.</p>
-<h3 id="updates">Updates</h3>
-<p>Open <strong>Settings → Software updates → Check for Updates</strong>. This checks the main application and installed modules together. Follow the update prompt; components are downloaded and verified before activation, and an application update restarts Project Leap. An update that needs components currently in use waits for that work to finish.</p>
+<p>In <strong>Storage &amp; data</strong>, click <strong>Clear cache</strong> and confirm to remove interface caches that can be regenerated and temporary files that are no longer in use. Original images, analysis results, and review data are retained. To remove an analysis and its saved data, use job deletion.</p>
+<h3 id="update-the-application">Update the application</h3>
+<p>Go to <strong>Settings → Software updates → Check for Updates</strong> to check the main application and installed modules together. Follow the update prompts. Components are activated only after downloading and verification, and an update to the main application restarts it. If an update requires components that are still in use, it waits for the relevant work to finish.</p>
 <h3 id="check-and-repair-a-module">Check and repair a module</h3>
-<p>In <strong>Modules &amp; Maintenance</strong>, click <strong>Check and Repair</strong> for an installed module. The application checks its contents and repairs damaged or missing components using the <strong>same installed version</strong>. If verification passes, it reports that repair is unnecessary. Use <strong>Check for Updates</strong> when you want an available newer version.</p>
-<h3 id="remove-modules-or-uninstall">Remove modules or uninstall</h3>
-<p><strong>Remove module</strong> in <strong>Modules &amp; Maintenance</strong> removes that module’s runtime components while preserving its job history and results. Shared components used by another installed module are retained. When no module needs a shared model or Fiji, the application may offer to remove it as well.</p>
-<p><strong>Settings → Uninstall application</strong> offers two choices. One preserves jobs, final regions of interest, results, and required recovery data; the other permanently deletes the application data folder as well. Both leave original inputs outside that folder untouched. Choose the option that matches the data you intend to retain.</p>
-<h2 id="6-resolve-an-interrupted-operation">6. Resolve an interrupted operation</h2>
+<p>In <strong>Modules &amp; Maintenance</strong>, click <strong>Check and Repair</strong> for an installed module. The application checks the component contents and repairs missing or damaged components using the same version that is currently installed. If full verification passes, it reports that no repair is needed. Use <strong>Check for Updates</strong> to upgrade to an available newer version.</p>
+<h3 id="remove-modules-or-uninstall-the-application">Remove modules or uninstall the application</h3>
+<p><strong>Remove module</strong> in <strong>Modules &amp; Maintenance</strong> removes the module’s runtime components while retaining its job history and results. Shared components still used by other installed modules are retained. If no module needs a shared model or Fiji, the application may ask whether to remove them as well.</p>
+<p><strong>Settings → Uninstall application</strong> offers two options. One retains jobs, final regions of interest, finalized results, and necessary recovery data. The other also permanently deletes the application data folder. Neither option affects original inputs outside that folder. Choose the uninstall option according to the data you need to retain.</p>
+<h2 id="6-handle-interrupted-operations">6. Handle interrupted operations</h2>
 <table>
 <thead>
 <tr>
-<th>What you see</th>
-<th>Next action</th>
+<th>What happens</th>
+<th>Next step</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Module download or installation fails</td>
-<td>Read the message in <strong>Modules &amp; Maintenance</strong>. Restore network access if needed and retry. If an installed module shows <strong>Repair needed</strong>, use <strong>Check and Repair</strong>.</td>
+<td>Read the message in <strong>Modules &amp; Maintenance</strong>. Restore the network connection if needed, then retry. If an installed module shows <strong>Repair needed</strong>, click <strong>Check and Repair</strong>.</td>
 </tr>
 <tr>
-<td>A component’s verification fails</td>
-<td>Retry through the application. If it fails again, report the exact message and module version through <a href="https://github.com/DingchengWang/Project-Leap/issues">GitHub Issues</a>.</td>
+<td>Component verification fails</td>
+<td>Retry through the application. If it fails again, report the full message and module version through <a href="https://github.com/DingchengWang/Project-Leap/issues">GitHub Issues</a>.</td>
 </tr>
 <tr>
-<td>A maintenance control is unavailable</td>
-<td>Finish the analysis, review session, or update currently using the components, then try again.</td>
+<td>A maintenance button is unavailable</td>
+<td>Finish the analysis, review, or update currently using the components, then retry.</td>
 </tr>
 <tr>
 <td>An analysis fails or is interrupted</td>
-<td>Open its entry in <strong>Jobs &amp; Results</strong> and inspect the recorded message and <strong>Run details</strong>. Follow the module guide for the affected step; use repair when the message identifies a component problem.</td>
+<td>In <strong>Jobs &amp; Results</strong>, check the job’s message and <strong>Run details</strong>, then follow the module guide for the affected step. Repair the module when the message explicitly identifies a component problem.</td>
 </tr>
 <tr>
 <td>A result preview does not load</td>
-<td>Click it to open the original output file, or use <strong>Open results folder</strong>.</td>
+<td>Click the preview to open the original output file, or use <strong>Open results folder</strong>.</td>
 </tr>
 <tr>
 <td>A source image or application data folder cannot be found</td>
-<td>Restore its location or reconnect the drive. For a moved counting source image, use the session’s relocation control.</td>
+<td>Restore the original location or reconnect the drive. If a counting source image has moved, use the relocation control within its session.</td>
 </tr>
 </tbody>
 </table>
-<p>When reporting a problem, include the Project Leap version, module version, macOS version, the action that failed, and the exact message. Include image data only when you are authorized to share it.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/user-guide.en.md">View the source document <span aria-hidden="true">↗</span></a></p></article>
+<p>When reporting a problem, include the Project Leap version, module version, macOS version, the operation that failed, and the full message. Attach images only if you are authorized to share the image data.</p><p class="document-source"><a href="https://github.com/DingchengWang/Project-Leap/blob/main/docs/user-guide.en.md">View document source <span aria-hidden="true">↗</span></a></p></article>
 </div></main>
 <footer class="site-footer">
   <div><a class="footer-brand" href="../">Project Leap</a></div>
-  <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
+  <nav aria-label="Footer navigation"><a href="https://github.com/DingchengWang/Project-Leap">Source code on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>
 </html>

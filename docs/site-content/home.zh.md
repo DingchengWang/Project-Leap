@@ -1,9 +1,9 @@
 <section class="hero" markdown="1">
 <div class="hero-copy" markdown="1">
 
-# 星形胶质细胞荧光分析与细胞计数
+# 星形胶质细胞荧光图像分析平台
 
-Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将自动分析与人工审核结合，研究者可以对照图像调整测量区域，并确认哪些细胞计入总数。
+Project Leap是一款面向星形胶质细胞多通道免疫组化荧光图像（IHC）的分析软件。该软件结合了当下先进的开源模型和原创设计，使其拥有独特的星形胶质细胞框选机制，能在复杂的图像背景中描绘出精细的星形胶质细胞ROI（region of interest）。在此基础上，该软件的模块化设计为后续开发者加入各类分析功能提供了很好的灵活度。当前软件内已经包括荧光强度测量和细胞空间定位计数两项功能，其中前者可以连接Fiji Image J进行自动测量，未来还将有更多功能和联动软件接口加入。
 
 <div class="actions" markdown="0">
 <a class="button primary" href="downloads/">下载 Mac 版 <span aria-hidden="true">↓</span></a>
@@ -20,7 +20,7 @@ Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将�
 
 <div class="section-heading" markdown="1">
 
-## 按研究任务选择模块
+## 按研究需求选择模块
 
 </div>
 
@@ -29,7 +29,7 @@ Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将�
 <div class="module-number" aria-hidden="true" markdown="0">01</div>
 <div markdown="1">
 <h3 id="fluorescence-home">星形胶质细胞荧光强度分析</h3>
-<p>荧光模块测量审核后的整细胞、胞体和突起区域内的目标荧光，并保留测量值与细胞及最终边界的对应关系。</p>
+<p>该模块基于软件独特的细胞框选机制，整合定制化Fiji Image J流程，使其可以对星形胶质细胞整体、胞体及突起区域的多项目标荧光强度指标进行自动或半自动测量。</p>
 <a class="text-link" href="modules/#fluorescence">了解荧光分析 <span aria-hidden="true">→</span></a>
 </div>
 </section>
@@ -37,7 +37,7 @@ Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将�
 <div class="module-number" aria-hidden="true" markdown="0">02</div>
 <div markdown="1">
 <h3 id="counting-home">细胞计数</h3>
-<p>计数模块结合 DAPI 与另一荧光通道识别候选细胞。研究者可沿 Z 轴逐层核对细胞，确认哪些细胞纳入星形胶质细胞总数。</p>
+<p>该模块通过DAPI标志物外加一项自定义的辅助荧光通道识别细胞。同时，该模块在多层图像的3D空间内对细胞进行定位，解决了传统2D图像平面内因细胞重叠不清而造成的计数问题。</p>
 <a class="text-link" href="modules/#counting">了解细胞计数 <span aria-hidden="true">→</span></a>
 </div>
 </section>
@@ -46,9 +46,9 @@ Project Leap 是一款面向多通道荧光图像的 Mac 分析软件。它将�
 <div class="closing-row" markdown="1">
 <div markdown="1">
 
-## 图像在本机分析，结果按任务保存
+## 如何使用
 
-每次保存的分析都可在“任务与结果”中查看，包括测量表、标注图及对应的区域或审核会话。计数会话还可重新打开，继续编辑。原始 TIFF 保留在原文件夹。
+当前Project Leap官网提供软件主体的下载和操作说明，内部分析功能模块需要在软件内单独下载安装。软件可实现全自动分析或包含人工检查的半自动分析，具体模块的操作说明详见GitHub仓库。软件内所有科学计算均在本地进行，但分析速度可能受到图像大小和硬件性能的影响。
 
 </div>
 <a class="button secondary" href="guide/">查看使用方法 <span aria-hidden="true">→</span></a>

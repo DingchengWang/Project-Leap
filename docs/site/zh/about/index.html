@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>关于 · Project Leap</title>
-  <meta name="description" content="在 Apple Silicon Mac 上完成星形胶质细胞荧光定量与细胞计数，结合自动分析和图像审核。">
+  <meta name="description" content="在 Apple Silicon Mac 上完成星形胶质细胞荧光图像的分析。">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/zh/about/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/about/">
@@ -31,21 +31,21 @@
 <div class="document-layout">
 <aside class="document-sidebar"><nav aria-label="本页内容"><p class="toc-heading">本页内容</p><div class="toc">
 <ul>
-<li><a href="#作者与研究归属">作者与研究归属</a></li>
-<li><a href="#分析中使用的方法与工具">分析中使用的方法与工具</a></li>
+<li><a href="#作者与研究">作者与研究</a></li>
+<li><a href="#软件使用的开源工具">软件使用的开源工具</a></li>
 <li><a href="#源码与许可">源码与许可</a></li>
 </ul>
 </div>
 </nav></aside>
 <article class="prose document"><p><a href="../../en/about/">English</a> · <a href="../">项目首页</a> · <a href="../guide/">使用指南</a></p>
-<h2 id="作者与研究归属">作者与研究归属</h2>
-<p>Project Leap 由 <strong>Dingcheng Wang</strong> 开发。作者为<strong>俄亥俄州立大学</strong>神经科学本科生，研究隶属于<strong>医学院神经科学系 Min Zhou 实验室</strong>。</p>
-<p>开发过程中，AI 工具辅助代码实现、调试、打包和文档编写。Dingcheng Wang 主导研究需求、分析规则、生物学解释和开发取舍，并负责验收审核。</p>
-<h2 id="分析中使用的方法与工具">分析中使用的方法与工具</h2>
-<p>以下上游工具承担不同的分析任务：</p>
+<h2 id="作者与研究">作者与研究</h2>
+<p>Project Leap 由俄亥俄州立大学神经科学本科生Dingcheng Wang开发。主要服务的研究项目隶属于俄亥俄州立大学医学院神经科学系 Min Zhou 实验室。</p>
+<p>该软件的研究需求、生物学解释、内部分析逻辑和细胞参数均为原创。开发过程中使用了GPT-5.6 Sol / GPT-6 Astra辅助代码实现、调试、打包和文档编写。</p>
+<h2 id="软件使用的开源工具">软件使用的开源工具</h2>
+<p>以下为上游分析工具承担不同的分析任务：</p>
 <ul>
-<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a>：为含 eGFP 的荧光分析分支及计数模块提供分割结果。</li>
-<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a>：在成熟样本的 GFAP-only 荧光分析分支中生成 DAPI 细胞核候选。Project Leap 再结合这些候选和 GFAP 结构确定细胞区域。</li>
+<li><a href="https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full">Cellpose-SAM</a>：为含 eGFP 的荧光分析及计数模块提供基础分割。</li>
+<li><a href="https://doi.org/10.1101/2024.09.04.611150">InstanSeg fluorescence model</a>：在成熟样本的 GFAP-only 荧光分析中生成 DAPI 细胞核候选区域。Project Leap软件随后再结合这些候选和 GFAP 结构模式确定细胞区域。</li>
 <li><a href="https://doi.org/10.1038/nmeth.2019">Fiji</a>：用于交互式审核荧光分析区域，并在最终区域内测量原始目标通道投影的强度。</li>
 </ul>
 <h2 id="源码与许可">源码与许可</h2>

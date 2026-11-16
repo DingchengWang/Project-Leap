@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modules · Project Leap</title>
-  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
+  <title>Analysis modules · Project Leap</title>
+  <meta name="description" content="Analyze astrocyte fluorescence images on an Apple Silicon Mac.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/modules/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/modules/">
@@ -20,39 +20,36 @@
     <a class="brand" href="../" aria-label="Project Leap home"><img src="../../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="../">Home</a>
-<a href="./" aria-current="page">Modules</a>
+<a href="./" aria-current="page">Analysis modules</a>
 <a href="../guide/">User guide</a>
 <a href="../downloads/">Downloads</a>
 <a href="../about/">About</a></nav>
     <a class="language-switch" href="../../zh/modules/" lang="zh-CN" hreflang="zh-CN" aria-label="Switch this page to Chinese">中文</a>
   </div>
 </header>
-<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>Modules</h1></header><article class="prose modules-content"><p>The two modules address different questions: how much target-channel fluorescence lies within an astrocyte region, and which cell records should contribute to a count. Both use multichannel TIFF images and provide visual review tools for the proposed result.</p>
+<main id="main" class="site-main" tabindex="-1"><header class="page-heading"><h1>Analysis modules</h1></header><article class="prose modules-content"><p>Project Leap v1.0.0 currently offers two initial modules: one for measuring target-channel fluorescence within different astrocyte regions, and one for spatial cell localization and counting. The brief descriptions below introduce each module; full details are available in the corresponding GitHub repositories.</p>
 <section aria-labelledby="fluorescence" class="module-detail">
-<h2 id="fluorescence">Astrocyte fluorescence intensity measurement</h2>
-<p>The fluorescence module measures target fluorescence across the analyzed cell region (<strong>Whole Cell</strong>), with separate measurements for the cell body (<strong>Soma</strong>) and processes (<strong>Processes</strong>). Each analysis requires <strong>DAPI</strong>, at least one structural marker (<strong>eGFP and/or GFAP</strong>), and exactly one target: <strong>KCNN1, KCNN2, KCNN3, or KCNJ10</strong>. The GFAP-only route supports <strong>Mature</strong> samples only.</p>
-<p>DAPI and the selected structural channels provide the evidence for choosing analysis depth and defining cell regions. The target channel supplies the fluorescence values measured within those regions.</p>
-<p>Measurements use a two-dimensional maximum-intensity projection of the selected Z range. In Fiji, you can compare the proposed boundaries with the image and edit the linked cell, soma, and process regions before measurement. The measurements retain the target channel’s original intensity scale and background signal.</p>
-<p>The measurement workbook links each value to a cell and region. Labeled overlays and an ROI archive preserve the reviewed boundaries.</p>
+<h2 id="fluorescence">Astrocyte Fluorescence Intensity Measurement</h2>
+<p>This module measures fluorescence intensity separately in the <strong>Whole Cell</strong> region, the <strong>Soma</strong> (cell body), and the <strong>Processes</strong>. Input images must include <strong>DAPI</strong>, at least one structural marker (<strong>eGFP and/or GFAP</strong>), and one target channel to be measured: <strong>KCNN1, KCNN2, KCNN3, or KCNJ10</strong>. When GFAP is the only structural marker used, analysis is restricted to <strong>Mature</strong> samples.</p>
+<p>The software uses DAPI and structural markers to select the analysis depth and define cell regions, then measures target channel fluorescence within those regions. Measurements use a two-dimensional maximum intensity projection of the selected Z range. Before measurement, researchers can connect to Fiji (ImageJ) to compare multiple sets of images and edit the whole-cell, soma, and process regions. The reported measurements retain the target channel’s raw intensity, including its background signal.</p>
+<p>The output measurement table records multiple fluorescence metrics for each cell and its regions. Fluorescence overlays and ROI coordinate files, which can be imported back into Fiji, are also exported for subsequent visual inspection.</p>
 <div class="actions">
-<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence guide <span aria-hidden="true">↗</span></a>
-<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source <span aria-hidden="true">↗</span></a>
+<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence analysis guide <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source code <span aria-hidden="true">↗</span></a>
 </div>
 </section>
 <section aria-labelledby="counting" class="module-detail">
-<h2 id="counting">Cell counting</h2>
-<p>This module uses <strong>DAPI</strong> and a <strong>different support channel</strong> to propose cells for an astrocyte count. The support channel contributes cell-body and perinuclear evidence; both its source channel and marker must be specified.</p>
-<p>Each cell record links observations across Z slices, so a candidate can be examined at multiple depths under one identity. The counting workbench shows a maximum-intensity projection for an overview and original Z slices for closer inspection. You can add missing cells, merge duplicate records, delete objects, or change which records are accepted.</p>
-<p>The displayed total counts accepted, non-deleted records labeled <strong>Astrocyte</strong>. Other objects remain available for review and enter the total only if accepted.</p>
-<p>A confirmed result contains a numbered overlay, a CSV count table, and an editable session. Saved sessions reopen from Jobs &amp; Results; keep the source TIFF available to inspect the original Z slices again.</p>
+<h2 id="counting">Cell Counting</h2>
+<p>This module counts astrocytes using <strong>DAPI</strong> and an additional user-defined auxiliary channel. The software uses <strong>DAPI</strong> to locate cell nuclei and, in turn, identify cells. Soma and perinuclear signal patterns in the auxiliary channel further support counting accuracy and help users screen cells manually. In the preview window, users can inspect cells across Z planes, add cells, merge duplicates, and delete or adjust existing markers.</p>
+<p>Outputs include fluorescence overlays labeled with cell IDs and CSV count tables. Users can also reopen and edit previous analyses within the application (retain the source TIFF images if you need to revisit the original Z planes).</p>
 <div class="actions">
-<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Read the counting guide <span aria-hidden="true">↗</span></a>
-<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">View module source <span aria-hidden="true">↗</span></a>
+<a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Read the cell counting guide <span aria-hidden="true">↗</span></a>
+<a class="text-link" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">View module source code <span aria-hidden="true">↗</span></a>
 </div>
 </section></article></main>
 <footer class="site-footer">
   <div><a class="footer-brand" href="../">Project Leap</a></div>
-  <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
+  <nav aria-label="Footer navigation"><a href="https://github.com/DingchengWang/Project-Leap">Source code on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>
 </html>

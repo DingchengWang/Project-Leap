@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>使用指南 · Project Leap</title>
-  <meta name="description" content="在 Apple Silicon Mac 上完成星形胶质细胞荧光定量与细胞计数，结合自动分析和图像审核。">
+  <meta name="description" content="在 Apple Silicon Mac 上完成星形胶质细胞荧光图像的分析。">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/zh/guide/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
@@ -63,14 +63,14 @@
 </ol>
 <p>公开 DMG 包含主程序本体。分析模块及其依赖通过 Project Leap 安装。</p>
 <h3 id="macos-阻止首次启动时">macOS 阻止首次启动时</h3>
-<p>Project Leap 1.0.0 没有 Apple Developer ID 签名，也未经过 Apple 公证，因此系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。</p>
+<p>系统可能提示无法验证开发者，或 Apple 无法检查应用是否包含恶意软件。</p>
 <p>如果你从项目发布页面下载了应用，并决定继续打开：</p>
 <ol>
 <li>先尝试打开一次 <strong>Project Leap.app</strong>，然后关闭提示。</li>
 <li>进入<strong>系统设置 → 隐私与安全性</strong>，向下找到阻止此应用的提示。</li>
 <li>点击<strong>仍要打开</strong>，在下一条提示中确认<strong>打开</strong>；如果系统要求身份验证，按提示完成。</li>
 </ol>
-<p>macOS 会保存该应用的例外设置。上述步骤依据 <a href="https://support.apple.com/zh-cn/102445">Apple 对未公证应用的官方说明</a>。如果提示应用<strong>将损坏你的计算机</strong>或<strong>已损坏</strong>，应另行排查，不能按“无法验证开发者”处理。受组织管理的 Mac 若不允许设置例外，需要联系管理员。</p>
+<p>macOS 会保存该应用的例外设置。上述步骤依据 <a href="https://support.apple.com/zh-cn/102445">Apple 对未公证应用的官方说明</a>。如果提示应用<strong>将损坏你的计算机</strong>或<strong>已损坏</strong>，应另行排查。受组织管理的 Mac 若不允许设置例外，需要联系管理员。</p>
 <h2 id="2-安装分析模块">2. 安装分析模块</h2>
 <ol>
 <li>在侧边栏选择<strong>功能与维护</strong>。</li>
@@ -117,7 +117,7 @@
 <p>重新分析和查看原始 Z 层需要原始图像，请保留这些文件。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。</p>
 <h2 id="5-调整设置">5. 调整设置</h2>
 <h3 id="语言与外观">语言与外观</h3>
-<p>进入<strong>设置 → 语言与外观</strong>。<strong>界面语言</strong>可选 <strong>English</strong> 或<strong>中文</strong>；<strong>外观</strong>可选<strong>跟随系统</strong>、<strong>浅色</strong>或<strong>深色</strong>。外观切换不会改变科研图像的颜色，Fiji 和浏览器打开的页面使用各自的外观设置。</p>
+<p>进入<strong>设置 → 语言与外观</strong>。<strong>界面语言</strong>可选 <strong>English</strong> 或<strong>中文</strong>；<strong>外观</strong>可选<strong>跟随系统</strong>、<strong>浅色</strong>或<strong>深色</strong>。Fiji 和浏览器打开的页面使用各自的外观设置。</p>
 <h3 id="存储与迁移">存储与迁移</h3>
 <p><strong>设置 → 存储与数据</strong>显示当前软件数据目录。点击<strong>打开软件数据</strong>可在 Finder 中打开它。该目录包含已安装组件、任务记录、审核数据和保存的结果。</p>
 <p>需要迁移时，先完成正在进行的工作，点击<strong>更改存储目录</strong>，选择一个<strong>新的空文件夹</strong>。等待软件迁移、校验数据并完成重启。请通过此入口更改受管理数据的位置；在 Finder 中直接移动文件夹会使软件仍指向原来的路径。</p>

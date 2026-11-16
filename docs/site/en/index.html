@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Project Leap</title>
-  <meta name="description" content="Astrocyte fluorescence quantification and cell counting for Apple Silicon Macs, with automated analysis and visual review.">
+  <meta name="description" content="Analyze astrocyte fluorescence images on an Apple Silicon Mac.">
   <meta name="theme-color" content="#f6f8fc">
   <link rel="canonical" href="https://dingchengwang.github.io/Project-Leap/en/">
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/">
@@ -20,7 +20,7 @@
     <a class="brand" href="./" aria-label="Project Leap home"><img src="../assets/icon.svg" alt="" width="38" height="38"><span>Project Leap</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
     <nav id="main-nav" class="main-nav" aria-label="Main navigation"><a href="./" aria-current="page">Home</a>
-<a href="modules/">Modules</a>
+<a href="modules/">Analysis modules</a>
 <a href="guide/">User guide</a>
 <a href="downloads/">Downloads</a>
 <a href="about/">About</a></nav>
@@ -29,8 +29,8 @@
 </header>
 <main id="main" class="site-main" tabindex="-1"><div class="home-content"><section class="hero">
 <div class="hero-copy">
-<h1 id="astrocyte-fluorescence-analysis-and-cell-counting">Astrocyte fluorescence analysis and cell counting</h1>
-<p>Project Leap is a Mac application for researchers working with multichannel fluorescence images. It combines automated image analysis with visual review, giving you control over the astrocyte regions measured and the cells included in the final count.</p>
+<h1 id="a-platform-for-astrocyte-fluorescence-image-analysis">A platform for astrocyte fluorescence image analysis</h1>
+<p>Project Leap analyzes astrocytes in multichannel immunohistochemistry (IHC) fluorescence images. It combines advanced open-source models with original designs to delineate detailed astrocyte regions of interest (ROIs) against complex image backgrounds. This unique ROI delineation method provides a foundation for a modular design that gives developers the flexibility to add a wide range of analysis features. The software currently has two modules, one for fluorescence intensity measurement and one for spatial cell localization and counting. The fluorescence module integrates with Fiji (ImageJ) for automated measurements. More features and interfaces for integration with other software will be added in the future.</p>
 <div class="actions">
 <a class="button primary" href="downloads/">Download for Mac <span aria-hidden="true">↓</span></a>
 <a class="text-link" href="guide/">Read the user guide <span aria-hidden="true">→</span></a>
@@ -38,41 +38,41 @@
 <p class="release-line">Apple Silicon · macOS 27 or later</p>
 </div>
 <div class="hero-symbol">
-<img src="../assets/icon.svg" alt="Project Leap application icon" width="240" height="240">
+<img src="../assets/icon.svg" alt="Project Leap app icon" width="240" height="240">
 <p>Project Leap</p>
 </div>
 </section>
 <div class="section-heading">
-<h2 id="choose-an-analysis-module">Choose an analysis module</h2>
+<h2 id="choose-modules-for-your-research">Choose modules for your research</h2>
 </div>
 <div class="module-list">
 <section aria-labelledby="fluorescence-home" class="module-row">
 <div aria-hidden="true" class="module-number">01</div>
 <div>
-<h3 id="fluorescence-home">Astrocyte fluorescence intensity measurement</h3>
-<p>The fluorescence module measures target-marker intensity in reviewed whole-cell, soma, and process regions. Each measurement remains linked to its cell and final boundaries.</p>
+<h3 id="fluorescence-home">Astrocyte Fluorescence Intensity Measurement</h3>
+<p>Building on Project Leap's unique approach to ROI delineation, this module integrates a customized Fiji (ImageJ) workflow to automatically or semi-automatically measure multiple fluorescence intensity metrics from the target channel within whole-cell, soma, and process regions.</p>
 <p><a class="text-link" href="modules/#fluorescence">Explore fluorescence analysis <span aria-hidden="true">→</span></a></p>
 </div>
 </section>
 <section aria-labelledby="counting-home" class="module-row">
 <div aria-hidden="true" class="module-number">02</div>
 <div>
-<h3 id="counting-home">Cell counting</h3>
-<p>The counting module uses DAPI and an additional fluorescence channel to propose cells for an astrocyte count. You can follow individual cells through the Z stack and review which cells contribute to the total.</p>
+<h3 id="counting-home">Cell Counting</h3>
+<p>This module identifies cells using DAPI and a user-defined auxiliary fluorescence channel. It also locates cells in the 3D volume of an image stack, resolving counting problems caused by cells that overlap and are difficult to distinguish in conventional 2D images.</p>
 <p><a class="text-link" href="modules/#counting">Explore cell counting <span aria-hidden="true">→</span></a></p>
 </div>
 </section>
 </div>
 <div class="closing-row">
 <div>
-<h2 id="images-and-results-stay-on-your-mac">Images and results stay on your Mac</h2>
-<p>Saved analyses are available in Jobs &amp; Results, with measurement tables, labeled images, and the corresponding regions or review sessions. Counting sessions can be reopened for further editing. Source TIFF files stay in their original folders.</p>
+<h2 id="how-to-use-project-leap">How to use Project Leap</h2>
+<p>The Project Leap website currently provides downloads and operating instructions for the main application. Analysis modules need to be downloaded and installed separately within the application. Analyses can run fully automatically or semi-automatically with manual review; detailed instructions for each module are available in its GitHub repository. All scientific computations run locally, though analysis speed may vary with image size and hardware performance.</p>
 </div>
-<p><a class="button secondary" href="guide/">Using Project Leap <span aria-hidden="true">→</span></a></p>
+<p><a class="button secondary" href="guide/">See how to use Project Leap <span aria-hidden="true">→</span></a></p>
 </div></div></main>
 <footer class="site-footer">
   <div><a class="footer-brand" href="./">Project Leap</a></div>
-  <nav aria-label="Footer"><a href="https://github.com/DingchengWang/Project-Leap">Source on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
+  <nav aria-label="Footer navigation"><a href="https://github.com/DingchengWang/Project-Leap">Source code on GitHub <span aria-hidden="true">↗</span></a><a href="https://github.com/DingchengWang/Project-Leap/blob/main/LICENSE">License</a><a href="#top">Back to top ↑</a></nav>
 </footer>
 </body>
 </html>

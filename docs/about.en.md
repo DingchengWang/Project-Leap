@@ -1,27 +1,27 @@
-# About Project Leap
+# About
 
 [中文](about.zh.md) · [Project home](../README.md) · [User guide](user-guide.en.md)
 
-## Author and research affiliation
+## Author and research
 
-**Dingcheng Wang** developed Project Leap as a neuroscience undergraduate at **The Ohio State University**, with research affiliation to the **Min Zhou Laboratory, Department of Neuroscience, College of Medicine**.
+Project Leap was developed by Dingcheng Wang, an undergraduate neuroscience student at The Ohio State University. The research projects it primarily supports are based in the Min Zhou Laboratory, Department of Neuroscience, College of Medicine, at The Ohio State University.
 
-AI tools assisted with code implementation, debugging, packaging, and documentation. Dingcheng Wang directed the research requirements, analysis rules, biological interpretation, and development decisions, and was responsible for acceptance review.
+The software’s research requirements, biological interpretations, internal analysis methods, and cell parameters are all original. GPT-5.6 Sol / GPT-6 Astra assisted with code implementation, debugging, packaging, and documentation during development.
 
-## Methods and tools
+## Open-source tools used in the software
 
-Project Leap uses the following upstream tools for distinct parts of the analysis:
+The following are upstream analysis tools that perform different tasks:
 
-- [Cellpose-SAM](https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full) provides segmentation for the eGFP fluorescence-analysis route and the counting module.
-- [InstanSeg fluorescence model](https://doi.org/10.1101/2024.09.04.611150) supplies DAPI nuclear candidates in the mature GFAP-only fluorescence-analysis route. Project Leap uses these candidates with GFAP structure to define the cell regions.
-- [Fiji](https://doi.org/10.1038/nmeth.2019) supports interactive review of fluorescence regions and measures the raw target-channel projections within the final regions.
+- [Cellpose-SAM](https://www.biorxiv.org/content/10.1101/2025.04.28.651001v1.full): provides the base segmentation for fluorescence analysis with eGFP and for the cell counting module.
+- [InstanSeg fluorescence model](https://doi.org/10.1101/2024.09.04.611150): generates candidate DAPI nuclear regions for GFAP-only fluorescence analysis of mature samples. Project Leap then combines these candidates with GFAP structural patterns to define cell regions.
+- [Fiji](https://doi.org/10.1038/nmeth.2019): used to interactively review fluorescence analysis regions and measure the intensity of the raw target-channel projection within the final regions.
 
-## Source and licenses
+## Source code and licensing
 
-The source is maintained in three repositories:
+The source code is maintained in three repositories:
 
-- [Project Leap](https://github.com/DingchengWang/Project-Leap): desktop application and shared platform.
-- [Astrocyte fluorescence module](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis): fluorescence analysis engine and guide.
-- [Cell Counting module](https://github.com/DingchengWang/Project-Leap-Cell-Counting): counting engine and guide.
+- [Project Leap](https://github.com/DingchengWang/Project-Leap): the desktop application and shared platform.
+- [Astrocyte fluorescence module](https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis): the fluorescence analysis engine and guide.
+- [Cell counting module](https://github.com/DingchengWang/Project-Leap-Cell-Counting): the counting engine and guide.
 
-Original Project Leap code is licensed under [Apache License 2.0](../LICENSE), with attribution in [NOTICE](../NOTICE). Third-party software and models retain their respective licenses and copyright notices. [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) links the retained license material and upstream sources.
+Original Project Leap code is licensed under the [Apache License 2.0](../LICENSE), with attribution in [NOTICE](../NOTICE). Third-party software and models retain their respective licenses and copyright notices. [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) contains the retained licensing materials and links to upstream sources.
