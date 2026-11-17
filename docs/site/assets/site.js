@@ -165,7 +165,7 @@
     const source = link.querySelector('img');
     if (!source) return;
     link.setAttribute('aria-haspopup', 'dialog');
-    link.setAttribute('aria-label', `${text.open}. ${source.alt}`);
+    link.setAttribute('aria-label', chinese ? `${text.open}。${source.alt}` : `${text.open}. ${source.alt}`);
     link.addEventListener('click', (event) => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
