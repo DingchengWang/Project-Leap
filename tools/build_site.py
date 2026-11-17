@@ -84,6 +84,12 @@ class DocumentLinks(HTMLParser):
         if url.scheme or url.netloc or not url.path:
             return value
         target = (self.source.parent / unquote(url.path)).resolve()
+        assets = (CONTENT / "assets").resolve()
+        if target.is_relative_to(assets):
+            if not target.is_file():
+                raise ValueError(f"Missing site asset: {self.source}: {value}")
+            asset = "assets/" + quote(target.relative_to(assets).as_posix())
+            return urlunsplit(("", "", relative_url(self.current, asset), url.query, url.fragment))
         for language in COPY:
             for page in PAGES:
                 if target == source_for(language, page):
@@ -160,6 +166,7 @@ def render_page(language: str, page: str) -> str:
     current = route(language, page)
     asset = relative_url(current, "assets/")
     css_version = hashlib.sha256((CONTENT / "assets/site.css").read_bytes()).hexdigest()[:12]
+    js_version = hashlib.sha256((CONTENT / "assets/site.js").read_bytes()).hexdigest()[:12]
     other = relative_url(current, route(copy["other"], page))
     heading = copy["titles"][page]
     title = "Project Leap" if page == "home" else f"{heading} · Project Leap"
@@ -195,7 +202,7 @@ def render_page(language: str, page: str) -> str:
   <link rel="alternate" hreflang="zh-CN" href="{PUBLIC_BASE + route('zh', page)}">
   <link rel="icon" href="{asset}icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{asset}site.css?v={css_version}">
-  <script src="{asset}site.js" defer></script>
+  <script src="{asset}site.js?v={js_version}" defer></script>
 </head>
 <body id="top" class="page-{page}">
 <a class="skip-link" href="#main">{copy['skip']}</a>

@@ -10,8 +10,8 @@
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/guide/">
   <link rel="alternate" hreflang="zh-CN" href="https://dingchengwang.github.io/Project-Leap/zh/guide/">
   <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../assets/site.css?v=4a9201097983">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../../assets/site.css?v=0adb2e69a531">
+  <script src="../../assets/site.js?v=84485ffe3f2c" defer></script>
 </head>
 <body id="top" class="page-guide">
 <a class="skip-link" href="#main">跳至正文</a>
@@ -79,6 +79,13 @@
 </ol>
 <p>可以安装一个模块，也可以同时安装两个。Project Leap 会一并安装所需依赖，其中荧光模块使用 Fiji 审核感兴趣区域。</p>
 <p>分析或审核进程正在使用组件时，软件暂停安装和修复。完成相关操作后再维护模块。</p>
+<!-- leap-media:start guide-modules -->
+<figure class="media-figure">
+<a class="media-link" href="../../assets/images/app-modules-zh.png"><img src="../../assets/images/app-modules-zh.png" alt="两个分析模块均已安装。" width="3808" height="1036" loading="lazy" decoding="async"></a>
+<figcaption>两个分析模块均已安装。</figcaption>
+</figure>
+<!-- leap-media:end guide-modules -->
+
 <h2 id="3-选择模块并开始分析">3. 选择模块并开始分析</h2>
 <p>在侧边栏选择已安装模块，进入其<strong>分析工作台</strong>。按对应指南完成图像选择、通道指定、分析、审核和保存：</p>
 <table>
@@ -114,9 +121,23 @@
 </ul>
 <p>删除单项分析可点击该行的垃圾桶按钮；批量删除时，点击<strong>多选</strong>，勾选记录后点击<strong>删除所选</strong>。确认前请核对范围：这会永久删除所选分析在软件内部保存的数据，原始图像和已导出到软件数据目录之外的文件会保留。选择<strong>一个月内不再询问</strong>后，软件会暂停显示删除确认，并在一个日历月后恢复询问。</p>
 <p>重新分析和查看原始 Z 层需要原始图像，请保留这些文件。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。</p>
+<!-- leap-media:start guide-jobs -->
+<figure class="media-figure">
+<a class="media-link" href="../../assets/images/app-jobs-zh.png"><img src="../../assets/images/app-jobs-zh.png" alt="展开的荧光分析记录显示叠加图预览、导出文件和打开结果文件夹的按钮。" width="3808" height="1464" loading="lazy" decoding="async"></a>
+<figcaption>展开的荧光分析记录显示叠加图预览、导出文件和打开结果文件夹的按钮。</figcaption>
+</figure>
+<!-- leap-media:end guide-jobs -->
+
 <h2 id="5-调整设置">5. 调整设置</h2>
 <h3 id="语言与外观">语言与外观</h3>
 <p>进入<strong>设置 → 语言与外观</strong>。<strong>界面语言</strong>可选 <strong>English</strong> 或<strong>中文</strong>；<strong>外观</strong>可选<strong>跟随系统</strong>、<strong>浅色</strong>或<strong>深色</strong>。Fiji 和浏览器打开的页面使用各自的外观设置。</p>
+<!-- leap-media:start guide-appearance -->
+<figure class="media-figure">
+<a class="media-link" href="../../assets/images/app-appearance-zh.png"><img src="../../assets/images/app-appearance-zh.png" alt="在设置中选择界面语言与浅色外观。" width="3256" height="408" loading="lazy" decoding="async"></a>
+<figcaption>在设置中选择界面语言与浅色外观。</figcaption>
+</figure>
+<!-- leap-media:end guide-appearance -->
+
 <h3 id="存储与迁移">存储与迁移</h3>
 <p><strong>设置 → 存储与数据</strong>显示当前软件数据目录。点击<strong>打开软件数据</strong>可在 Finder 中打开它。该目录包含已安装组件、任务记录、审核数据和保存的结果。</p>
 <p>需要迁移时，先完成正在进行的工作，点击<strong>更改存储目录</strong>，选择一个<strong>新的空文件夹</strong>。等待软件迁移、校验数据并完成重启。请通过此入口更改受管理数据的位置；在 Finder 中直接移动文件夹会使软件仍指向原来的路径。</p>

@@ -21,6 +21,13 @@ The [user guide](docs/user-guide.en.md) covers first launch, module installation
 
 The application stores job records and results separately from the source TIFF images. Keep the source images to rerun analyses or revisit the original Z planes.
 
+<!-- leap-media:start readme-workspace -->
+<figure class="media-figure">
+<a class="media-link" href="docs/site-content/assets/images/app-workspace-en.png"><img src="docs/site-content/assets/images/app-workspace-en.png" alt="The analysis workspace shows the image import area, with available modules on the left." width="3808" height="1776" loading="lazy" decoding="async"></a>
+<figcaption>The analysis workspace shows the image import area, with available modules on the left.</figcaption>
+</figure>
+<!-- leap-media:end readme-workspace -->
+
 ## Source and development
 
 This repository contains the desktop application, shared platform code, build tools, and website. The analysis engines live in the two module repositories linked above. Developers can follow the [build instructions](tools/build/README.md) and consult the [interface contract](docs/implementation/CONTRACT.md) for application–engine requests and results.

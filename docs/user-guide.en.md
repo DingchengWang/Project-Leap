@@ -38,6 +38,13 @@ You can install either module or both. Project Leap also installs the required d
 
 The application pauses installation and repair while an analysis or review process is using the components. Finish those operations before performing module maintenance.
 
+<!-- leap-media:start guide-modules -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-modules-en.png"><img src="site-content/assets/images/app-modules-en.png" alt="Both analysis modules are installed." width="3808" height="1036" loading="lazy" decoding="async"></a>
+<figcaption>Both analysis modules are installed.</figcaption>
+</figure>
+<!-- leap-media:end guide-modules -->
+
 ## 3. Choose a module and start an analysis
 
 Select an installed module in the sidebar to open its **Analysis Workspace**. Follow the corresponding guide to select images, assign channels, run the analysis, review the results, and save:
@@ -64,11 +71,25 @@ To delete a single analysis, click the trash button on its row. To delete severa
 
 Original images are required to rerun an analysis or view the original Z planes, so keep these files. If a counting session reports that its source image has moved, use the relocation control within that session. The application checks whether the image at the new path matches the job.
 
+<!-- leap-media:start guide-jobs -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-jobs-en.png"><img src="site-content/assets/images/app-jobs-en.png" alt="The expanded fluorescence job shows overlay previews, exported files, and a button to open the results folder." width="3808" height="1464" loading="lazy" decoding="async"></a>
+<figcaption>The expanded fluorescence job shows overlay previews, exported files, and a button to open the results folder.</figcaption>
+</figure>
+<!-- leap-media:end guide-jobs -->
+
 ## 5. Adjust settings
 
 ### Language and appearance
 
 Go to **Settings → Language & appearance**. You can choose **English** or **中文** for the interface language, and **System**, **Light**, or **Dark** for the appearance. Fiji and pages opened in a browser use their own appearance settings.
+
+<!-- leap-media:start guide-appearance -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-appearance-en.png"><img src="site-content/assets/images/app-appearance-en.png" alt="Choose the interface language and Light appearance in Settings." width="3256" height="408" loading="lazy" decoding="async"></a>
+<figcaption>Choose the interface language and Light appearance in Settings.</figcaption>
+</figure>
+<!-- leap-media:end guide-appearance -->
 
 ### Storage and migration
 

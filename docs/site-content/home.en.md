@@ -18,6 +18,13 @@ Project Leap analyzes astrocytes in multichannel immunohistochemistry (IHC) fluo
 </div>
 </section>
 
+<!-- leap-media:start home-workspace -->
+<figure class="media-figure">
+<a class="media-link" href="../assets/images/app-workspace-en.png"><img src="../assets/images/app-workspace-en.png" alt="The analysis workspace shows the image import area, with available modules on the left." width="3808" height="1776" loading="eager" decoding="async"></a>
+<figcaption>The analysis workspace shows the image import area, with available modules on the left.</figcaption>
+</figure>
+<!-- leap-media:end home-workspace -->
+
 <div class="section-heading" markdown="1">
 
 ## Choose modules for your research

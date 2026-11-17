@@ -21,6 +21,13 @@ Project Leap 是面向 Mac 的模块化星形胶质细胞图像分析平台，�
 
 软件将任务记录和结果与源 TIFF 图像分开保存。重新分析或再次查看原始 Z 层时仍需源图像，请予以保留。
 
+<!-- leap-media:start readme-workspace -->
+<figure class="media-figure">
+<a class="media-link" href="docs/site-content/assets/images/app-workspace-zh.png"><img src="docs/site-content/assets/images/app-workspace-zh.png" alt="分析工作台显示图像导入区，左侧列出可用模块。" width="3808" height="1776" loading="lazy" decoding="async"></a>
+<figcaption>分析工作台显示图像导入区，左侧列出可用模块。</figcaption>
+</figure>
+<!-- leap-media:end readme-workspace -->
+
 ## 源码与开发
 
 本仓库保存桌面主程序、共享平台代码、构建工具和网站，两个分析引擎分别保存在上表链接的模块仓库中。开发者可按[构建说明](tools/build/README.md)准备依赖和打包；主程序与引擎之间的请求和结果格式见[接口与数据约定](docs/implementation/CONTRACT.md)。

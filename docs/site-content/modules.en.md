@@ -10,6 +10,23 @@ The software uses DAPI and structural markers to select the analysis depth and d
 
 The output measurement table records multiple fluorescence metrics for each cell and its regions. Fluorescence overlays and ROI coordinate files, which can be imported back into Fiji, are also exported for subsequent visual inspection.
 
+<!-- leap-media:start fluorescence -->
+<div class="media-gallery" data-gallery aria-label="Fluorescence region overlays">
+<figure class="media-figure" data-gallery-label="Whole Cell">
+<a class="media-link" href="../../assets/images/fluorescence-whole.png"><img src="../../assets/images/fluorescence-whole-preview.png" data-thumbnail="../../assets/images/fluorescence-whole-thumb.png" alt="Magenta outlines show the selected whole cell regions." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>Magenta outlines show the selected whole cell regions.</figcaption>
+</figure>
+<figure class="media-figure" data-gallery-label="Soma">
+<a class="media-link" href="../../assets/images/fluorescence-soma.png"><img src="../../assets/images/fluorescence-soma-preview.png" data-thumbnail="../../assets/images/fluorescence-soma-thumb.png" alt="Cyan outlines show the cell body regions in the same field." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>Cyan outlines show the cell body regions.</figcaption>
+</figure>
+<figure class="media-figure" data-gallery-label="Processes">
+<a class="media-link" href="../../assets/images/fluorescence-processes.png"><img src="../../assets/images/fluorescence-processes-preview.png" data-thumbnail="../../assets/images/fluorescence-processes-thumb.png" alt="White outlines show the process regions in the same field." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>White outlines show the process regions.</figcaption>
+</figure>
+</div>
+<!-- leap-media:end fluorescence -->
+
 <div class="actions" markdown="0">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence analysis guide <span aria-hidden="true">↗</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source code <span aria-hidden="true">↗</span></a>
@@ -23,6 +40,15 @@ The output measurement table records multiple fluorescence metrics for each cell
 This module counts astrocytes using **DAPI** and an additional user-defined auxiliary channel. The software uses **DAPI** to locate cell nuclei and, in turn, identify cells. Soma and perinuclear signal patterns in the auxiliary channel further support counting accuracy and help users screen cells manually. In the preview window, users can inspect cells across Z planes, add cells, merge duplicates, and delete or adjust existing markers.
 
 Outputs include fluorescence overlays labeled with cell IDs and CSV count tables. Users can also reopen and edit previous analyses within the application (retain the source TIFF images if you need to revisit the original Z planes).
+
+<!-- leap-media:start counting -->
+<div class="media-gallery" data-gallery aria-label="Cell counting manual review">
+<figure class="media-figure" data-gallery-label="Review at one Z plane">
+<a class="media-link" href="../../assets/images/counting-z-review.png"><img src="../../assets/images/counting-z-review-preview.png" alt="The editor shows candidate markers, editing tools, and a slider for choosing a Z plane." width="2468" height="1678" loading="lazy" decoding="async"></a>
+<figcaption>The editor shows candidate cells awaiting review at one Z plane.</figcaption>
+</figure>
+</div>
+<!-- leap-media:end counting -->
 
 <div class="actions" markdown="0">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Read the cell counting guide <span aria-hidden="true">↗</span></a>

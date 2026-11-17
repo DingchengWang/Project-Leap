@@ -18,6 +18,13 @@ Project Leap是一款面向星形胶质细胞多通道免疫组化荧光图像�
 </div>
 </section>
 
+<!-- leap-media:start home-workspace -->
+<figure class="media-figure">
+<a class="media-link" href="../assets/images/app-workspace-zh.png"><img src="../assets/images/app-workspace-zh.png" alt="分析工作台显示图像导入区，左侧列出可用模块。" width="3808" height="1776" loading="eager" decoding="async"></a>
+<figcaption>分析工作台显示图像导入区，左侧列出可用模块。</figcaption>
+</figure>
+<!-- leap-media:end home-workspace -->
+
 <div class="section-heading" markdown="1">
 
 ## 按研究需求选择模块

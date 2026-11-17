@@ -10,8 +10,8 @@
   <link rel="alternate" hreflang="en" href="https://dingchengwang.github.io/Project-Leap/en/modules/">
   <link rel="alternate" hreflang="zh-CN" href="https://dingchengwang.github.io/Project-Leap/zh/modules/">
   <link rel="icon" href="../../assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../../assets/site.css?v=4a9201097983">
-  <script src="../../assets/site.js" defer></script>
+  <link rel="stylesheet" href="../../assets/site.css?v=0adb2e69a531">
+  <script src="../../assets/site.js?v=84485ffe3f2c" defer></script>
 </head>
 <body id="top" class="page-modules">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -33,6 +33,22 @@
 <p>This module measures fluorescence intensity separately in the <strong>Whole Cell</strong> region, the <strong>Soma</strong> (cell body), and the <strong>Processes</strong>. Input images must include <strong>DAPI</strong>, at least one structural marker (<strong>eGFP and/or GFAP</strong>), and one target channel to be measured: <strong>KCNN1, KCNN2, KCNN3, or KCNJ10</strong>. When GFAP is the only structural marker used, analysis is restricted to <strong>Mature</strong> samples.</p>
 <p>The software uses DAPI and structural markers to select the analysis depth and define cell regions, then measures target channel fluorescence within those regions. Measurements use a two-dimensional maximum intensity projection of the selected Z range. Before measurement, researchers can connect to Fiji (ImageJ) to compare multiple sets of images and edit the whole-cell, soma, and process regions. The reported measurements retain the target channel’s raw intensity, including its background signal.</p>
 <p>The output measurement table records multiple fluorescence metrics for each cell and its regions. Fluorescence overlays and ROI coordinate files, which can be imported back into Fiji, are also exported for subsequent visual inspection.</p>
+<!-- leap-media:start fluorescence -->
+<div aria-label="Fluorescence region overlays" class="media-gallery" data-gallery>
+<figure class="media-figure" data-gallery-label="Whole Cell">
+<a class="media-link" href="../../assets/images/fluorescence-whole.png"><img src="../../assets/images/fluorescence-whole-preview.png" data-thumbnail="../../assets/images/fluorescence-whole-thumb.png" alt="Magenta outlines show the selected whole cell regions." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>Magenta outlines show the selected whole cell regions.</figcaption>
+</figure>
+<figure class="media-figure" data-gallery-label="Soma">
+<a class="media-link" href="../../assets/images/fluorescence-soma.png"><img src="../../assets/images/fluorescence-soma-preview.png" data-thumbnail="../../assets/images/fluorescence-soma-thumb.png" alt="Cyan outlines show the cell body regions in the same field." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>Cyan outlines show the cell body regions.</figcaption>
+</figure>
+<figure class="media-figure" data-gallery-label="Processes">
+<a class="media-link" href="../../assets/images/fluorescence-processes.png"><img src="../../assets/images/fluorescence-processes-preview.png" data-thumbnail="../../assets/images/fluorescence-processes-thumb.png" alt="White outlines show the process regions in the same field." width="2048" height="2048" loading="lazy" decoding="async"></a>
+<figcaption>White outlines show the process regions.</figcaption>
+</figure>
+</div>
+<!-- leap-media:end fluorescence -->
 <div class="actions">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis/blob/main/docs/guide.en.md">Read the fluorescence analysis guide <span aria-hidden="true">↗</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-2D-Integrated-IHC-fluorescence-analysis">View module source code <span aria-hidden="true">↗</span></a>
@@ -42,6 +58,14 @@
 <h2 id="counting">Cell Counting</h2>
 <p>This module counts astrocytes using <strong>DAPI</strong> and an additional user-defined auxiliary channel. The software uses <strong>DAPI</strong> to locate cell nuclei and, in turn, identify cells. Soma and perinuclear signal patterns in the auxiliary channel further support counting accuracy and help users screen cells manually. In the preview window, users can inspect cells across Z planes, add cells, merge duplicates, and delete or adjust existing markers.</p>
 <p>Outputs include fluorescence overlays labeled with cell IDs and CSV count tables. Users can also reopen and edit previous analyses within the application (retain the source TIFF images if you need to revisit the original Z planes).</p>
+<!-- leap-media:start counting -->
+<div aria-label="Cell counting manual review" class="media-gallery" data-gallery>
+<figure class="media-figure" data-gallery-label="Review at one Z plane">
+<a class="media-link" href="../../assets/images/counting-z-review.png"><img src="../../assets/images/counting-z-review-preview.png" alt="The editor shows candidate markers, editing tools, and a slider for choosing a Z plane." width="2468" height="1678" loading="lazy" decoding="async"></a>
+<figcaption>The editor shows candidate cells awaiting review at one Z plane.</figcaption>
+</figure>
+</div>
+<!-- leap-media:end counting -->
 <div class="actions">
 <a class="button secondary" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/guide.en.md">Read the cell counting guide <span aria-hidden="true">↗</span></a>
 <a class="text-link" href="https://github.com/DingchengWang/Project-Leap-Cell-Counting">View module source code <span aria-hidden="true">↗</span></a>

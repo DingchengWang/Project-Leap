@@ -38,6 +38,13 @@ macOS 会保存该应用的例外设置。上述步骤依据 [Apple 对未公证
 
 分析或审核进程正在使用组件时，软件暂停安装和修复。完成相关操作后再维护模块。
 
+<!-- leap-media:start guide-modules -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-modules-zh.png"><img src="site-content/assets/images/app-modules-zh.png" alt="两个分析模块均已安装。" width="3808" height="1036" loading="lazy" decoding="async"></a>
+<figcaption>两个分析模块均已安装。</figcaption>
+</figure>
+<!-- leap-media:end guide-modules -->
+
 ## 3. 选择模块并开始分析
 
 在侧边栏选择已安装模块，进入其**分析工作台**。按对应指南完成图像选择、通道指定、分析、审核和保存：
@@ -64,11 +71,25 @@ macOS 会保存该应用的例外设置。上述步骤依据 [Apple 对未公证
 
 重新分析和查看原始 Z 层需要原始图像，请保留这些文件。计数会话提示原图已移动时，可使用会话内的重新定位入口，由软件核对新路径的图像是否与该任务匹配。
 
+<!-- leap-media:start guide-jobs -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-jobs-zh.png"><img src="site-content/assets/images/app-jobs-zh.png" alt="展开的荧光分析记录显示叠加图预览、导出文件和打开结果文件夹的按钮。" width="3808" height="1464" loading="lazy" decoding="async"></a>
+<figcaption>展开的荧光分析记录显示叠加图预览、导出文件和打开结果文件夹的按钮。</figcaption>
+</figure>
+<!-- leap-media:end guide-jobs -->
+
 ## 5. 调整设置
 
 ### 语言与外观
 
 进入**设置 → 语言与外观**。**界面语言**可选 **English** 或**中文**；**外观**可选**跟随系统**、**浅色**或**深色**。Fiji 和浏览器打开的页面使用各自的外观设置。
+
+<!-- leap-media:start guide-appearance -->
+<figure class="media-figure">
+<a class="media-link" href="site-content/assets/images/app-appearance-zh.png"><img src="site-content/assets/images/app-appearance-zh.png" alt="在设置中选择界面语言与浅色外观。" width="3256" height="408" loading="lazy" decoding="async"></a>
+<figcaption>在设置中选择界面语言与浅色外观。</figcaption>
+</figure>
+<!-- leap-media:end guide-appearance -->
 
 ### 存储与迁移
 
