@@ -1,4 +1,4 @@
-# Project Leap 本机构建
+# Project Leap 构建说明
 
 公开主程序 DMG 包含 **Project Leap.app** 和 Applications 链接，用户安装后在应用内下载分析模块。当前公开版本为 **v1.0.0**，镜像文件名为 `Project-Leap-1.0.0-macOS-arm64.dmg`，运行于 Apple Silicon / macOS 27 或更高版本。下文说明如何装配源码、准备依赖、构建主程序并验证产物；完整离线交付见文末。
 

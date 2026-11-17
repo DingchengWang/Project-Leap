@@ -1,4 +1,4 @@
-# Project Leap 当前接口
+# Project Leap 接口与数据约定
 
 本文记录主程序、科学模块和已保存任务之间的数据约定。计数对象的完整来源定义见[计数模块 CELL_IDENTITY.md](https://github.com/DingchengWang/Project-Leap-Cell-Counting/blob/main/docs/prototype-d/CELL_IDENTITY.md)；平台操作见[使用指南](../user-guide.zh.md)。
 
@@ -8,11 +8,11 @@ Project Leap v1.0.0 面向 Apple Silicon，最低系统为 macOS 27。主程序�
 
 模块描述符使用 schema 4，通过 `science_runtime` 指定科学运行环境的精确版本。`host_api` 和 `platform` 必须与宿主匹配，宿主构建号必须不低于描述符的 `minimum_host_build`。当前宿主 API 为 1，平台为 `macos-arm64`；各模块的最低构建要求以实际发布的描述符和组件目录为准。`cellpose-model` 独立保存固定模型权重，Fiji 也作为独立依赖发布。
 
-应用、交付文件夹、磁盘卷名和界面品牌使用 Project Leap。公开主程序镜像为 `Project-Leap-1.0.0-macOS-arm64.dmg`，可选完整离线镜像为 `Project Leap V1.0.0.dmg`。应用保留 bundle ID `org.projectleap.prototype.d`、默认数据目录 `Project Leap Prototype D` 和配置目录 `Project Leap Prototype D Settings`，以继续使用这些目录中的已有任务。应用不会自动迁移或合并其他安装的数据。
+应用保留 bundle ID `org.projectleap.prototype.d`、默认数据目录 `Project Leap Prototype D` 和配置目录 `Project Leap Prototype D Settings`，以继续使用这些目录中的已有任务。应用不会自动迁移或合并其他安装的数据。
 
 导航先显示荧光，再显示计数及后续模块。模块说明入口读取模块目录中的 `github_url`，仅在地址已配置时显示，并在浏览器中打开该地址。参考文献与许可证页面以本地 HTML 随应用冻结和签名。
 
-荧光年龄选项 `auto` 映射为 `null`，`mature` 和 `neonatal` 使用各自的年龄分支。构建验证器核对荧光的 95 文件原始基线和两处已审核适配。构建输入、基线记录及验证方法见[本机构建说明](../../tools/build/README.md)。
+荧光年龄选项 `auto` 映射为 `null`，`mature` 和 `neonatal` 使用各自的年龄分支。科学源码基线及构建验证方法见[构建说明](../../tools/build/README.md)。
 
 ## 计数输入与科学结果
 

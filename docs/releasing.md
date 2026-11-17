@@ -19,11 +19,11 @@
 
 应用保留标识 `org.projectleap.prototype.d`，最低系统为 macOS 27。公开构建号为全局递增正整数，应用版本变化后也不重置。每个新构建使用新的固定版本下载 URL，旧地址继续提供原归档。五个组件 `project-leap-2d`、`cell-counting`、`science-runtime`、`cellpose-model`、`fiji` 的分发版本和精确 URL 由 `components.assets` 指定。
 
-按[本机构建说明](../tools/build/README.md)完成源码装配、构建、归档验证和安装验收。生成更新文件前，准备好以下输入：
+按[构建说明](../tools/build/README.md)完成源码装配、构建、归档验证和安装验收。生成更新文件前，准备好以下输入：
 
 - 最终主程序专用 DMG 及其 `build-report.json`。报告的 `main_only_dmg` 必须记录该镜像的路径、长度和 SHA-256。
 - `packages/catalog.json` 及其中列出的五份组件归档。模块描述符和目录记录的宿主 API、最低构建要求及平台须与本次发行匹配。
-- 对应的独立验证记录。验证命令的 `--expected-build` 使用报告中的 `build_number`，具体命令见本机构建说明。
+- 对应的独立验证记录。验证命令的 `--expected-build` 使用报告中的 `build_number`，具体命令见构建说明。
 
 测试归档不能作为生产输入。归档进入签名流程后保持字节不变，复制为配置中的发行文件名时也应保留内容。
 
@@ -97,21 +97,7 @@ python3 tools/generate_appcast.py \
 
 ### 仅用于首次建立更新通道
 
-一个从未发布过的通道没有历史输入，可以省略该通道的 `--previous`。首次主程序发行的构建号必须等于配置的 `application.first_public_build`，构建时从该字段读取。当前 Project Leap 的两个通道均已有历史，应使用上面的后续发行命令。
-
-首次通道的生成命令沿用已准备的变量，省略历史输入；执行前同样需要新的候选目录：
-
-```sh
-python3 tools/sign_component_catalog.py \
-  "$LEAP_PACKAGES/catalog.json" --packages "$LEAP_PACKAGES" \
-  --settings "$LEAP_SETTINGS" --sparkle-bin "$LEAP_SPARKLE_BIN" \
-  --output "$LEAP_PUBLISH/components.json"
-
-python3 tools/generate_appcast.py \
-  --archive "$LEAP_DMG" --build-report "$LEAP_REPORT" \
-  --settings "$LEAP_SETTINGS" --sparkle-bin "$LEAP_SPARKLE_BIN" \
-  --output "$LEAP_PUBLISH/appcast.xml"
-```
+一个从未发布过的通道没有历史输入，可在上述命令中省略该通道的 `--previous` 参数，其余参数和新建候选目录的要求不变。首次主程序发行的构建号必须等于配置的 `application.first_public_build`，构建时从该字段读取。当前 Project Leap 的两个通道均已有历史，应保留 `--previous`。
 
 ## 4. 上传、部署与核验
 
