@@ -38,18 +38,18 @@ class Page(HTMLParser):
         self.buttons: list[dict] = []
         self.images: list[dict] = []
         self.current: list[str] = []
-        self.document_links: list[str] = []
+        self.main_navigation: list[str] = []
         self.text_parts: list[str] = []
-        self._in_document = False
+        self._in_main_navigation = False
         self.feed(text)
 
     def handle_starttag(self, tag, attributes):
         attrs = dict(attributes)
         self.tags[tag] += 1
-        if tag == "article" and "document" in attrs.get("class", "").split():
-            self._in_document = True
-        if tag == "a" and self._in_document:
-            self.document_links.append(attrs.get("href", ""))
+        if tag == "nav" and attrs.get("id") == "main-nav":
+            self._in_main_navigation = True
+        if tag == "a" and self._in_main_navigation:
+            self.main_navigation.append(attrs.get("href", ""))
         if "id" in attrs:
             self.ids.append(attrs["id"])
         if tag == "html":
@@ -67,8 +67,8 @@ class Page(HTMLParser):
             self.images.append(attrs)
 
     def handle_endtag(self, tag):
-        if tag == "article":
-            self._in_document = False
+        if tag == "nav":
+            self._in_main_navigation = False
 
     def handle_data(self, data):
         self.text_parts.append(data)
@@ -126,8 +126,8 @@ def check(site: Path, rebuild: bool) -> int:
             errors.append(f"{name}: incorrect document language")
         if parsed.tags["h1"] != 1 or parsed.tags["main"] != 1 or parsed.tags["title"] != 1:
             errors.append(f"{name}: requires one h1, main, and title")
-        if len(parsed.current) != 1:
-            errors.append(f"{name}: requires one active navigation item")
+        if len(parsed.current) != 1 or resolve(site, path, parsed.current[0])[0] != path:
+            errors.append(f"{name}: requires one active navigation item pointing to this page")
         counterpart = site / ("en" if language == "zh" else "zh") / Path(*path.relative_to(site).parts[1:])
         if len(parsed.switches) != 1 or resolve(site, path, parsed.switches[0])[0] != counterpart:
             errors.append(f"{name}: language switch must preserve the page")
@@ -135,8 +135,18 @@ def check(site: Path, rebuild: bool) -> int:
             errors.append(f"{name}: image has no alt attribute")
         if "guide" in path.parts or "about" in path.parts:
             homepage = site / language / "index.html"
-            if not any(resolve(site, path, value)[0] == homepage for value in parsed.document_links):
-                errors.append(f"{name}: the shared document's home link must lead to the same-language site homepage")
+            if not any(resolve(site, path, value)[0] == homepage for value in parsed.main_navigation):
+                errors.append(f"{name}: main navigation must link to the same-language site homepage")
+            for home_class in ("brand", "footer-brand"):
+                home_links = [value for tag, value, attrs in parsed.links if tag == "a" and home_class in attrs.get("class", "").split()]
+                if len(home_links) != 1 or resolve(site, path, home_links[0])[0] != homepage:
+                    errors.append(f"{name}: {home_class} must link to the same-language site homepage")
+            leading_paragraph = re.search(r'<article class="prose document">\s*(<p>.*?</p>)', text, re.DOTALL)
+            if leading_paragraph:
+                leading_links = [resolve(site, path, value)[0] for tag, value, _ in Page(leading_paragraph.group(1)).links if tag == "a"]
+                other_page = "about" if "guide" in path.parts else "guide"
+                if leading_links == [counterpart, homepage, site / language / other_page / "index.html"]:
+                    errors.append(f"{name}: duplicate document navigation must not appear before the body")
         for tag, value, attrs in parsed.links:
             if tag in ("script", "img") or (tag == "link" and attrs.get("rel") == "stylesheet"):
                 if urlsplit(value).scheme or value.startswith("//"):

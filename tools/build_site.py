@@ -130,6 +130,18 @@ def render_content(language: str, page: str) -> tuple[str, str]:
     raw = source.read_text(encoding="utf-8")
     if page in ("guide", "about"):
         raw = re.sub(r"\A(?:\ufeff)?# [^\n]+\n", "", raw, count=1)
+        # The shared Markdown keeps its GitHub navigation; the site header and
+        # footer already provide these links. Remove only this exact first paragraph.
+        other_page = "about" if page == "guide" else "guide"
+        home_source = "../README_中文.md" if language == "zh" else "../README.md"
+        document_nav = (
+            f"[{COPY[language]['switch']}]({source_for(COPY[language]['other'], page).name}) · "
+            f"[{'项目首页' if language == 'zh' else 'Project home'}]({home_source}) · "
+            f"[{COPY[language]['titles'][other_page]}]({source_for(language, other_page).name})"
+        )
+        first_paragraph, separator, remainder = raw.lstrip("\n").partition("\n\n")
+        if separator and first_paragraph == document_nav:
+            raw = remainder
     md = markdown.Markdown(
         extensions=["tables", "fenced_code", "attr_list", "md_in_html", "toc"],
         extension_configs={"toc": {"slugify": slugify_unicode, "toc_depth": "2-3"}},
